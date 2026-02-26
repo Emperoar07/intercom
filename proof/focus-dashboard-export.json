@@ -1,0 +1,1165 @@
+{
+  "exportedAt": "2026-02-26T14:23:07.386Z",
+  "peers": {
+    "host": {
+      "key": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+      "address": "trac1mpyt7yhxl5nh4rzumn6lg2jw5u373m8pqtp805fps7pjr8yvj83qk0cklz"
+    },
+    "joiner": {
+      "key": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+      "address": "trac1f9u0nkdxxnxmtspv2fmtz0a4g7uggkpjlfmny07xx5nrne9evl0qzztk4h"
+    }
+  },
+  "room": {
+    "room": "proof-room",
+    "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+    "goal": "capture browser proof",
+    "endsAt": 1772115781454,
+    "startedAt": 1772115661454,
+    "status": "ended",
+    "lastEventAt": 1772115669872,
+    "endedAt": 1772115781461,
+    "endedReason": "timer",
+    "participants": [
+      "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+      "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+    ],
+    "checkins": [
+      {
+        "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "at": 1772115663662,
+        "status": "working and syncing"
+      },
+      {
+        "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "at": 1772115669872,
+        "status": "working and syncing"
+      }
+    ],
+    "stats": null
+  },
+  "stats": {
+    "plannedDurationMs": 120000,
+    "actualDurationMs": 120007,
+    "participantCount": 2,
+    "checkinCount": 2
+  },
+  "proofSteps": {
+    "hostConnected": true,
+    "joinerConnected": true,
+    "joinerJoined": true,
+    "hostStarted": true,
+    "joinerCheckedIn": true,
+    "sessionEnded": true
+  },
+  "events": [
+    {
+      "at": 1772115655537,
+      "side": "host",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803:1772115655259:kjk59tfq",
+        "from": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "origin": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "sig": "451cc0346ce1e73ea4e714d99244db8b1e4a3d208606ea22f984fd54c4d8bb2492147bbf500a85b6fda30205cdd4de2c7c4450bdcb3ba6a9017cf1a1b329ed02",
+        "relayedBy": "27e4908d63e1e0af77103b7f8a4079cdb8d3f9be1361e4ff4de4e35f3ea4834d",
+        "ttl": 2,
+        "ts": 1772115655259,
+        "message": {
+          "type": "agent.announce",
+          "name": "Tracy-E2E (operator)",
+          "peer": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115655050,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115655547,
+      "side": "joiner",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803:1772115655259:kjk59tfq",
+        "from": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "origin": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "sig": "451cc0346ce1e73ea4e714d99244db8b1e4a3d208606ea22f984fd54c4d8bb2492147bbf500a85b6fda30205cdd4de2c7c4450bdcb3ba6a9017cf1a1b329ed02",
+        "relayedBy": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "ttl": 1,
+        "ts": 1772115655259,
+        "message": {
+          "type": "agent.announce",
+          "name": "Tracy-E2E (operator)",
+          "peer": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115655050,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115661518,
+      "side": "host",
+      "type": "focus_event",
+      "eventType": "session_start",
+      "data": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_start",
+        "payload": {
+          "room": "proof-room",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "capture browser proof",
+          "startedAt": 1772115661454,
+          "endsAt": 1772115781454
+        },
+        "at": 1772115661454,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "local"
+      }
+    },
+    {
+      "at": 1772115661611,
+      "side": "host",
+      "type": "focus_started",
+      "data": {
+        "id": 1,
+        "type": "focus_started",
+        "room": {
+          "room": "proof-room",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "capture browser proof",
+          "startedAt": 1772115661454,
+          "endsAt": 1772115781454,
+          "lastEventAt": 1772115661454,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
+          ],
+          "checkins": [],
+          "stats": null
+        }
+      }
+    },
+    {
+      "at": 1772115663975,
+      "side": "joiner",
+      "type": "focus_event",
+      "eventType": "session_checkin",
+      "data": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_checkin",
+        "payload": {
+          "room": "proof-room",
+          "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+          "status": "working and syncing",
+          "at": 1772115663662
+        },
+        "at": 1772115663662,
+        "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "source": "local"
+      }
+    },
+    {
+      "at": 1772115663979,
+      "side": "joiner",
+      "type": "focus_checked_in",
+      "data": {
+        "id": 1,
+        "type": "focus_checked_in",
+        "room": {
+          "room": "proof-room",
+          "host": null,
+          "goal": "",
+          "startedAt": null,
+          "endsAt": null,
+          "lastEventAt": 1772115663662,
+          "status": "idle",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+          ],
+          "checkins": [
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772115663662,
+              "status": "working and syncing"
+            }
+          ],
+          "stats": null
+        }
+      }
+    },
+    {
+      "at": 1772115664006,
+      "side": "host",
+      "type": "focus_event",
+      "eventType": "session_checkin",
+      "data": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_checkin",
+        "payload": {
+          "room": "proof-room",
+          "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+          "status": "working and syncing",
+          "at": 1772115663662
+        },
+        "at": 1772115663662,
+        "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "source": "remote"
+      }
+    },
+    {
+      "at": 1772115664010,
+      "side": "host",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "proof-room",
+        "id": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de:1772115663665:mlk49a95",
+        "from": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "origin": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "sig": "20fbd939dbec8d9466895864a4ae94ea36243937ed07bbb039ee529328dd478ceec08780f86b230a096948eaa06d73a08bbe240023dfd9f8f639f5a95593f906",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772115663665,
+        "message": {
+          "app": "focus_room",
+          "eventType": "session_checkin",
+          "payload": {
+            "room": "proof-room",
+            "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+            "status": "working and syncing",
+            "at": 1772115663662
+          },
+          "at": 1772115663662,
+          "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+        }
+      }
+    },
+    {
+      "at": 1772115666838,
+      "side": "host",
+      "type": "focus_status",
+      "data": {
+        "id": 2,
+        "type": "focus_status",
+        "room": {
+          "room": "proof-room",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "capture browser proof",
+          "startedAt": 1772115661454,
+          "endsAt": 1772115781454,
+          "lastEventAt": 1772115663662,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+          ],
+          "checkins": [
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772115663662,
+              "status": "working and syncing"
+            }
+          ],
+          "stats": null
+        }
+      }
+    },
+    {
+      "at": 1772115668537,
+      "side": "host",
+      "type": "error",
+      "data": {
+        "id": 3,
+        "type": "error",
+        "error": "focus_start failed: room is already active"
+      }
+    },
+    {
+      "at": 1772115669857,
+      "side": "joiner",
+      "type": "focus_event",
+      "eventType": "session_join",
+      "data": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_join",
+        "payload": {
+          "room": "proof-room",
+          "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+          "at": 1772115669781
+        },
+        "at": 1772115669781,
+        "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "source": "local"
+      }
+    },
+    {
+      "at": 1772115669858,
+      "side": "joiner",
+      "type": "focus_joined",
+      "data": {
+        "id": 2,
+        "type": "focus_joined",
+        "room": {
+          "room": "proof-room",
+          "host": null,
+          "goal": "",
+          "startedAt": null,
+          "endsAt": null,
+          "lastEventAt": 1772115669781,
+          "status": "idle",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+          ],
+          "checkins": [
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772115663662,
+              "status": "working and syncing"
+            }
+          ],
+          "stats": null
+        }
+      }
+    },
+    {
+      "at": 1772115669861,
+      "side": "host",
+      "type": "error",
+      "data": {
+        "id": 4,
+        "type": "error",
+        "error": "focus_start failed: room is already active"
+      }
+    },
+    {
+      "at": 1772115669871,
+      "side": "host",
+      "type": "focus_event",
+      "eventType": "session_join",
+      "data": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_join",
+        "payload": {
+          "room": "proof-room",
+          "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+          "at": 1772115669781
+        },
+        "at": 1772115669781,
+        "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "source": "remote"
+      }
+    },
+    {
+      "at": 1772115669872,
+      "side": "host",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "proof-room",
+        "id": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de:1772115669782:kgwhkqzk",
+        "from": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "origin": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "sig": "decd16f9e45d8c375e4eea94c85c1471e0911111650a3376862447dc6458422ed0a7e9541aaa5446948888ecdd0990bc8be40f778c08c2172cbac89f0318de02",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772115669782,
+        "message": {
+          "app": "focus_room",
+          "eventType": "session_join",
+          "payload": {
+            "room": "proof-room",
+            "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+            "at": 1772115669781
+          },
+          "at": 1772115669781,
+          "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+        }
+      }
+    },
+    {
+      "at": 1772115669883,
+      "side": "joiner",
+      "type": "focus_event",
+      "eventType": "session_checkin",
+      "data": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_checkin",
+        "payload": {
+          "room": "proof-room",
+          "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+          "status": "working and syncing",
+          "at": 1772115669872
+        },
+        "at": 1772115669872,
+        "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "source": "local"
+      }
+    },
+    {
+      "at": 1772115669889,
+      "side": "joiner",
+      "type": "focus_checked_in",
+      "data": {
+        "id": 3,
+        "type": "focus_checked_in",
+        "room": {
+          "room": "proof-room",
+          "host": null,
+          "goal": "",
+          "startedAt": null,
+          "endsAt": null,
+          "lastEventAt": 1772115669872,
+          "status": "idle",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+          ],
+          "checkins": [
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772115663662,
+              "status": "working and syncing"
+            },
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772115669872,
+              "status": "working and syncing"
+            }
+          ],
+          "stats": null
+        }
+      }
+    },
+    {
+      "at": 1772115669893,
+      "side": "host",
+      "type": "focus_event",
+      "eventType": "session_checkin",
+      "data": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_checkin",
+        "payload": {
+          "room": "proof-room",
+          "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+          "status": "working and syncing",
+          "at": 1772115669872
+        },
+        "at": 1772115669872,
+        "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "source": "remote"
+      }
+    },
+    {
+      "at": 1772115669896,
+      "side": "host",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "proof-room",
+        "id": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de:1772115669872:kjcehx8y",
+        "from": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "origin": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "sig": "4004c9c822b826c67ea849ddad4e85563966d1ab1c6c6067b455bf816508bc0b3bc0618b02136bbc595afb781f332b27ddfd75827b491348f46c82e38c41920a",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772115669872,
+        "message": {
+          "app": "focus_room",
+          "eventType": "session_checkin",
+          "payload": {
+            "room": "proof-room",
+            "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+            "status": "working and syncing",
+            "at": 1772115669872
+          },
+          "at": 1772115669872,
+          "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+        }
+      }
+    },
+    {
+      "at": 1772115669898,
+      "side": "host",
+      "type": "focus_status",
+      "data": {
+        "id": 5,
+        "type": "focus_status",
+        "room": {
+          "room": "proof-room",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "capture browser proof",
+          "startedAt": 1772115661454,
+          "endsAt": 1772115781454,
+          "lastEventAt": 1772115669872,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+          ],
+          "checkins": [
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772115663662,
+              "status": "working and syncing"
+            },
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772115669872,
+              "status": "working and syncing"
+            }
+          ],
+          "stats": null
+        }
+      }
+    },
+    {
+      "at": 1772115669909,
+      "side": "host",
+      "type": "focus_rooms",
+      "data": {
+        "id": 6,
+        "type": "focus_rooms",
+        "rooms": [
+          {
+            "room": "proof-room",
+            "status": "active",
+            "participants": 2,
+            "goal": "capture browser proof",
+            "endsAt": 1772115781454
+          }
+        ]
+      }
+    },
+    {
+      "at": 1772115669913,
+      "side": "host",
+      "type": "focus_streaks",
+      "data": {
+        "id": 7,
+        "type": "focus_streaks",
+        "streaks": []
+      }
+    },
+    {
+      "at": 1772115673680,
+      "side": "host",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803:1772115673350:ztseoda9",
+        "from": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "origin": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "sig": "d6acc635ce8186ed8b2cbde620e5d0a76f9b3b6d6bb9efb8b4077409693c3b40e897c80937a38b9f9e3e872222e96082138bd6a91518b02c7a87dbadb94e7707",
+        "relayedBy": "27e4908d63e1e0af77103b7f8a4079cdb8d3f9be1361e4ff4de4e35f3ea4834d",
+        "ttl": 2,
+        "ts": 1772115673350,
+        "message": {
+          "type": "agent.announce",
+          "name": "Tracy-E2E (operator)",
+          "peer": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115673161,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115673682,
+      "side": "joiner",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803:1772115673350:ztseoda9",
+        "from": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "origin": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "sig": "d6acc635ce8186ed8b2cbde620e5d0a76f9b3b6d6bb9efb8b4077409693c3b40e897c80937a38b9f9e3e872222e96082138bd6a91518b02c7a87dbadb94e7707",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772115673350,
+        "message": {
+          "type": "agent.announce",
+          "name": "Tracy-E2E (operator)",
+          "peer": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115673161,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115675868,
+      "side": "joiner",
+      "type": "pong",
+      "data": {
+        "type": "pong",
+        "ts": 1772115675867
+      }
+    },
+    {
+      "at": 1772115675871,
+      "side": "host",
+      "type": "pong",
+      "data": {
+        "type": "pong",
+        "ts": 1772115675868
+      }
+    },
+    {
+      "at": 1772115690309,
+      "side": "host",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd:1772115689871:sxst0lbk",
+        "from": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd",
+        "origin": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd",
+        "sig": "659cb837fa419a5c932c9fe1df9844640876c835b24a6b21a1c085588cf97c3c23d756d5c30fb25bcc5d41793002fc236a3f79aa987a5183971dee339d9f5407",
+        "relayedBy": "27e4908d63e1e0af77103b7f8a4079cdb8d3f9be1361e4ff4de4e35f3ea4834d",
+        "ttl": 2,
+        "ts": 1772115689871,
+        "message": {
+          "type": "agent.announce",
+          "name": "Garvis-E2E (operator)",
+          "peer": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115689689,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115690311,
+      "side": "joiner",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd:1772115689871:sxst0lbk",
+        "from": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd",
+        "origin": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd",
+        "sig": "659cb837fa419a5c932c9fe1df9844640876c835b24a6b21a1c085588cf97c3c23d756d5c30fb25bcc5d41793002fc236a3f79aa987a5183971dee339d9f5407",
+        "relayedBy": "27e4908d63e1e0af77103b7f8a4079cdb8d3f9be1361e4ff4de4e35f3ea4834d",
+        "ttl": 2,
+        "ts": 1772115689871,
+        "message": {
+          "type": "agent.announce",
+          "name": "Garvis-E2E (operator)",
+          "peer": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115689689,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115705867,
+      "side": "host",
+      "type": "pong",
+      "data": {
+        "type": "pong",
+        "ts": 1772115705866
+      }
+    },
+    {
+      "at": 1772115705868,
+      "side": "joiner",
+      "type": "pong",
+      "data": {
+        "type": "pong",
+        "ts": 1772115705864
+      }
+    },
+    {
+      "at": 1772115715650,
+      "side": "host",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803:1772115715238:tpkee443",
+        "from": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "origin": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "sig": "938109d2c8ed9cf82f063348bfbf73915a0dc1414c6031f6b75c64d4ebbf220ed6e91ed35e227e53825891934200f3e2eccb0029592b980874ad205f89772807",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772115715238,
+        "message": {
+          "type": "agent.announce",
+          "name": "Tracy-E2E (operator)",
+          "peer": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115715049,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115715652,
+      "side": "joiner",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803:1772115715238:tpkee443",
+        "from": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "origin": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "sig": "938109d2c8ed9cf82f063348bfbf73915a0dc1414c6031f6b75c64d4ebbf220ed6e91ed35e227e53825891934200f3e2eccb0029592b980874ad205f89772807",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772115715238,
+        "message": {
+          "type": "agent.announce",
+          "name": "Tracy-E2E (operator)",
+          "peer": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115715049,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115716650,
+      "side": "host",
+      "type": "focus_streaks",
+      "data": {
+        "id": 8,
+        "type": "focus_streaks",
+        "streaks": []
+      }
+    },
+    {
+      "at": 1772115719280,
+      "side": "host",
+      "type": "focus_rooms",
+      "data": {
+        "id": 9,
+        "type": "focus_rooms",
+        "rooms": [
+          {
+            "room": "proof-room",
+            "status": "active",
+            "participants": 2,
+            "goal": "capture browser proof",
+            "endsAt": 1772115781454
+          }
+        ]
+      }
+    },
+    {
+      "at": 1772115733709,
+      "side": "host",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803:1772115733358:rlgp8e1b",
+        "from": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "origin": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "sig": "26cb1b056381154856c1eeff4e3bd5f66b440906a16356a8c0b3ba6bc9ea0de1d4e079826c6169d3e1fcf41229b424d627d29e8fdab88efb0c4b80ed1ba3060d",
+        "relayedBy": "27e4908d63e1e0af77103b7f8a4079cdb8d3f9be1361e4ff4de4e35f3ea4834d",
+        "ttl": 2,
+        "ts": 1772115733358,
+        "message": {
+          "type": "agent.announce",
+          "name": "Tracy-E2E (operator)",
+          "peer": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115733162,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115733710,
+      "side": "joiner",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803:1772115733358:rlgp8e1b",
+        "from": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "origin": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "sig": "26cb1b056381154856c1eeff4e3bd5f66b440906a16356a8c0b3ba6bc9ea0de1d4e079826c6169d3e1fcf41229b424d627d29e8fdab88efb0c4b80ed1ba3060d",
+        "relayedBy": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "ttl": 1,
+        "ts": 1772115733358,
+        "message": {
+          "type": "agent.announce",
+          "name": "Tracy-E2E (operator)",
+          "peer": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115733162,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115735876,
+      "side": "joiner",
+      "type": "pong",
+      "data": {
+        "type": "pong",
+        "ts": 1772115735870
+      }
+    },
+    {
+      "at": 1772115735876,
+      "side": "host",
+      "type": "pong",
+      "data": {
+        "type": "pong",
+        "ts": 1772115735872
+      }
+    },
+    {
+      "at": 1772115750355,
+      "side": "host",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd:1772115749871:ryqq5qbx",
+        "from": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd",
+        "origin": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd",
+        "sig": "6db6e7099b3c3532a29d0a4737f6d1a7969ee2722829a145ed726f518a9d9645d1cd98e4a107383724608fa5ddd0d36ad3cb5f3a2ad69025545029bdfcf28204",
+        "relayedBy": "27e4908d63e1e0af77103b7f8a4079cdb8d3f9be1361e4ff4de4e35f3ea4834d",
+        "ttl": 2,
+        "ts": 1772115749871,
+        "message": {
+          "type": "agent.announce",
+          "name": "Garvis-E2E (operator)",
+          "peer": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115749690,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115750358,
+      "side": "joiner",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd:1772115749871:ryqq5qbx",
+        "from": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd",
+        "origin": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd",
+        "sig": "6db6e7099b3c3532a29d0a4737f6d1a7969ee2722829a145ed726f518a9d9645d1cd98e4a107383724608fa5ddd0d36ad3cb5f3a2ad69025545029bdfcf28204",
+        "relayedBy": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "ttl": 1,
+        "ts": 1772115749871,
+        "message": {
+          "type": "agent.announce",
+          "name": "Garvis-E2E (operator)",
+          "peer": "d6f3f29a327360dcf29af0e0f311df40f8e0e3196d14b1060ec95d71c87d4bcd",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115749690,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115765868,
+      "side": "host",
+      "type": "pong",
+      "data": {
+        "type": "pong",
+        "ts": 1772115765866
+      }
+    },
+    {
+      "at": 1772115765869,
+      "side": "joiner",
+      "type": "pong",
+      "data": {
+        "type": "pong",
+        "ts": 1772115765868
+      }
+    },
+    {
+      "at": 1772115775644,
+      "side": "joiner",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803:1772115775238:3u6d40ph",
+        "from": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "origin": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "sig": "4485ec4de7b9d49416fb8835edc85dcc569000fc481abfe0f1a90bcb5c7ad83b6538fb456b62f02ac4b7c94bdf9d7b7973196dd07753b72be92e50e1623db806",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772115775238,
+        "message": {
+          "type": "agent.announce",
+          "name": "Tracy-E2E (operator)",
+          "peer": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115775049,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115775645,
+      "side": "host",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "0000intercom",
+        "id": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803:1772115775238:3u6d40ph",
+        "from": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "origin": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+        "sig": "4485ec4de7b9d49416fb8835edc85dcc569000fc481abfe0f1a90bcb5c7ad83b6538fb456b62f02ac4b7c94bdf9d7b7973196dd07753b72be92e50e1623db806",
+        "relayedBy": "27e4908d63e1e0af77103b7f8a4079cdb8d3f9be1361e4ff4de4e35f3ea4834d",
+        "ttl": 2,
+        "ts": 1772115775238,
+        "message": {
+          "type": "agent.announce",
+          "name": "Tracy-E2E (operator)",
+          "peer": "2e81df46d71bd9c92f2e8a4734425965e3391a5add832202297d6afe86382803",
+          "address": null,
+          "capabilities": [
+            "operator",
+            "chat",
+            "monitoring"
+          ],
+          "note": "Claw2Claw Control Centre",
+          "ts": 1772115775049,
+          "version": "1.0.0",
+          "protocol": "intercom-p2p-v1"
+        }
+      }
+    },
+    {
+      "at": 1772115781489,
+      "side": "host",
+      "type": "focus_event",
+      "eventType": "session_expired",
+      "data": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_expired",
+        "payload": {
+          "room": "proof-room",
+          "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "reason": "timer",
+          "at": 1772115781461,
+          "stats": {
+            "plannedDurationMs": 120000,
+            "actualDurationMs": 120007,
+            "participantCount": 2,
+            "checkinCount": 2
+          }
+        },
+        "at": 1772115781461,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "local"
+      }
+    },
+    {
+      "at": 1772115781494,
+      "side": "joiner",
+      "type": "focus_event",
+      "eventType": "session_expired",
+      "data": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_expired",
+        "payload": {
+          "room": "proof-room",
+          "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "reason": "timer",
+          "at": 1772115781461,
+          "stats": {
+            "plannedDurationMs": 120000,
+            "actualDurationMs": 120007,
+            "participantCount": 2,
+            "checkinCount": 2
+          }
+        },
+        "at": 1772115781461,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "remote"
+      }
+    },
+    {
+      "at": 1772115781508,
+      "side": "joiner",
+      "type": "sidechannel_message",
+      "data": {
+        "type": "sidechannel_message",
+        "channel": "proof-room",
+        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772115781464:rezmhcnt",
+        "from": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "origin": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "sig": "6c6661d6897c7ff438b8e51682b47a5bc6ab3ed69db62c6a174777466f3a0133625764b324626786c1b643c9a89c51bf71a45df9edf748cf5e13010fe8bee00c",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772115781464,
+        "message": {
+          "app": "focus_room",
+          "eventType": "session_expired",
+          "payload": {
+            "room": "proof-room",
+            "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "reason": "timer",
+            "at": 1772115781461,
+            "stats": {
+              "plannedDurationMs": 120000,
+              "actualDurationMs": 120007,
+              "participantCount": 2,
+              "checkinCount": 2
+            }
+          },
+          "at": 1772115781461,
+          "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
+        }
+      }
+    }
+  ],
+  "sessionHistory": [
+    {
+      "room": "proof-room",
+      "goal": "capture browser proof",
+      "endedAt": "2026-02-26T14:23:01.504Z",
+      "endedReason": "timer",
+      "stats": {
+        "plannedDurationMs": 120000,
+        "actualDurationMs": 120007,
+        "participantCount": 2,
+        "checkinCount": 2
+      }
+    },
+    {
+      "room": "proof-room",
+      "goal": "capture browser proof",
+      "endedAt": "2026-02-26T14:23:01.492Z",
+      "endedReason": "timer",
+      "stats": {
+        "plannedDurationMs": 120000,
+        "actualDurationMs": 120007,
+        "participantCount": 2,
+        "checkinCount": 2
+      }
+    }
+  ]
+}
