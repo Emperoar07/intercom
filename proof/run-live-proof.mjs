@@ -14,6 +14,11 @@ const HOST_URL = process.env.FOCUS_HOST_URL || 'ws://127.0.0.1:49222';
 const HOST_TOKEN = process.env.FOCUS_HOST_TOKEN || 'localtoken123';
 const JOINER_URL = process.env.FOCUS_JOINER_URL || 'ws://127.0.0.1:49223';
 const JOINER_TOKEN = process.env.FOCUS_JOINER_TOKEN || 'joinertoken123';
+const PROOF_MINUTES_RAW = process.env.FOCUS_PROOF_MINUTES || '1';
+const PROOF_MINUTES = (() => {
+  const parsed = Number.parseInt(String(PROOF_MINUTES_RAW), 10);
+  return Number.isFinite(parsed) ? Math.max(1, parsed) : 1;
+})();
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -48,6 +53,7 @@ function createBridgeClient(name, url, token) {
   const transcript = [];
   const asyncEvents = [];
   const pending = new Map();
+  const waiters = [];
 
   let nextId = 1;
   let authed = false;
@@ -101,6 +107,20 @@ function createBridgeClient(name, url, token) {
         return;
       }
 
+      for (let i = waiters.length - 1; i >= 0; i -= 1) {
+        const waiter = waiters[i];
+        let matched = false;
+        try {
+          matched = waiter.predicate(msg) === true;
+        } catch (_e) {
+          matched = false;
+        }
+        if (!matched) continue;
+        clearTimeout(waiter.timeout);
+        waiters.splice(i, 1);
+        waiter.resolve(msg);
+      }
+
       if (msg.id && pending.has(msg.id)) {
         const settle = pending.get(msg.id);
         pending.delete(msg.id);
@@ -147,7 +167,17 @@ function createBridgeClient(name, url, token) {
     await Promise.race([closed, wait(500)]);
   };
 
-  return { name, url, ready, send, close, transcript, asyncEvents };
+  const waitFor = (predicate, timeoutMs = 10000) =>
+    new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => {
+        const idx = waiters.findIndex((entry) => entry.resolve === resolve);
+        if (idx >= 0) waiters.splice(idx, 1);
+        reject(new Error(`${name}: timeout waiting for async event`));
+      }, timeoutMs);
+      waiters.push({ predicate, resolve, reject, timeout });
+    });
+
+  return { name, url, ready, send, close, waitFor, transcript, asyncEvents };
 }
 
 async function main() {
@@ -172,22 +202,26 @@ async function main() {
     await pushStep('joiner.focus_join', () => joiner.send('focus_join', { room }));
     await wait(350);
     await pushStep('host.focus_start', () =>
-      host.send('focus_start', { room, minutes: 25, goal: 'live ws proof run' })
+      host.send('focus_start', { room, minutes: PROOF_MINUTES, goal: 'live ws timer proof run' })
     );
     await wait(350);
     await pushStep('joiner.focus_checkin', () =>
       joiner.send('focus_checkin', { room, status: 'connected and checking in' })
     );
     await wait(350);
-    await pushStep('host.focus_extend', () => host.send('focus_extend', { room, minutes: 5 }));
-    await wait(350);
     await pushStep('host.focus_status', () => host.send('focus_status', { room }));
     await wait(350);
     await pushStep('host.focus_rooms', () => host.send('focus_rooms', {}));
-    await wait(350);
-    await pushStep('host.focus_end', () =>
-      host.send('focus_end', { room, summary: 'live proof flow completed' })
+    const expiryTimeoutMs = PROOF_MINUTES * 60_000 + 30_000;
+    const expiryEvent = await host.waitFor(
+      (msg) =>
+        msg?.type === 'focus_event' &&
+        msg?.eventType === 'session_expired' &&
+        msg?.payload?.room === room,
+      expiryTimeoutMs
     );
+    steps.push({ step: 'host.wait_session_expired', at: nowIso(), response: expiryEvent });
+    await pushStep('host.focus_status_after_expiry', () => host.send('focus_status', { room }));
     await wait(350);
     await pushStep('host.focus_streaks', () => host.send('focus_streaks', {}));
 
@@ -195,6 +229,7 @@ async function main() {
       generatedAt: nowIso(),
       startedAt: startAt,
       room,
+      proofMinutes: PROOF_MINUTES,
       endpoints: {
         host: HOST_URL,
         joiner: JOINER_URL,
@@ -224,10 +259,10 @@ async function main() {
 joiner -> focus_join
 host   -> focus_start
 joiner -> focus_checkin
-host   -> focus_extend
 host   -> focus_status
 host   -> focus_rooms
-host   -> focus_end
+host   -> wait session_expired
+host   -> focus_status (after expiry)
 host   -> focus_streaks
 \`\`\`
 

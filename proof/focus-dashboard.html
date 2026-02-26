@@ -375,7 +375,7 @@
         </div>
         <div class="header-actions">
           <button class="ghost sm" id="btnDark" title="Toggle dark mode">☀ Light</button>
-          <button class="ghost sm" id="btnSound" title="Toggle sound notifications">♪ Off</button>
+          <button class="ghost sm" id="btnSound" title="Toggle sound notifications">♪ On</button>
           <button class="ghost sm" id="btnExport" title="Download session proof JSON (Ctrl+D)">↓ Export</button>
         </div>
       </div>
@@ -458,7 +458,7 @@
             </div>
             <button class="proof-flow" id="btnProofFlow">▶ Run Proof Flow</button>
             <p class="note">
-              Sequence: joiner joins → host starts → joiner check-in → status → rooms → streaks
+              Sequence: joiner joins → host starts → joiner check-in → status → rooms → wait timer expiry → streaks
               &nbsp;·&nbsp;<kbd>Ctrl+P</kbd> <kbd>Ctrl+R</kbd> <kbd>Ctrl+D</kbd>
             </p>
           </div>
@@ -565,7 +565,7 @@
       let currentStats      = null;
       let countdownInterval = null;
       let heartbeatInterval = null;
-      let soundEnabled      = false;
+      let soundEnabled      = true;
       let audioCtx          = null;
 
       // ── DOM ───────────────────────────────────────────────────────────────
@@ -1066,13 +1066,8 @@
           await send('joiner', 'focus_checkin', { room: r, status: note() });
           await send('host',   'focus_status',  { room: r });
           await send('host',   'focus_rooms',   {});
-          await send('host',   'focus_end',     { room: r, summary: summary() || 'proof flow complete' });
           await send('host',   'focus_streaks', {});
-          btn.classList.remove('running');
-          btn.textContent = '✓ Done';
-          btn.disabled = false;
-          setTimeout(() => { btn.textContent = '▶ Run Proof Flow'; }, 1800);
-          sysLog('Proof flow complete.');
+          sysLog('Proof flow commands sent — waiting for timer expiry...');
         } catch (err) {
           sysLog(`Proof flow error: ${err.message}`);
           btn.classList.remove('running'); btn.textContent = '▶ Run Proof Flow'; btn.disabled = false;

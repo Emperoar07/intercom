@@ -143,7 +143,7 @@ The repo ships a browser-based proof dashboard (`proof/focus-dashboard.html`) th
 - Single-click connect/disconnect per peer
 - Live room state panel with countdown timer and participant list
 - Proof checklist that ticks as each step completes
-- One-click **Run Proof Flow** button (animated when running) that executes the full sequence — join → start → check-in → status → rooms → end → streaks — awaiting each response before firing the next
+- One-click **Run Proof Flow** button (animated when running) that executes the full sequence — join → start → check-in → status → rooms → timer-expiry → streaks — awaiting each response before firing the next
 - End-of-session stats with planned vs actual bar chart
 - Session history for the current runtime
 - Auto-reconnect on connection loss (3 attempts, 2s backoff)
@@ -173,6 +173,7 @@ Regenerate live WS proof (requires local host + joiner bridges running):
 - PowerShell: `./proof/run-live-proof.ps1`
 - Bash: `./proof/run-live-proof.sh`
 - npm: `npm run proof:live`
+- Optional duration override: set `FOCUS_PROOF_MINUTES` (defaults to `1` for quick expiry proof).
 
 Local hosting (two peers on your machine):
 - Start: `./proof/start-local-hosting.ps1`
