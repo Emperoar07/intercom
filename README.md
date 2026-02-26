@@ -90,7 +90,7 @@ Core commands:
 
 ## Trac Address (Payout)
 
-`TODO_ADD_TRAC_ADDRESS_HERE`
+`trac1e2fgpaupppezt7vg8l7pcdj38uuty5xg80dk6m2pg5zquegujx0q4nlr27`
 
 ## Proof of Functionality
 
