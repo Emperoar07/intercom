@@ -228,8 +228,10 @@ class SampleProtocol extends Protocol{
         console.log('- /focus_join --room "<name>" | join a focus room.');
         console.log('- /focus_checkin --room "<name>" --status "<text>" | post progress to room peers.');
         console.log('- /focus_end --room "<name>" [--summary "<text>"] | close an active session.');
+        console.log('- /focus_extend --room "<name>" [--minutes <n>] | extend an active session (host only).');
         console.log('- /focus_status [--room "<name>"] | show one room or all local room snapshots.');
         console.log('- /focus_rooms | list known focus rooms.');
+        console.log('- /focus_streaks | list per-peer completed session count for this runtime.');
         // further protocol specific options go here
     }
 
@@ -670,6 +672,26 @@ class SampleProtocol extends Protocol{
             console.log(result.room);
             return;
         }
+        if (this.input.startsWith("/focus_extend")) {
+            if (!this.peer.focusRoom) {
+                console.log('FocusRoom app not initialized.');
+                return;
+            }
+            const args = this.parseArgs(input);
+            const room = args.room || args.channel || args.name;
+            const minutesRaw = args.minutes || args.min || args.duration;
+            const minutes = Number.parseInt(String(minutesRaw ?? '5'), 10);
+            const result = this.peer.focusRoom.extendSession({
+                room: String(room || '').trim(),
+                minutes: Number.isFinite(minutes) ? minutes : 5,
+            });
+            if (!result.ok) {
+                console.log(`focus_extend failed: ${result.error}`);
+                return;
+            }
+            console.log(result.room);
+            return;
+        }
         if (this.input.startsWith("/focus_status")) {
             if (!this.peer.focusRoom) {
                 console.log('FocusRoom app not initialized.');
@@ -697,6 +719,14 @@ class SampleProtocol extends Protocol{
                 goal: entry.goal,
             }));
             console.log(rooms);
+            return;
+        }
+        if (this.input.startsWith("/focus_streaks")) {
+            if (!this.peer.focusRoom) {
+                console.log('FocusRoom app not initialized.');
+                return;
+            }
+            console.log(this.peer.focusRoom.listStreaks());
             return;
         }
         if (this.input.startsWith("/print")) {

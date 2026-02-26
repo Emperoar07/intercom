@@ -92,6 +92,14 @@ class ScBridge extends Feature {
     } catch (_e) {}
   }
 
+  emitEvent(type, payload = {}) {
+    const event = { type, ...payload };
+    for (const client of this.clients) {
+      if (!client.ready) continue;
+      this._broadcastToClient(client, event);
+    }
+  }
+
   _shouldEmit(client, channel, messageText) {
     if (client.channels && client.channels.size > 0 && !client.channels.has(channel)) {
       return false;
@@ -392,6 +400,121 @@ class ScBridge extends Feature {
         reply({ type: 'info', info: this.info });
         return;
       }
+      case 'focus_start': {
+        if (!this.peer?.focusRoom) {
+          sendError('FocusRoom not initialized.');
+          return;
+        }
+        const room = String(message.room || '').trim();
+        const minutes = Number.parseInt(String(message.minutes ?? 25), 10);
+        const goal = String(message.goal || '');
+        const result = this.peer.focusRoom.startSession({
+          room,
+          minutes: Number.isFinite(minutes) ? minutes : 25,
+          goal,
+        });
+        if (!result.ok) {
+          sendError(`focus_start failed: ${result.error}`);
+          return;
+        }
+        reply({ type: 'focus_started', room: result.room });
+        return;
+      }
+      case 'focus_join': {
+        if (!this.peer?.focusRoom) {
+          sendError('FocusRoom not initialized.');
+          return;
+        }
+        const room = String(message.room || '').trim();
+        const result = this.peer.focusRoom.joinSession({ room });
+        if (!result.ok) {
+          sendError(`focus_join failed: ${result.error}`);
+          return;
+        }
+        reply({ type: 'focus_joined', room: result.room });
+        return;
+      }
+      case 'focus_checkin': {
+        if (!this.peer?.focusRoom) {
+          sendError('FocusRoom not initialized.');
+          return;
+        }
+        const room = String(message.room || '').trim();
+        const status = String(message.status || message.message || '');
+        const result = this.peer.focusRoom.checkIn({ room, status });
+        if (!result.ok) {
+          sendError(`focus_checkin failed: ${result.error}`);
+          return;
+        }
+        reply({ type: 'focus_checked_in', room: result.room });
+        return;
+      }
+      case 'focus_end': {
+        if (!this.peer?.focusRoom) {
+          sendError('FocusRoom not initialized.');
+          return;
+        }
+        const room = String(message.room || '').trim();
+        const summary = String(message.summary || '');
+        const result = this.peer.focusRoom.endSession({ room, summary });
+        if (!result.ok) {
+          sendError(`focus_end failed: ${result.error}`);
+          return;
+        }
+        reply({ type: 'focus_ended', room: result.room, stats: result.stats || null });
+        return;
+      }
+      case 'focus_extend': {
+        if (!this.peer?.focusRoom) {
+          sendError('FocusRoom not initialized.');
+          return;
+        }
+        const room = String(message.room || '').trim();
+        const minutes = Number.parseInt(String(message.minutes ?? 5), 10);
+        const result = this.peer.focusRoom.extendSession({
+          room,
+          minutes: Number.isFinite(minutes) ? minutes : 5,
+        });
+        if (!result.ok) {
+          sendError(`focus_extend failed: ${result.error}`);
+          return;
+        }
+        reply({ type: 'focus_extended', room: result.room });
+        return;
+      }
+      case 'focus_status': {
+        if (!this.peer?.focusRoom) {
+          sendError('FocusRoom not initialized.');
+          return;
+        }
+        const room = String(message.room || '').trim();
+        const snapshot = room ? this.peer.focusRoom.getRoom(room) : this.peer.focusRoom.listRooms();
+        reply({ type: 'focus_status', room: snapshot });
+        return;
+      }
+      case 'focus_rooms': {
+        if (!this.peer?.focusRoom) {
+          sendError('FocusRoom not initialized.');
+          return;
+        }
+        const rooms = this.peer.focusRoom.listRooms().map((entry) => ({
+          room: entry.room,
+          status: entry.status,
+          participants: entry.participants.length,
+          goal: entry.goal,
+          endsAt: entry.endsAt,
+        }));
+        reply({ type: 'focus_rooms', rooms });
+        return;
+      }
+      case 'focus_streaks': {
+        if (!this.peer?.focusRoom) {
+          sendError('FocusRoom not initialized.');
+          return;
+        }
+        reply({ type: 'focus_streaks', streaks: this.peer.focusRoom.listStreaks() });
+        return;
+      }
       default:
         sendError(`Unknown type: ${message.type}`);
     }
@@ -560,6 +683,16 @@ class ScBridge extends Feature {
         entryChannel: this.sidechannel?.entryChannel ?? null,
         filter: this.defaultFilterRaw || '',
         requiresAuth: this.requireAuth,
+        focusBridgeActions: [
+          'focus_start',
+          'focus_join',
+          'focus_checkin',
+          'focus_end',
+          'focus_extend',
+          'focus_status',
+          'focus_rooms',
+          'focus_streaks',
+        ],
       };
       this._broadcastToClient(client, hello);
 

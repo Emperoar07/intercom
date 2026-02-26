@@ -3,6 +3,9 @@ class FocusRoom {
     this.peer = peer;
     this.entryChannel = options.entryChannel || '0000intercom';
     this.rooms = new Map();
+    this.timers = new Map();
+    this.streaks = new Map();
+    this.onEvent = typeof options.onEvent === 'function' ? options.onEvent : null;
   }
 
   _now() {
@@ -25,26 +28,164 @@ class FocusRoom {
         endsAt: null,
         lastEventAt: null,
         status: 'idle',
+        endedAt: null,
+        endedReason: null,
         participants: new Set(),
         checkins: [],
+        stats: null,
+        streakAwarded: false,
       });
     }
     return this.rooms.get(key);
   }
 
-  _toMessage(eventType, payload = {}) {
+  _formatMs(ms) {
+    const clamped = Math.max(0, Number(ms) || 0);
+    const totalSec = Math.floor(clamped / 1000);
+    const minutes = Math.floor(totalSec / 60);
+    const seconds = totalSec % 60;
+    return `${minutes}m ${seconds}s`;
+  }
+
+  _emit(eventType, payload, meta = {}) {
+    const entry = {
+      app: 'focus_room',
+      eventType,
+      payload,
+      at: Number.isFinite(meta.at) ? meta.at : this._now(),
+      by: meta.by || this._selfKey(),
+      source: meta.source || 'local',
+    };
+    if (this.onEvent) this.onEvent(entry);
+    const room = payload?.room || 'unknown';
+    if (eventType === 'session_start') {
+      console.log(
+        `[focus:${room}] started by ${payload.host} for ${this._formatMs(
+          (payload.endsAt || 0) - (payload.startedAt || 0)
+        )} | goal="${payload.goal || ''}"`
+      );
+    } else if (eventType === 'session_join') {
+      console.log(`[focus:${room}] join ${payload.who}`);
+    } else if (eventType === 'session_checkin') {
+      console.log(`[focus:${room}] checkin ${payload.who}: ${payload.status}`);
+    } else if (eventType === 'session_extend') {
+      console.log(`[focus:${room}] extended by ${payload.minutes}m | new end ${new Date(payload.endsAt).toISOString()}`);
+    } else if (eventType === 'session_expired') {
+      console.log(`[focus:${room}] expired automatically`);
+    } else if (eventType === 'session_end') {
+      console.log(
+        `[focus:${room}] ended by ${payload.who} | actual ${this._formatMs(
+          payload.stats?.actualDurationMs || 0
+        )} | participants=${payload.stats?.participantCount ?? 0} | checkins=${payload.stats?.checkinCount ?? 0}`
+      );
+    }
+    return entry;
+  }
+
+  _toMessage(eventType, payload = {}, at = null) {
     return {
       app: 'focus_room',
       eventType,
       payload,
-      at: this._now(),
+      at: Number.isFinite(at) ? at : this._now(),
       by: this._selfKey(),
     };
   }
 
-  _broadcast(channel, eventType, payload = {}) {
+  _broadcast(channel, eventType, payload = {}, at = null) {
     if (!this.peer?.sidechannel) return false;
-    return this.peer.sidechannel.broadcast(channel || this.entryChannel, this._toMessage(eventType, payload));
+    return this.peer.sidechannel.broadcast(
+      channel || this.entryChannel,
+      this._toMessage(eventType, payload, at)
+    );
+  }
+
+  _computeStats(roomState, endedAt) {
+    const startedAt = Number.isFinite(roomState.startedAt) ? roomState.startedAt : endedAt;
+    const endsAt = Number.isFinite(roomState.endsAt) ? roomState.endsAt : endedAt;
+    const plannedDurationMs = Math.max(0, endsAt - startedAt);
+    const actualDurationMs = Math.max(0, endedAt - startedAt);
+    return {
+      plannedDurationMs,
+      actualDurationMs,
+      participantCount: roomState.participants.size,
+      checkinCount: roomState.checkins.length,
+    };
+  }
+
+  _clearTimer(room) {
+    const key = String(room || '').trim();
+    const existing = this.timers.get(key);
+    if (existing) clearTimeout(existing);
+    this.timers.delete(key);
+  }
+
+  _scheduleExpiry(roomState) {
+    this._clearTimer(roomState.room);
+    if (roomState.status !== 'active' || !Number.isFinite(roomState.endsAt)) return;
+    const delayMs = roomState.endsAt - this._now();
+    if (delayMs <= 0) {
+      this._expireSession(roomState.room, 'timer');
+      return;
+    }
+    const handle = setTimeout(() => {
+      this._expireSession(roomState.room, 'timer');
+    }, delayMs);
+    this.timers.set(roomState.room, handle);
+  }
+
+  _awardStreak(roomState) {
+    if (!roomState || roomState.streakAwarded) return;
+    for (const who of roomState.participants.values()) {
+      const prev = this.streaks.get(who) || 0;
+      this.streaks.set(who, prev + 1);
+    }
+    roomState.streakAwarded = true;
+  }
+
+  _applySessionStart(roomState, data, at) {
+    roomState.host = String(data.host || roomState.host || '').toLowerCase();
+    roomState.goal = String(data.goal || '').slice(0, 240);
+    roomState.startedAt = Number.isFinite(data.startedAt) ? data.startedAt : at;
+    roomState.endsAt = Number.isFinite(data.endsAt) ? data.endsAt : null;
+    roomState.lastEventAt = at;
+    roomState.status = 'active';
+    roomState.endedAt = null;
+    roomState.endedReason = null;
+    roomState.stats = null;
+    roomState.streakAwarded = false;
+    if (roomState.host) roomState.participants.add(roomState.host);
+    this._scheduleExpiry(roomState);
+  }
+
+  _applySessionEnd(roomState, data, at, reason) {
+    roomState.status = 'ended';
+    roomState.endedAt = at;
+    roomState.endedReason = reason;
+    roomState.lastEventAt = at;
+    roomState.stats =
+      data?.stats && typeof data.stats === 'object' ? data.stats : this._computeStats(roomState, at);
+    this._clearTimer(roomState.room);
+    this._awardStreak(roomState);
+  }
+
+  _expireSession(room, reason = 'timer') {
+    const roomState = this._upsertRoom(room);
+    if (!roomState) return { ok: false, error: 'room is required' };
+    if (roomState.status !== 'active') return { ok: false, error: 'room is not active' };
+    const at = this._now();
+    const stats = this._computeStats(roomState, at);
+    this._applySessionEnd(roomState, { stats }, at, reason);
+    const payload = {
+      room: roomState.room,
+      who: this._selfKey(),
+      reason,
+      at,
+      stats,
+    };
+    this._emit('session_expired', payload, { at, source: 'local' });
+    this._broadcast(roomState.room, 'session_expired', payload, at);
+    return { ok: true, room: this._serializeRoom(roomState), stats };
   }
 
   startSession({ room, minutes = 25, goal = '' }) {
@@ -54,20 +195,49 @@ class FocusRoom {
     const durationMin = Number.isFinite(minutes) ? Math.max(1, minutes) : 25;
     const endsAt = startedAt + durationMin * 60_000;
     const host = this._selfKey();
-    roomState.host = host;
-    roomState.goal = String(goal || '').slice(0, 240);
-    roomState.startedAt = startedAt;
-    roomState.endsAt = endsAt;
-    roomState.lastEventAt = startedAt;
-    roomState.status = 'active';
-    roomState.participants.add(host);
-    this._broadcast(roomState.room, 'session_start', {
+    this._applySessionStart(
+      roomState,
+      {
+        room: roomState.room,
+        host,
+        goal: String(goal || '').slice(0, 240),
+        startedAt,
+        endsAt,
+      },
+      startedAt
+    );
+    const payload = {
       room: roomState.room,
       host,
       goal: roomState.goal,
       startedAt,
       endsAt,
-    });
+    };
+    this._emit('session_start', payload, { at: startedAt, source: 'local' });
+    this._broadcast(roomState.room, 'session_start', payload, startedAt);
+    return { ok: true, room: this._serializeRoom(roomState) };
+  }
+
+  extendSession({ room, minutes = 5 }) {
+    const roomState = this._upsertRoom(room);
+    if (!roomState) return { ok: false, error: 'room is required' };
+    if (roomState.status !== 'active') return { ok: false, error: 'room is not active' };
+    if (roomState.host !== this._selfKey()) return { ok: false, error: 'only host can extend session' };
+    const addMin = Number.isFinite(minutes) ? Math.max(1, minutes) : 5;
+    const now = this._now();
+    const baseline = Number.isFinite(roomState.endsAt) ? Math.max(roomState.endsAt, now) : now;
+    roomState.endsAt = baseline + addMin * 60_000;
+    roomState.lastEventAt = now;
+    this._scheduleExpiry(roomState);
+    const payload = {
+      room: roomState.room,
+      who: this._selfKey(),
+      minutes: addMin,
+      endsAt: roomState.endsAt,
+      at: now,
+    };
+    this._emit('session_extend', payload, { at: now, source: 'local' });
+    this._broadcast(roomState.room, 'session_extend', payload, now);
     return { ok: true, room: this._serializeRoom(roomState) };
   }
 
@@ -75,12 +245,12 @@ class FocusRoom {
     const roomState = this._upsertRoom(room);
     if (!roomState) return { ok: false, error: 'room is required' };
     const who = this._selfKey();
+    const at = this._now();
     roomState.participants.add(who);
-    roomState.lastEventAt = this._now();
-    this._broadcast(roomState.room, 'session_join', {
-      room: roomState.room,
-      who,
-    });
+    roomState.lastEventAt = at;
+    const payload = { room: roomState.room, who, at };
+    this._emit('session_join', payload, { at, source: 'local' });
+    this._broadcast(roomState.room, 'session_join', payload, at);
     return { ok: true, room: this._serializeRoom(roomState) };
   }
 
@@ -95,32 +265,39 @@ class FocusRoom {
     roomState.lastEventAt = at;
     roomState.checkins.push({ who, at, status: note.slice(0, 240) });
     if (roomState.checkins.length > 50) roomState.checkins.shift();
-    this._broadcast(roomState.room, 'session_checkin', {
-      room: roomState.room,
-      who,
-      status: note.slice(0, 240),
-      at,
-    });
+    const payload = { room: roomState.room, who, status: note.slice(0, 240), at };
+    this._emit('session_checkin', payload, { at, source: 'local' });
+    this._broadcast(roomState.room, 'session_checkin', payload, at);
     return { ok: true, room: this._serializeRoom(roomState) };
   }
 
   endSession({ room, summary = '' }) {
     const roomState = this._upsertRoom(room);
     if (!roomState) return { ok: false, error: 'room is required' };
+    if (roomState.status !== 'active') return { ok: false, error: 'room is not active' };
     const at = this._now();
-    roomState.status = 'ended';
-    roomState.lastEventAt = at;
-    this._broadcast(roomState.room, 'session_end', {
+    const stats = this._computeStats(roomState, at);
+    this._applySessionEnd(roomState, { stats }, at, 'manual');
+    const payload = {
       room: roomState.room,
       who: this._selfKey(),
       summary: String(summary || '').slice(0, 240),
       at,
-    });
-    return { ok: true, room: this._serializeRoom(roomState) };
+      stats,
+    };
+    this._emit('session_end', payload, { at, source: 'local' });
+    this._broadcast(roomState.room, 'session_end', payload, at);
+    return { ok: true, room: this._serializeRoom(roomState), stats };
   }
 
   listRooms() {
     return Array.from(this.rooms.values()).map((room) => this._serializeRoom(room));
+  }
+
+  listStreaks() {
+    return Array.from(this.streaks.entries())
+      .map(([peer, sessions]) => ({ peer, sessions }))
+      .sort((a, b) => b.sessions - a.sessions);
   }
 
   getRoom(room) {
@@ -137,8 +314,11 @@ class FocusRoom {
       endsAt: roomState.endsAt,
       lastEventAt: roomState.lastEventAt,
       status: roomState.status,
+      endedAt: roomState.endedAt,
+      endedReason: roomState.endedReason,
       participants: Array.from(roomState.participants.values()),
       checkins: roomState.checkins.slice(-10),
+      stats: roomState.stats,
     };
   }
 
@@ -153,13 +333,9 @@ class FocusRoom {
     const actor = String(message.by || payload?.from || 'unknown').toLowerCase();
     const at = Number.isFinite(message.at) ? message.at : this._now();
     roomState.lastEventAt = at;
+
     if (eventType === 'session_start') {
-      roomState.host = String(data.host || actor || roomState.host || '').toLowerCase();
-      roomState.goal = String(data.goal || '').slice(0, 240);
-      roomState.startedAt = Number.isFinite(data.startedAt) ? data.startedAt : at;
-      roomState.endsAt = Number.isFinite(data.endsAt) ? data.endsAt : null;
-      roomState.status = 'active';
-      if (roomState.host) roomState.participants.add(roomState.host);
+      this._applySessionStart(roomState, data, at);
     } else if (eventType === 'session_join') {
       roomState.participants.add(String(data.who || actor).toLowerCase());
     } else if (eventType === 'session_checkin') {
@@ -172,9 +348,17 @@ class FocusRoom {
         status: note,
       });
       if (roomState.checkins.length > 50) roomState.checkins.shift();
+    } else if (eventType === 'session_extend') {
+      const nextEndsAt = Number.isFinite(data.endsAt) ? data.endsAt : roomState.endsAt;
+      roomState.endsAt = nextEndsAt;
+      this._scheduleExpiry(roomState);
+    } else if (eventType === 'session_expired') {
+      this._applySessionEnd(roomState, data, at, 'timer');
     } else if (eventType === 'session_end') {
-      roomState.status = 'ended';
+      this._applySessionEnd(roomState, data, at, 'manual');
     }
+
+    this._emit(eventType, data, { at, by: actor, source: 'remote' });
     return true;
   }
 }

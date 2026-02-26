@@ -1,0 +1,481 @@
+{
+  "generatedAt": "2026-02-26T10:50:43.786Z",
+  "sequence": [
+    {
+      "step": "focus_start",
+      "result": {
+        "ok": true,
+        "room": {
+          "room": "ship-room",
+          "host": "a1b2c3d4peerhost",
+          "goal": "ship focus-room v2",
+          "startedAt": 1772103043781,
+          "endsAt": 1772104543781,
+          "lastEventAt": 1772103043781,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "a1b2c3d4peerhost"
+          ],
+          "checkins": [],
+          "stats": null
+        }
+      }
+    },
+    {
+      "step": "focus_join",
+      "result": {
+        "ok": true,
+        "room": {
+          "room": "ship-room",
+          "host": "a1b2c3d4peerhost",
+          "goal": "ship focus-room v2",
+          "startedAt": 1772103043781,
+          "endsAt": 1772104543781,
+          "lastEventAt": 1772103043783,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "a1b2c3d4peerhost"
+          ],
+          "checkins": [],
+          "stats": null
+        }
+      }
+    },
+    {
+      "step": "focus_checkin",
+      "result": {
+        "ok": true,
+        "room": {
+          "room": "ship-room",
+          "host": "a1b2c3d4peerhost",
+          "goal": "ship focus-room v2",
+          "startedAt": 1772103043781,
+          "endsAt": 1772104543781,
+          "lastEventAt": 1772103043783,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "a1b2c3d4peerhost"
+          ],
+          "checkins": [
+            {
+              "who": "a1b2c3d4peerhost",
+              "at": 1772103043783,
+              "status": "timer + sc-bridge wired"
+            }
+          ],
+          "stats": null
+        }
+      }
+    },
+    {
+      "step": "focus_extend",
+      "result": {
+        "ok": true,
+        "room": {
+          "room": "ship-room",
+          "host": "a1b2c3d4peerhost",
+          "goal": "ship focus-room v2",
+          "startedAt": 1772103043781,
+          "endsAt": 1772104843781,
+          "lastEventAt": 1772103043784,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "a1b2c3d4peerhost"
+          ],
+          "checkins": [
+            {
+              "who": "a1b2c3d4peerhost",
+              "at": 1772103043783,
+              "status": "timer + sc-bridge wired"
+            }
+          ],
+          "stats": null
+        }
+      }
+    },
+    {
+      "step": "focus_end",
+      "result": {
+        "ok": true,
+        "room": {
+          "room": "ship-room",
+          "host": "a1b2c3d4peerhost",
+          "goal": "ship focus-room v2",
+          "startedAt": 1772103043781,
+          "endsAt": 1772104843781,
+          "lastEventAt": 1772103043785,
+          "status": "ended",
+          "endedAt": 1772103043785,
+          "endedReason": "manual",
+          "participants": [
+            "a1b2c3d4peerhost"
+          ],
+          "checkins": [
+            {
+              "who": "a1b2c3d4peerhost",
+              "at": 1772103043783,
+              "status": "timer + sc-bridge wired"
+            }
+          ],
+          "stats": {
+            "plannedDurationMs": 1800000,
+            "actualDurationMs": 4,
+            "participantCount": 1,
+            "checkinCount": 1
+          }
+        },
+        "stats": {
+          "plannedDurationMs": 1800000,
+          "actualDurationMs": 4,
+          "participantCount": 1,
+          "checkinCount": 1
+        }
+      }
+    }
+  ],
+  "autoExpiry": {
+    "start": {
+      "ok": true,
+      "room": {
+        "room": "auto-expire-room",
+        "host": "a1b2c3d4peerhost",
+        "goal": "prove expiry",
+        "startedAt": 1772103043785,
+        "endsAt": 1772103103785,
+        "lastEventAt": 1772103043785,
+        "status": "active",
+        "endedAt": null,
+        "endedReason": null,
+        "participants": [
+          "a1b2c3d4peerhost"
+        ],
+        "checkins": [],
+        "stats": null
+      }
+    },
+    "expire": {
+      "ok": true,
+      "room": {
+        "room": "auto-expire-room",
+        "host": "a1b2c3d4peerhost",
+        "goal": "prove expiry",
+        "startedAt": 1772103043785,
+        "endsAt": 1772103043785,
+        "lastEventAt": 1772103043786,
+        "status": "ended",
+        "endedAt": 1772103043786,
+        "endedReason": "timer",
+        "participants": [
+          "a1b2c3d4peerhost"
+        ],
+        "checkins": [],
+        "stats": {
+          "plannedDurationMs": 0,
+          "actualDurationMs": 1,
+          "participantCount": 1,
+          "checkinCount": 0
+        }
+      },
+      "stats": {
+        "plannedDurationMs": 0,
+        "actualDurationMs": 1,
+        "participantCount": 1,
+        "checkinCount": 0
+      }
+    }
+  },
+  "rooms": [
+    {
+      "room": "ship-room",
+      "host": "a1b2c3d4peerhost",
+      "goal": "ship focus-room v2",
+      "startedAt": 1772103043781,
+      "endsAt": 1772104843781,
+      "lastEventAt": 1772103043785,
+      "status": "ended",
+      "endedAt": 1772103043785,
+      "endedReason": "manual",
+      "participants": [
+        "a1b2c3d4peerhost"
+      ],
+      "checkins": [
+        {
+          "who": "a1b2c3d4peerhost",
+          "at": 1772103043783,
+          "status": "timer + sc-bridge wired"
+        }
+      ],
+      "stats": {
+        "plannedDurationMs": 1800000,
+        "actualDurationMs": 4,
+        "participantCount": 1,
+        "checkinCount": 1
+      }
+    },
+    {
+      "room": "auto-expire-room",
+      "host": "a1b2c3d4peerhost",
+      "goal": "prove expiry",
+      "startedAt": 1772103043785,
+      "endsAt": 1772103043785,
+      "lastEventAt": 1772103043786,
+      "status": "ended",
+      "endedAt": 1772103043786,
+      "endedReason": "timer",
+      "participants": [
+        "a1b2c3d4peerhost"
+      ],
+      "checkins": [],
+      "stats": {
+        "plannedDurationMs": 0,
+        "actualDurationMs": 1,
+        "participantCount": 1,
+        "checkinCount": 0
+      }
+    }
+  ],
+  "streaks": [
+    {
+      "peer": "a1b2c3d4peerhost",
+      "sessions": 2
+    }
+  ],
+  "eventsCount": 7,
+  "broadcastsCount": 7,
+  "lastEvents": [
+    {
+      "app": "focus_room",
+      "eventType": "session_start",
+      "payload": {
+        "room": "ship-room",
+        "host": "a1b2c3d4peerhost",
+        "goal": "ship focus-room v2",
+        "startedAt": 1772103043781,
+        "endsAt": 1772104543781
+      },
+      "at": 1772103043781,
+      "by": "a1b2c3d4peerhost",
+      "source": "local"
+    },
+    {
+      "app": "focus_room",
+      "eventType": "session_join",
+      "payload": {
+        "room": "ship-room",
+        "who": "a1b2c3d4peerhost",
+        "at": 1772103043783
+      },
+      "at": 1772103043783,
+      "by": "a1b2c3d4peerhost",
+      "source": "local"
+    },
+    {
+      "app": "focus_room",
+      "eventType": "session_checkin",
+      "payload": {
+        "room": "ship-room",
+        "who": "a1b2c3d4peerhost",
+        "status": "timer + sc-bridge wired",
+        "at": 1772103043783
+      },
+      "at": 1772103043783,
+      "by": "a1b2c3d4peerhost",
+      "source": "local"
+    },
+    {
+      "app": "focus_room",
+      "eventType": "session_extend",
+      "payload": {
+        "room": "ship-room",
+        "who": "a1b2c3d4peerhost",
+        "minutes": 5,
+        "endsAt": 1772104843781,
+        "at": 1772103043784
+      },
+      "at": 1772103043784,
+      "by": "a1b2c3d4peerhost",
+      "source": "local"
+    },
+    {
+      "app": "focus_room",
+      "eventType": "session_end",
+      "payload": {
+        "room": "ship-room",
+        "who": "a1b2c3d4peerhost",
+        "summary": "feature complete",
+        "at": 1772103043785,
+        "stats": {
+          "plannedDurationMs": 1800000,
+          "actualDurationMs": 4,
+          "participantCount": 1,
+          "checkinCount": 1
+        }
+      },
+      "at": 1772103043785,
+      "by": "a1b2c3d4peerhost",
+      "source": "local"
+    },
+    {
+      "app": "focus_room",
+      "eventType": "session_start",
+      "payload": {
+        "room": "auto-expire-room",
+        "host": "a1b2c3d4peerhost",
+        "goal": "prove expiry",
+        "startedAt": 1772103043785,
+        "endsAt": 1772103103785
+      },
+      "at": 1772103043785,
+      "by": "a1b2c3d4peerhost",
+      "source": "local"
+    },
+    {
+      "app": "focus_room",
+      "eventType": "session_expired",
+      "payload": {
+        "room": "auto-expire-room",
+        "who": "a1b2c3d4peerhost",
+        "reason": "timer",
+        "at": 1772103043786,
+        "stats": {
+          "plannedDurationMs": 0,
+          "actualDurationMs": 1,
+          "participantCount": 1,
+          "checkinCount": 0
+        }
+      },
+      "at": 1772103043786,
+      "by": "a1b2c3d4peerhost",
+      "source": "local"
+    }
+  ],
+  "lastBroadcasts": [
+    {
+      "ch": "ship-room",
+      "msg": {
+        "app": "focus_room",
+        "eventType": "session_start",
+        "payload": {
+          "room": "ship-room",
+          "host": "a1b2c3d4peerhost",
+          "goal": "ship focus-room v2",
+          "startedAt": 1772103043781,
+          "endsAt": 1772104543781
+        },
+        "at": 1772103043781,
+        "by": "a1b2c3d4peerhost"
+      }
+    },
+    {
+      "ch": "ship-room",
+      "msg": {
+        "app": "focus_room",
+        "eventType": "session_join",
+        "payload": {
+          "room": "ship-room",
+          "who": "a1b2c3d4peerhost",
+          "at": 1772103043783
+        },
+        "at": 1772103043783,
+        "by": "a1b2c3d4peerhost"
+      }
+    },
+    {
+      "ch": "ship-room",
+      "msg": {
+        "app": "focus_room",
+        "eventType": "session_checkin",
+        "payload": {
+          "room": "ship-room",
+          "who": "a1b2c3d4peerhost",
+          "status": "timer + sc-bridge wired",
+          "at": 1772103043783
+        },
+        "at": 1772103043783,
+        "by": "a1b2c3d4peerhost"
+      }
+    },
+    {
+      "ch": "ship-room",
+      "msg": {
+        "app": "focus_room",
+        "eventType": "session_extend",
+        "payload": {
+          "room": "ship-room",
+          "who": "a1b2c3d4peerhost",
+          "minutes": 5,
+          "endsAt": 1772104843781,
+          "at": 1772103043784
+        },
+        "at": 1772103043784,
+        "by": "a1b2c3d4peerhost"
+      }
+    },
+    {
+      "ch": "ship-room",
+      "msg": {
+        "app": "focus_room",
+        "eventType": "session_end",
+        "payload": {
+          "room": "ship-room",
+          "who": "a1b2c3d4peerhost",
+          "summary": "feature complete",
+          "at": 1772103043785,
+          "stats": {
+            "plannedDurationMs": 1800000,
+            "actualDurationMs": 4,
+            "participantCount": 1,
+            "checkinCount": 1
+          }
+        },
+        "at": 1772103043785,
+        "by": "a1b2c3d4peerhost"
+      }
+    },
+    {
+      "ch": "auto-expire-room",
+      "msg": {
+        "app": "focus_room",
+        "eventType": "session_start",
+        "payload": {
+          "room": "auto-expire-room",
+          "host": "a1b2c3d4peerhost",
+          "goal": "prove expiry",
+          "startedAt": 1772103043785,
+          "endsAt": 1772103103785
+        },
+        "at": 1772103043785,
+        "by": "a1b2c3d4peerhost"
+      }
+    },
+    {
+      "ch": "auto-expire-room",
+      "msg": {
+        "app": "focus_room",
+        "eventType": "session_expired",
+        "payload": {
+          "room": "auto-expire-room",
+          "who": "a1b2c3d4peerhost",
+          "reason": "timer",
+          "at": 1772103043786,
+          "stats": {
+            "plannedDurationMs": 0,
+            "actualDurationMs": 1,
+            "participantCount": 1,
+            "checkinCount": 0
+          }
+        },
+        "at": 1772103043786,
+        "by": "a1b2c3d4peerhost"
+      }
+    }
+  ]
+}

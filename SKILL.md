@@ -732,13 +732,20 @@ Use these repos for deeper troubleshooting or protocol understanding:
 
 ## Fork Extension: FocusRoom App
 - This fork ships a FocusRoom app on top of Intercom sidechannels for structured deep-work coordination.
-- FocusRoom message format is sidechannel JSON with `app: "focus_room"` and event types: `session_start`, `session_join`, `session_checkin`, `session_end`.
+- FocusRoom message format is sidechannel JSON with `app: "focus_room"` and event types: `session_start`, `session_join`, `session_checkin`, `session_extend`, `session_expired`, `session_end`.
+- Timer behavior: `endsAt` is actively scheduled with `setTimeout`; when reached, the app emits and broadcasts `session_expired`.
+- Session end payload includes computed stats: `plannedDurationMs`, `actualDurationMs`, `participantCount`, `checkinCount`.
+- Streak behavior: in-memory per-peer completed-session counter (current runtime only).
 - FocusRoom commands:
   - `/focus_start --room "<name>" [--minutes <n>] [--goal "<text>"]`
   - `/focus_join --room "<name>"`
   - `/focus_checkin --room "<name>" --status "<text>"`
   - `/focus_end --room "<name>" [--summary "<text>"]`
+  - `/focus_extend --room "<name>" [--minutes <n>]` (host only)
   - `/focus_status [--room "<name>"]`
   - `/focus_rooms`
-- Agent behavior: prefer SC-Bridge JSON for sidechannel transport; if CLI mirroring is enabled, the commands above can be executed through `{ "type":"cli", "command":"..." }`.
+  - `/focus_streaks`
+- SC-Bridge native JSON actions:
+  - `focus_start`, `focus_join`, `focus_checkin`, `focus_end`, `focus_extend`, `focus_status`, `focus_rooms`, `focus_streaks`
+- Agent behavior: prefer the native SC-Bridge JSON actions above. If CLI mirroring is enabled, `/focus_*` commands are also available via `{ "type":"cli", "command":"..." }`.
 - Proof artifacts should be committed under `proof/` (screenshots or video plus command transcript).

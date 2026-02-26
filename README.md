@@ -84,8 +84,17 @@ Core commands:
 - `/focus_join --room "ship-room"`
 - `/focus_checkin --room "ship-room" --status "finished parser + tests"`
 - `/focus_end --room "ship-room" --summary "done, opening PR"`
+- `/focus_extend --room "ship-room" --minutes 5`
 - `/focus_status --room "ship-room"`
 - `/focus_rooms`
+- `/focus_streaks`
+
+What it does:
+- Real timer scheduling with auto-expiry (`session_expired`) when `endsAt` is reached.
+- Terminal event output for start/join/check-in/extend/expire/end.
+- End-of-session stats: planned duration, actual duration, participant count, check-in count.
+- In-memory streak counter: completed sessions per peer for the current runtime.
+- Native SC-Bridge JSON actions: `focus_start`, `focus_join`, `focus_checkin`, `focus_end`, `focus_extend`, `focus_status`, `focus_rooms`, `focus_streaks`.
 
 ## Trac Address
 
@@ -93,6 +102,7 @@ Core commands:
 
 ## Proof of Functionality
 
-Add your screenshots/videos under `proof/` and keep filenames referenced here.
+Proof artifacts live under `proof/`:
 - `proof/focus-room-run.png` (or `.mp4`)
-- `proof/focus-room-smoke.md` (command transcript template)
+- `proof/focus-room-smoke.md` (filled smoke transcript)
+- `proof/focus-room-proof.json` (captured local simulation output)
