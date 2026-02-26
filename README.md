@@ -111,3 +111,10 @@ Regenerate proof artifacts in one command:
 - PowerShell: `./proof/run-proof.ps1`
 - Bash: `./proof/run-proof.sh`
 - npm: `npm run proof:run`
+
+Local hosting (two peers on your machine):
+- Start: `./proof/start-local-hosting.ps1`
+- Stop: `./proof/stop-local-hosting.ps1`
+- Host bridge: `ws://127.0.0.1:49222` (token `localtoken123`)
+- Joiner bridge: `ws://127.0.0.1:49223` (token `joinertoken123`)
+- Note: for room sync, joiner should call `focus_join` for a room before host calls `focus_start`.
