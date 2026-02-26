@@ -1,377 +1,1119 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FocusRoom Proof Dashboard</title>
     <style>
+      /* ── Themes ─────────────────────────────────────────────────────────── */
       :root {
-        --bg-1: #f6f7f2;
-        --bg-2: #e8ece3;
-        --ink: #16201d;
-        --card: #ffffff;
+        --bg-1: #f6f7f2; --bg-2: #e8ece3;
+        --ink: #16201d;  --ink-2: #3b4a46; --ink-3: #6b7280;
+        --card: #ffffff; --card-2: #f6f7f2;
         --line: #cfd7cd;
-        --host: #0f766e;
-        --joiner: #b45309;
+        --host: #0f766e; --joiner: #b45309;
         --accent: #1f2937;
+        --success: #15803d; --danger: #dc2626; --warn: #d97706;
+        --log-bg: #0e1715; --log-ink: #d7f2e9;
       }
-      * {
-        box-sizing: border-box;
+      [data-theme="dark"] {
+        --bg-1: #0e1715; --bg-2: #111a17;
+        --ink: #d7f2e9;  --ink-2: #9ab8b0; --ink-3: #5a7a72;
+        --card: #182420; --card-2: #1d2e29;
+        --line: #2a3d38;
+        --host: #14b8a6; --joiner: #f59e0b;
+        --accent: #374151;
+        --success: #22c55e; --danger: #f87171; --warn: #fbbf24;
+        --log-bg: #060d0b; --log-ink: #d7f2e9;
       }
+
+      /* ── Reset & base ───────────────────────────────────────────────────── */
+      * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
-        margin: 0;
         min-height: 100vh;
+        overflow-x: hidden;
         color: var(--ink);
         font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
         background:
           radial-gradient(circle at 85% 15%, #d8efe8 0%, transparent 40%),
-          radial-gradient(circle at 8% 80%, #f4dfc8 0%, transparent 35%),
+          radial-gradient(circle at 8%  80%, #f4dfc8 0%, transparent 35%),
           linear-gradient(135deg, var(--bg-1), var(--bg-2));
+        transition: background 0.3s, color 0.3s;
       }
-      .shell {
-        max-width: 1100px;
-        margin: 24px auto;
-        padding: 16px;
+      [data-theme="dark"] body {
+        background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
       }
-      .hero {
-        background: rgba(255, 255, 255, 0.75);
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 16px;
-        backdrop-filter: blur(2px);
+
+      /* ── Shell ──────────────────────────────────────────────────────────── */
+      .shell { max-width: 1140px; margin: 0 auto; padding: 12px 16px 16px; }
+
+      /* ── Header ─────────────────────────────────────────────────────────── */
+      .header {
+        width: 100%;
+        background: rgba(14,23,21,0.97);
+        border-bottom: 1px solid var(--line);
+        transition: background 0.3s, border-color 0.3s;
+        margin-bottom: 0;
       }
-      h1 {
-        margin: 0;
-        font-size: 1.8rem;
-        letter-spacing: 0.01em;
-      }
-      .sub {
-        margin: 6px 0 0;
-        color: #3b4a46;
-      }
-      .grid {
-        margin-top: 16px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      [data-theme="light"] .header { background: rgba(255,255,255,0.96); }
+      .header-inner {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 13px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         gap: 12px;
       }
+      .header-title { flex: 1; min-width: 0; }
+      .header-title h1 { font-size: 1.45rem; letter-spacing: 0.01em; }
+      .header-actions  { display: flex; gap: 7px; flex-shrink: 0; }
+
+      /* ── Banners ─────────────────────────────────────────────────────────── */
+      .banner {
+        border-radius: 12px;
+        padding: 11px 16px;
+        font-size: 0.86rem;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        transition: background 0.3s, border-color 0.3s;
+      }
+      .banner-left  { display: flex; align-items: center; gap: 11px; flex: 1; min-width: 0; }
+      .banner-icon  {
+        width: 30px; height: 30px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.9rem; flex-shrink: 0; font-weight: 700;
+      }
+      .banner-msg   { font-weight: 700; font-size: 0.88rem; }
+      .banner-sub   { font-size: 0.77rem; font-weight: 400; margin-top: 2px; opacity: 0.82; }
+      .banner-sub code { font-size: 0.75rem; background: rgba(0,0,0,0.18); padding: 1px 5px; border-radius: 4px; font-family: Consolas, monospace; }
+      .banner-peers { display: flex; gap: 6px; flex-shrink: 0; }
+      .peer-pill {
+        display: flex; align-items: center; gap: 5px;
+        padding: 4px 10px; border-radius: 20px;
+        font-size: 0.74rem; font-weight: 600;
+        border: 1px solid currentColor; opacity: 0.35;
+        transition: opacity 0.25s;
+      }
+      .peer-pill.ok { opacity: 1; }
+      .peer-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+      .banner.none    { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+      .banner.none    .banner-icon { background: #fca5a5; color: #991b1b; }
+      .banner.partial { background: #fffbeb; border: 1px solid #fcd34d; color: #854d0e; }
+      .banner.partial .banner-icon { background: #fcd34d; color: #854d0e; }
+      .banner.ready   { background: #f0fdf4; border: 1px solid #86efac; color: #14532d; }
+      .banner.ready   .banner-icon { background: #86efac; color: #14532d; }
+
+      [data-theme="dark"] .banner.none    { background: #2d1010; border-color: #7f1d1d; color: #fca5a5; }
+      [data-theme="dark"] .banner.none    .banner-icon { background: #7f1d1d; color: #fca5a5; }
+      [data-theme="dark"] .banner.partial { background: #2a1d08; border-color: #92400e; color: #fcd34d; }
+      [data-theme="dark"] .banner.partial .banner-icon { background: #92400e; color: #fcd34d; }
+      [data-theme="dark"] .banner.ready   { background: #052e16; border-color: #166534; color: #86efac; }
+      [data-theme="dark"] .banner.ready   .banner-icon { background: #166534; color: #86efac; }
+
+      @keyframes bannerPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+      .banner.none .banner-icon { animation: bannerPulse 2s ease-in-out infinite; }
+
+      /* ── 3-col main grid ─────────────────────────────────────────────────── */
+      .main-grid {
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr) 280px;
+        gap: 10px;
+        margin-bottom: 10px;
+        align-items: start;
+      }
+      /* Prevent any grid child from blowing past its column width */
+      .col-left, .col-mid, .col-right { min-width: 0; }
+      @media (max-width: 900px) {
+        .main-grid { grid-template-columns: 1fr 1fr; }
+        .main-grid .col-right { grid-column: 1 / -1; }
+      }
+      @media (max-width: 600px) {
+        .main-grid { grid-template-columns: 1fr; }
+      }
+
+      /* ── Cards ───────────────────────────────────────────────────────────── */
       .card {
         background: var(--card);
         border: 1px solid var(--line);
         border-radius: 14px;
-        padding: 12px;
+        padding: 13px;
+        transition: background 0.3s, border-color 0.3s;
       }
-      .card h2 {
-        margin: 0 0 10px;
-        font-size: 1rem;
+      .card + .card { margin-top: 10px; }
+      .card-header {
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
         gap: 8px;
       }
-      .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        display: inline-block;
-      }
-      .dot.host {
-        background: var(--host);
-      }
-      .dot.joiner {
-        background: var(--joiner);
-      }
-      label {
-        display: block;
-        margin: 8px 0 4px;
-        font-size: 0.85rem;
-        color: #33423e;
-      }
+      .card-header h2 { font-size: 0.95rem; display: flex; align-items: center; gap: 7px; }
+      .card-header h3 { font-size: 0.92rem; }
+
+      /* ── Dots ────────────────────────────────────────────────────────────── */
+      .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+      .dot.host   { background: var(--host); }
+      .dot.joiner { background: var(--joiner); }
+
+      /* ── Inputs ──────────────────────────────────────────────────────────── */
+      label { display: block; margin: 7px 0 3px; font-size: 0.79rem; color: var(--ink-2); font-weight: 500; }
       input {
         width: 100%;
         border: 1px solid var(--line);
-        border-radius: 10px;
-        padding: 9px 10px;
+        border-radius: 9px;
+        padding: 7px 9px;
         font: inherit;
-        background: #fff;
+        font-size: 0.88rem;
+        background: var(--card-2);
+        color: var(--ink);
+        transition: background 0.3s, border-color 0.3s, color 0.3s;
       }
-      .row {
+      input:focus { outline: 2px solid var(--host); border-color: transparent; }
+
+      /* ── Peer identity ───────────────────────────────────────────────────── */
+      .peer-identity {
+        margin-top: 8px;
+        padding: 6px 9px;
+        background: var(--card-2);
+        border-radius: 8px;
+        font-size: 0.76rem;
+        font-family: Consolas, monospace;
+        color: var(--ink-2);
+        min-height: 32px;
         display: flex;
-        gap: 8px;
-        margin-top: 10px;
+        flex-direction: column;
+        gap: 1px;
       }
-      .row > * {
-        flex: 1;
-      }
+      .peer-identity.host-id   { border-left: 3px solid var(--host); }
+      .peer-identity.joiner-id { border-left: 3px solid var(--joiner); }
+      .status-text { margin-top: 7px; font-size: 0.79rem; color: var(--ink-2); }
+
+      /* ── Buttons ─────────────────────────────────────────────────────────── */
+      .row { display: flex; gap: 7px; margin-top: 9px; flex-wrap: wrap; }
+      .row > * { flex: 1; min-width: 80px; }
       button {
         border: 0;
-        border-radius: 10px;
-        padding: 9px 10px;
+        border-radius: 9px;
+        padding: 8px 10px;
         font: inherit;
+        font-size: 0.84rem;
         font-weight: 600;
         color: #fff;
         background: var(--accent);
         cursor: pointer;
+        white-space: nowrap;
+        transition: filter 0.15s, opacity 0.15s;
       }
-      button.host {
-        background: var(--host);
-      }
-      button.joiner {
-        background: var(--joiner);
-      }
-      button.ghost {
-        background: #33423e;
-      }
-      button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-      .status {
-        margin-top: 8px;
-        font-size: 0.85rem;
-      }
-      .controls {
-        margin-top: 14px;
-      }
-      .controls h3 {
-        margin: 0 0 8px;
-        font-size: 0.95rem;
-      }
-      .log {
-        margin-top: 12px;
-        height: 280px;
-        overflow: auto;
-        background: #0e1715;
-        color: #d7f2e9;
-        border-radius: 12px;
-        padding: 10px;
-        font-family: Consolas, "Courier New", monospace;
-        font-size: 12px;
-        line-height: 1.35;
-      }
-      .log .host {
-        color: #8de4d8;
-      }
-      .log .joiner {
-        color: #ffd39b;
-      }
-      .note {
+      button.host   { background: var(--host); }
+      button.joiner { background: var(--joiner); }
+      button.ghost  { background: #4b5e59; }
+      button.success { background: var(--success); }
+      button.sm { font-size: 0.76rem; padding: 4px 9px; flex: 0; min-width: unset; border-radius: 7px; }
+      button.proof-flow {
+        width: 100%;
+        padding: 12px;
+        font-size: 0.96rem;
+        background: linear-gradient(135deg, #0f766e 0%, #15803d 100%);
         margin-top: 10px;
-        font-size: 0.82rem;
-        color: #33423e;
+        border-radius: 11px;
+        letter-spacing: 0.02em;
       }
+      [data-theme="dark"] button.proof-flow { background: linear-gradient(135deg, #14b8a6 0%, #22c55e 100%); color: #052e16; }
+      button.proof-flow.running {
+        background: linear-gradient(90deg, #0f766e 0%, #22c55e 35%, #34d399 50%, #22c55e 65%, #0f766e 100%);
+        background-size: 250% 100%;
+        animation: proofSweep 1.4s linear infinite, proofGlow 1.6s ease-in-out infinite;
+        cursor: wait;
+      }
+      [data-theme="dark"] button.proof-flow.running {
+        background: linear-gradient(90deg, #0d9488 0%, #22c55e 35%, #6ee7b7 50%, #22c55e 65%, #0d9488 100%);
+        background-size: 250% 100%;
+        animation: proofSweep 1.4s linear infinite, proofGlow 1.6s ease-in-out infinite;
+        color: #052e16;
+      }
+      @keyframes proofSweep {
+        0%   { background-position: 100% 0; }
+        100% { background-position: -100% 0; }
+      }
+      @keyframes proofGlow {
+        0%, 100% { box-shadow: 0 0 6px 1px rgba(34,197,94,0.4), 0 0 18px 4px rgba(20,184,166,0.2); }
+        50%       { box-shadow: 0 0 14px 4px rgba(34,197,94,0.75), 0 0 36px 10px rgba(20,184,166,0.4); }
+      }
+      button:disabled { opacity: 0.45; cursor: not-allowed; }
+      button:hover:not(:disabled) { filter: brightness(1.1); }
+      kbd {
+        display: inline-block;
+        padding: 1px 5px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        font-size: 0.73rem;
+        font-family: Consolas, monospace;
+        background: var(--card-2);
+        color: var(--ink-2);
+      }
+
+      /* ── Room panel ──────────────────────────────────────────────────────── */
+      .room-panel { display: none; }
+      .room-panel.visible { display: block; }
+      .room-header { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; margin-bottom: 6px; }
+      .room-name { font-weight: 700; font-size: 1.05rem; }
+      .room-status-badge {
+        padding: 2px 9px; border-radius: 20px;
+        font-size: 0.72rem; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.05em;
+      }
+      .badge-active { background: #dcfce7; color: #14532d; }
+      .badge-ended  { background: #f3f4f6; color: #374151; }
+      .badge-idle   { background: #fef9c3; color: #713f12; }
+      [data-theme="dark"] .badge-active { background: #052e16; color: #86efac; }
+      [data-theme="dark"] .badge-ended  { background: #1f2937; color: #9ca3af; }
+      [data-theme="dark"] .badge-idle   { background: #3b2a0a; color: #fcd34d; }
+      .countdown {
+        font-size: 2rem; font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        color: var(--host); line-height: 1;
+      }
+      .countdown.danger { color: var(--danger); }
+      .countdown-sub { font-size: 0.73rem; color: var(--ink-3); margin: 1px 0 8px; }
+      .room-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+      .meta-item { font-size: 0.83rem; }
+      .meta-label { color: var(--ink-3); font-size: 0.71rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
+      .participants { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+      .participant-chip {
+        padding: 2px 7px; border-radius: 20px;
+        font-size: 0.72rem; font-family: Consolas, monospace;
+        background: var(--card-2); color: var(--ink-2);
+      }
+
+      /* ── Controls grid ───────────────────────────────────────────────────── */
+      .controls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 7px 10px; margin-bottom: 2px; }
+
+      /* ── Checklist ───────────────────────────────────────────────────────── */
+      .checklist { list-style: none; }
+      .checklist li {
+        display: flex; align-items: center; gap: 8px;
+        padding: 6px 0; font-size: 0.84rem;
+        border-bottom: 1px solid var(--line);
+        color: var(--ink-3);
+        transition: color 0.2s;
+      }
+      .checklist li:last-child { border-bottom: 0; }
+      .checklist li.done { color: var(--ink); }
+      .check-icon {
+        width: 18px; height: 18px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.65rem; flex-shrink: 0;
+        border: 2px solid var(--line); color: transparent;
+        transition: background 0.2s, border-color 0.2s;
+      }
+      .checklist li.done .check-icon { background: var(--success); border-color: var(--success); color: #fff; }
+
+      /* ── Stats ───────────────────────────────────────────────────────────── */
+      .stats-row { display: grid; margin-bottom: 10px; }
+      .stats-4col { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+      @media (max-width: 600px) { .stats-4col { grid-template-columns: repeat(2, 1fr); } }
+      .stat-box { background: var(--card-2); border-radius: 9px; padding: 9px 11px; text-align: center; }
+      .stat-value { font-size: 1.25rem; font-weight: 700; color: var(--host); }
+      .stat-label { font-size: 0.71rem; color: var(--ink-3); margin-top: 1px; text-transform: uppercase; letter-spacing: 0.03em; }
+      .stats-bar-label { font-size: 0.78rem; color: var(--ink-3); margin-bottom: 4px; }
+      .stats-bar-track { background: var(--line); border-radius: 4px; height: 7px; overflow: hidden; }
+      .stats-bar-fill { height: 100%; background: var(--host); border-radius: 4px; width: 0%; transition: width 0.5s ease; }
+      .stats-bar-fill.over { background: var(--joiner); }
+
+      /* ── Session history ─────────────────────────────────────────────────── */
+      .history-empty { font-size: 0.82rem; color: var(--ink-3); padding: 4px 0; }
+      .history-item { padding: 7px 0; border-bottom: 1px solid var(--line); }
+      .history-item:last-child { border-bottom: 0; }
+      .history-room { font-weight: 600; font-size: 0.88rem; }
+      .history-meta { font-size: 0.78rem; color: var(--ink-2); margin-top: 1px; }
+      .history-time { font-size: 0.72rem; color: var(--ink-3); margin-top: 1px; font-family: Consolas, monospace; }
+
+      /* ── Log ─────────────────────────────────────────────────────────────── */
+      .log {
+        height: 260px; overflow: auto;
+        max-width: 100%; word-break: break-all;
+        background: var(--log-bg); color: var(--log-ink);
+        border-radius: 11px; padding: 9px 11px;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 11.5px; line-height: 1.4;
+      }
+      .log .placeholder { color: #4a6b63; font-style: italic; }
+      .log .sent   { color: #8de4d8; }
+      .log .recv   { color: #a7f3d0; opacity: 0.85; }
+      .log .joiner-sent { color: #fbbf24; }
+      .log .joiner-recv { color: #fde68a; opacity: 0.85; }
+      .log .sys    { color: #5a7a72; }
+      .log .err    { color: #fc8181; }
+      .log .indent { margin-left: 16px; opacity: 0.7; font-size: 11px; }
+      .note { margin-top: 7px; font-size: 0.78rem; color: var(--ink-3); }
+
+      /* ── Bottom 2-col ────────────────────────────────────────────────────── */
+      .bottom-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      @media (max-width: 700px) { .bottom-grid { grid-template-columns: 1fr; } }
     </style>
   </head>
   <body>
+
+    <!-- ── Header (full-width, outside shell) ─────────────────────────── -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="header-title">
+          <h1>FocusRoom Proof Dashboard</h1>
+          <p>Live P2P control surface · SC-Bridge</p>
+        </div>
+        <div class="header-actions">
+          <button class="ghost sm" id="btnDark" title="Toggle dark mode">☀ Light</button>
+          <button class="ghost sm" id="btnSound" title="Toggle sound notifications">♪ Off</button>
+          <button class="ghost sm" id="btnExport" title="Download session proof JSON (Ctrl+D)">↓ Export</button>
+        </div>
+      </div>
+    </header>
+
     <main class="shell">
-      <section class="hero">
-        <h1>FocusRoom Proof Dashboard</h1>
-        <p class="sub">Browser UI for capturing screenshots/videos while controlling local host + joiner bridges.</p>
-      </section>
 
-      <section class="grid">
-        <article class="card">
-          <h2><span class="dot host"></span>Host Bridge</h2>
-          <label for="hostUrl">URL</label>
-          <input id="hostUrl" value="ws://127.0.0.1:49222" />
-          <label for="hostToken">Token</label>
-          <input id="hostToken" value="localtoken123" />
-          <div class="row">
-            <button class="host" id="hostConnect">Connect</button>
-            <button class="ghost" id="hostDisconnect">Disconnect</button>
-          </div>
-          <div class="status" id="hostStatus">Status: disconnected</div>
-        </article>
-
-        <article class="card">
-          <h2><span class="dot joiner"></span>Joiner Bridge</h2>
-          <label for="joinUrl">URL</label>
-          <input id="joinUrl" value="ws://127.0.0.1:49223" />
-          <label for="joinToken">Token</label>
-          <input id="joinToken" value="joinertoken123" />
-          <div class="row">
-            <button class="joiner" id="joinConnect">Connect</button>
-            <button class="ghost" id="joinDisconnect">Disconnect</button>
-          </div>
-          <div class="status" id="joinStatus">Status: disconnected</div>
-        </article>
-      </section>
-
-      <section class="card controls">
-        <h3>Room Controls</h3>
-        <div class="grid">
+      <!-- ── Banners ────────────────────────────────────────────────────── -->
+      <div id="readiness" class="banner none">
+        <div class="banner-left">
+          <div class="banner-icon" id="readinessIcon">⚠</div>
           <div>
-            <label for="roomName">Room</label>
-            <input id="roomName" value="proof-room" />
-          </div>
-          <div>
-            <label for="goal">Goal</label>
-            <input id="goal" value="capture browser proof" />
-          </div>
-          <div>
-            <label for="minutes">Minutes</label>
-            <input id="minutes" value="25" />
-          </div>
-          <div>
-            <label for="statusText">Check-in</label>
-            <input id="statusText" value="working and syncing" />
+            <div class="banner-msg" id="readinessText">No peers connected</div>
+            <div class="banner-sub" id="readinessSub">Run <code>./proof/start-local-hosting.ps1</code> then connect both bridges above.</div>
           </div>
         </div>
-        <div class="row">
-          <button class="joiner" id="btnJoin">Joiner: focus_join</button>
-          <button class="host" id="btnStart">Host: focus_start</button>
-          <button class="joiner" id="btnCheckin">Joiner: focus_checkin</button>
-          <button class="host" id="btnStatus">Host: focus_status</button>
+        <div class="banner-peers">
+          <div class="peer-pill" id="bannerHost"><span class="peer-pill-dot"></span>Host</div>
+          <div class="peer-pill" id="bannerJoiner"><span class="peer-pill-dot"></span>Joiner</div>
         </div>
-        <div class="row">
-          <button class="host" id="btnExtend">Host: focus_extend +5</button>
-          <button class="host" id="btnEnd">Host: focus_end</button>
-          <button class="ghost" id="btnRooms">Host: focus_rooms</button>
-          <button class="ghost" id="btnProofFlow">Run Proof Flow</button>
-        </div>
-        <p class="note">Proof flow sequence: joiner joins room -> host starts room -> joiner check-in -> host status/rooms.</p>
-      </section>
+      </div>
 
-      <section class="card">
-        <h3 style="margin: 0 0 8px">Event / Response Log</h3>
-        <div id="log" class="log"></div>
-      </section>
+      <!-- ── Main 3-col: connections | controls | checklist ─────────────── -->
+      <div class="main-grid">
+
+        <!-- Column 1: connections + room state -->
+        <div class="col-left">
+          <div class="card">
+            <div class="card-header">
+              <h2><span class="dot host"></span>Host Bridge</h2>
+            </div>
+            <label for="hostUrl">URL</label>
+            <input id="hostUrl" value="ws://127.0.0.1:49222" />
+            <label for="hostToken">Token</label>
+            <input id="hostToken" value="localtoken123" type="password" />
+            <button class="host" id="hostToggle" style="width:100%;margin-top:9px;">Connect</button>
+            <div class="status-text" id="hostStatus">Status: disconnected</div>
+            <div class="peer-identity host-id" id="hostIdentity">—</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2><span class="dot joiner"></span>Joiner Bridge</h2>
+            </div>
+            <label for="joinUrl">URL</label>
+            <input id="joinUrl" value="ws://127.0.0.1:49223" />
+            <label for="joinToken">Token</label>
+            <input id="joinToken" value="joinertoken123" type="password" />
+            <button class="joiner" id="joinToggle" style="width:100%;margin-top:9px;">Connect</button>
+            <div class="status-text" id="joinStatus">Status: disconnected</div>
+            <div class="peer-identity joiner-id" id="joinIdentity">—</div>
+          </div>
+
+        </div>
+
+        <!-- Column 2: controls -->
+        <div class="col-mid">
+          <div class="card">
+            <div class="card-header">
+              <h3>Room Controls</h3>
+            </div>
+            <div class="controls-grid">
+              <div><label for="roomName">Room</label><input id="roomName" value="proof-room" /></div>
+              <div><label for="goal">Goal</label><input id="goal" value="capture browser proof" /></div>
+              <div><label for="minutes">Minutes</label><input id="minutes" value="25" type="number" min="1" max="120" /></div>
+              <div><label for="statusText">Check-in note</label><input id="statusText" value="working and syncing" /></div>
+              <div><label for="summaryText">End summary</label><input id="summaryText" value="proof flow complete" /></div>
+            </div>
+            <div class="row" style="margin-top:11px;">
+              <button class="joiner" id="btnJoin">Joiner: join</button>
+              <button class="host"   id="btnStart">Host: start</button>
+              <button class="joiner" id="btnCheckin">Joiner: check-in</button>
+              <button class="host"   id="btnStatus">Host: status</button>
+            </div>
+            <div class="row">
+              <button class="host"  id="btnExtend">Extend +5m</button>
+              <button class="host"  id="btnEnd">End session</button>
+              <button class="ghost" id="btnRooms">Rooms</button>
+              <button class="ghost" id="btnStreaks">Streaks</button>
+            </div>
+            <button class="proof-flow" id="btnProofFlow">▶ Run Proof Flow</button>
+            <p class="note">
+              Sequence: joiner joins → host starts → joiner check-in → status → rooms → streaks
+              &nbsp;·&nbsp;<kbd>Ctrl+P</kbd> <kbd>Ctrl+R</kbd> <kbd>Ctrl+D</kbd>
+            </p>
+          </div>
+
+          <!-- Event log (lives under controls) -->
+          <div class="card" style="margin-top:10px;">
+            <div class="card-header">
+              <h3>Event / Response Log</h3>
+              <div style="display:flex;gap:7px;">
+                <button class="ghost sm" id="btnCopyLog">Copy</button>
+                <button class="ghost sm" id="btnClearLog">Clear</button>
+              </div>
+            </div>
+            <div id="log" class="log">
+              <div class="placeholder">Connect to a bridge to begin. Sent (→) and received (←) events appear here.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: room panel + checklist -->
+        <div class="col-right">
+          <!-- Room state panel (hidden until active) -->
+          <div id="roomPanel" class="card room-panel">
+            <div class="room-header">
+              <span id="roomPanelName" class="room-name"></span>
+              <span id="roomPanelBadge" class="room-status-badge"></span>
+            </div>
+            <div id="countdown" class="countdown">—</div>
+            <div id="countdownSub" class="countdown-sub">remaining</div>
+            <div class="room-meta">
+              <div class="meta-item">
+                <div class="meta-label">Goal</div>
+                <div id="roomPanelGoal">—</div>
+              </div>
+              <div class="meta-item">
+                <div class="meta-label">Host</div>
+                <div id="roomPanelHost">—</div>
+              </div>
+              <div class="meta-item" style="grid-column:1/-1;">
+                <div class="meta-label">Participants</div>
+                <div id="roomPanelParticipants" class="participants"></div>
+              </div>
+              <div class="meta-item" style="grid-column:1/-1;">
+                <div class="meta-label">Last check-in</div>
+                <div id="roomPanelLastCheckin">—</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:10px;">
+            <div class="card-header">
+              <h3>Proof Checklist</h3>
+              <button class="ghost sm" id="btnReset">Reset</button>
+            </div>
+            <ul class="checklist">
+              <li id="step-hostConnected">   <span class="check-icon">✓</span>Host bridge authed</li>
+              <li id="step-joinerConnected"> <span class="check-icon">✓</span>Joiner bridge authed</li>
+              <li id="step-joinerJoined">    <span class="check-icon">✓</span>Joiner called focus_join</li>
+              <li id="step-hostStarted">     <span class="check-icon">✓</span>Host called focus_start</li>
+              <li id="step-joinerCheckedIn"> <span class="check-icon">✓</span>Joiner checked in</li>
+              <li id="step-sessionEnded">    <span class="check-icon">✓</span>Session ended / expired</li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /main-grid -->
+
+      <!-- ── Bottom: stats + history side by side ─────────────────────── -->
+      <div class="bottom-grid">
+
+        <!-- Stats (hidden until session ends) -->
+        <div id="statsCard" class="card" style="display:none;">
+          <div class="card-header"><h3>Session Stats</h3></div>
+          <div class="stats-row stats-4col">
+            <div class="stat-box"><div class="stat-value" id="statPlanned">—</div><div class="stat-label">Planned</div></div>
+            <div class="stat-box"><div class="stat-value" id="statActual">—</div><div class="stat-label">Actual</div></div>
+            <div class="stat-box"><div class="stat-value" id="statParticipants">—</div><div class="stat-label">Peers</div></div>
+            <div class="stat-box"><div class="stat-value" id="statCheckins">—</div><div class="stat-label">Check-ins</div></div>
+          </div>
+          <div class="stats-bar-label">Actual vs planned: <span id="statsBarPct">—</span></div>
+          <div class="stats-bar-track"><div id="statsBarFill" class="stats-bar-fill"></div></div>
+        </div>
+
+        <!-- Session history (hidden until first session completes) -->
+        <div id="historyCard" class="card" style="display:none;">
+          <div class="card-header"><h3>Session History</h3></div>
+          <div id="historyList"><div class="history-empty">No completed sessions yet.</div></div>
+        </div>
+
+      </div><!-- /bottom-grid -->
+
     </main>
 
     <script>
+      // ── State ─────────────────────────────────────────────────────────────
       const state = {
-        host: { ws: null, authed: false, nextId: 1 },
-        joiner: { ws: null, authed: false, nextId: 1 },
+        host:   { ws: null, authed: false, nextId: 1, info: null, manualDisconnect: false, reconnectAttempts: 0, lastPongAt: null },
+        joiner: { ws: null, authed: false, nextId: 1, info: null, manualDisconnect: false, reconnectAttempts: 0, lastPongAt: null },
       };
+      const pendingRequests = new Map(); // id -> { side, resolve, reject, timer }
+      const collectedEvents = [];
+      const sessionHistory  = [];
+      let activeRoom        = null;
+      let currentStats      = null;
+      let countdownInterval = null;
+      let heartbeatInterval = null;
+      let soundEnabled      = false;
+      let audioCtx          = null;
 
+      // ── DOM ───────────────────────────────────────────────────────────────
       const $ = (id) => document.getElementById(id);
-      const logEl = $("log");
-      const hostStatus = $("hostStatus");
-      const joinStatus = $("joinStatus");
+      const logEl = $('log');
+      function clearPlaceholder() { const p = logEl.querySelector('.placeholder'); if (p) p.remove(); }
 
-      function log(side, text, payload) {
+      // ── Logging ───────────────────────────────────────────────────────────
+      function log(side, dir, text, payload) {
+        clearPlaceholder();
         const stamp = new Date().toLocaleTimeString();
-        const line = document.createElement("div");
-        line.className = side;
-        line.textContent = `[${stamp}] [${side}] ${text}`;
+        const cls   = dir === '→'
+          ? (side === 'host' ? 'sent' : 'joiner-sent')
+          : (side === 'host' ? 'recv' : 'joiner-recv');
+        const line = document.createElement('div');
+        line.className = cls;
+        line.textContent = `[${stamp}] [${side}] ${dir} ${text}`;
         logEl.appendChild(line);
-        if (payload !== undefined) {
-          const pre = document.createElement("div");
-          pre.className = side;
+        if (payload != null) {
+          const pre = document.createElement('div');
+          pre.className = `${cls} indent`;
           pre.textContent = JSON.stringify(payload, null, 2);
           logEl.appendChild(pre);
         }
         logEl.scrollTop = logEl.scrollHeight;
       }
-
-      function setStatus(side) {
-        const st = state[side];
-        const txt = `Status: ${st.ws ? (st.authed ? "connected+authed" : "connected") : "disconnected"}`;
-        if (side === "host") hostStatus.textContent = txt;
-        else joinStatus.textContent = txt;
+      function sysLog(text) {
+        clearPlaceholder();
+        const stamp = new Date().toLocaleTimeString();
+        const d = document.createElement('div');
+        d.className = 'sys';
+        d.textContent = `[${stamp}] [sys] ${text}`;
+        logEl.appendChild(d);
+        logEl.scrollTop = logEl.scrollHeight;
       }
 
-      function connect(side) {
-        const url = side === "host" ? $("hostUrl").value.trim() : $("joinUrl").value.trim();
-        const token = side === "host" ? $("hostToken").value.trim() : $("joinToken").value.trim();
-        if (!url || !token) {
-          log(side, "missing url/token");
+      // ── Log copy / clear ──────────────────────────────────────────────────
+      $('btnCopyLog').onclick = () => {
+        const text = Array.from(logEl.children).map(e => e.textContent).join('\n');
+        if (!text.trim()) return;
+        navigator.clipboard.writeText(text).then(() => {
+          $('btnCopyLog').textContent = 'Copied!';
+          setTimeout(() => ($('btnCopyLog').textContent = 'Copy'), 1500);
+        }).catch(() => {
+          const ta = Object.assign(document.createElement('textarea'), { value: text });
+          ta.style.cssText = 'position:fixed;opacity:0;';
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+          $('btnCopyLog').textContent = 'Copied!';
+          setTimeout(() => ($('btnCopyLog').textContent = 'Copy'), 1500);
+        });
+      };
+      $('btnClearLog').onclick = () => {
+        logEl.innerHTML = '<div class="placeholder">Log cleared.</div>';
+      };
+
+      // ── Dark mode ─────────────────────────────────────────────────────────
+      $('btnDark').onclick = () => {
+        const dark = document.documentElement.getAttribute('data-theme') !== 'dark';
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        $('btnDark').textContent = dark ? '☀ Light' : '◑ Dark';
+      };
+
+      // ── Sound ─────────────────────────────────────────────────────────────
+      $('btnSound').onclick = () => {
+        soundEnabled = !soundEnabled;
+        $('btnSound').textContent = soundEnabled ? '♪ On' : '♪ Off';
+      };
+      function getAudioCtx() {
+        if (!audioCtx || audioCtx.state === 'closed') audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        return audioCtx;
+      }
+      function playNote(freq, offsetMs, durationMs, vol = 0.07) {
+        if (!soundEnabled) return;
+        try {
+          const ctx  = getAudioCtx();
+          if (ctx.state === 'suspended') ctx.resume();
+          const osc  = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.connect(gain); gain.connect(ctx.destination);
+          osc.frequency.value = freq; osc.type = 'sine';
+          const t = ctx.currentTime + offsetMs / 1000;
+          gain.gain.setValueAtTime(vol, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + durationMs / 1000);
+          osc.start(t); osc.stop(t + durationMs / 1000);
+        } catch (_e) {}
+      }
+      const playSessionStart = () => { playNote(523, 0, 100); playNote(659, 120, 150); };
+      const playCheckin      = () =>   playNote(880, 0, 80, 0.04);
+      const playSessionEnd   = () => { playNote(440, 0, 180); playNote(330, 200, 280); };
+
+      // ── Export proof ──────────────────────────────────────────────────────
+      $('btnExport').onclick = exportProof;
+      function exportProof() {
+        const proof = {
+          exportedAt: new Date().toISOString(),
+          peers: {
+            host:   state.host.info   ? { key: state.host.info.peer,   address: state.host.info.address }   : null,
+            joiner: state.joiner.info ? { key: state.joiner.info.peer, address: state.joiner.info.address } : null,
+          },
+          room:           activeRoom,
+          stats:          currentStats,
+          proofSteps:     { ...proofSteps },
+          events:         collectedEvents.slice(),
+          sessionHistory: sessionHistory.slice(),
+        };
+        const blob = new Blob([JSON.stringify(proof, null, 2)], { type: 'application/json' });
+        const url  = URL.createObjectURL(blob);
+        const a    = Object.assign(document.createElement('a'), {
+          href: url,
+          download: `focus-proof-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}.json`,
+        });
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        sysLog('Proof JSON exported.');
+      }
+
+      // ── Countdown ─────────────────────────────────────────────────────────
+      function formatMs(ms) {
+        const s = Math.max(0, Math.floor(ms / 1000));
+        return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+      }
+      function formatClock(ts) {
+        return new Date(ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      }
+      function startCountdown(endsAt) {
+        if (countdownInterval) clearInterval(countdownInterval);
+        const tick = () => {
+          const rem = endsAt - Date.now();
+          const el  = $('countdown');
+          if (!el) return;
+          el.textContent = rem <= 0 ? '0:00' : formatMs(rem);
+          el.className   = (rem > 0 && rem < 120000) ? 'countdown danger' : 'countdown';
+          if (rem <= 0) { clearInterval(countdownInterval); countdownInterval = null; }
+        };
+        tick(); countdownInterval = setInterval(tick, 1000);
+      }
+      function stopCountdown() {
+        if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
+        const el = $('countdown'); if (el) { el.textContent = '—'; el.className = 'countdown'; }
+      }
+
+      // ── Heartbeat ─────────────────────────────────────────────────────────
+      function startHeartbeat() {
+        if (heartbeatInterval) clearInterval(heartbeatInterval);
+        heartbeatInterval = setInterval(() => {
+          for (const side of ['host', 'joiner']) {
+            if (state[side].ws && state[side].authed) {
+              state[side].ws.send(JSON.stringify({ type: 'ping' })); // no id → not tracked in pendingRequests
+            }
+            updateConnectionStatus(side);
+          }
+        }, 30000);
+        // Refresh heartbeat indicator every 10s
+        setInterval(() => {
+          for (const side of ['host', 'joiner']) updateConnectionStatus(side);
+        }, 10000);
+      }
+
+      // ── Peer identity ─────────────────────────────────────────────────────
+      function shortKey(key) {
+        if (!key || key.length < 12) return key || '—';
+        return `${key.slice(0, 8)}…${key.slice(-4)}`;
+      }
+      function updateIdentity(side, info) {
+        const el = $(side === 'host' ? 'hostIdentity' : 'joinIdentity');
+        if (!el) return;
+        if (!info) { el.textContent = '—'; return; }
+        const parts = [];
+        if (info.peer)    parts.push(`key: ${shortKey(info.peer)}`);
+        if (info.address) parts.push(`addr: ${info.address.slice(0, 24)}…`);
+        el.innerHTML = parts.length ? parts.map(t => `<div>${t}</div>`).join('') : '—';
+      }
+
+      // ── Readiness & screenshot-ready ──────────────────────────────────────
+      function updateReadiness() {
+        const hOk = state.host.authed, jOk = state.joiner.authed;
+        const el  = $('readiness');
+        const txt = $('readinessText');
+        const sub = $('readinessSub');
+        const ico = $('readinessIcon');
+        $('bannerHost').classList.toggle('ok', hOk);
+        $('bannerJoiner').classList.toggle('ok', jOk);
+        if (hOk && jOk) {
+          el.className = 'banner ready'; ico.textContent = '✓';
+          txt.textContent = 'Both peers connected and ready.';
+          sub.textContent = '';
+        } else if (hOk || jOk) {
+          el.className = 'banner partial'; ico.textContent = '◑';
+          txt.textContent = hOk ? 'Host connected' : 'Joiner connected';
+          sub.textContent = hOk ? 'Connect the joiner bridge to continue.' : 'Connect the host bridge to continue.';
+        } else {
+          el.className = 'banner none'; ico.textContent = '⚠';
+          txt.textContent = 'No peers connected';
+          sub.innerHTML = 'Run <code>./proof/start-local-hosting.ps1</code> then connect both bridges above.';
+        }
+      }
+
+      // ── Connection status ─────────────────────────────────────────────────
+      function updateConnectionStatus(side) {
+        const st  = state[side];
+        const el  = $(side === 'host' ? 'hostStatus' : 'joinStatus');
+        if (!el) return;
+        if (st.ws && st.authed) {
+          const age   = st.lastPongAt ? Date.now() - st.lastPongAt : null;
+          let dot     = '';
+          if (age !== null) {
+            const color = age < 35000 ? '#22c55e' : age < 65000 ? '#f59e0b' : '#ef4444';
+            const title = `pong ${Math.round(age / 1000)}s ago`;
+            dot = ` <span style="color:${color};font-size:0.7rem;" title="${title}">●</span>`;
+          }
+          el.innerHTML = `Status: connected + authed${dot}`;
+        } else if (st.ws) {
+          el.textContent = 'Status: connecting…';
+        } else {
+          el.textContent = 'Status: disconnected';
+        }
+      }
+
+      // ── Proof checklist ───────────────────────────────────────────────────
+      const proofSteps = { hostConnected: false, joinerConnected: false, joinerJoined: false, hostStarted: false, joinerCheckedIn: false, sessionEnded: false };
+      function markStep(step, done) {
+        proofSteps[step] = done;
+        const el = $(`step-${step}`);
+        if (el) el.classList.toggle('done', done);
+      }
+      $('btnReset').onclick = () => {
+        Object.keys(proofSteps).forEach(k => markStep(k, false));
+        activeRoom = null; currentStats = null;
+        stopCountdown();
+        $('roomPanel').classList.remove('visible');
+        $('statsCard').style.display = 'none';
+        sysLog('Proof state reset.');
+      };
+
+      // ── Room panel ────────────────────────────────────────────────────────
+      function updateRoomPanel(room) {
+        if (!room || typeof room !== 'object') return;
+        activeRoom = { ...(activeRoom || {}), ...room };
+        $('roomPanel').classList.add('visible');
+        $('roomPanelName').textContent = activeRoom.room || '?';
+        $('roomPanelGoal').textContent = activeRoom.goal || '—';
+        $('roomPanelHost').textContent = shortKey(activeRoom.host) || '—';
+
+        const badge = $('roomPanelBadge');
+        badge.textContent = activeRoom.status || '—';
+        badge.className   = 'room-status-badge';
+        badge.classList.add(activeRoom.status === 'active' ? 'badge-active' : activeRoom.status === 'ended' ? 'badge-ended' : 'badge-idle');
+
+        if (activeRoom.status === 'active' && activeRoom.endsAt) {
+          startCountdown(activeRoom.endsAt);
+          $('countdownSub').textContent = `remaining · ends ${formatClock(activeRoom.endsAt)}`;
+        } else if (activeRoom.status === 'ended') {
+          stopCountdown();
+          $('countdownSub').textContent = 'session ended';
+        }
+
+        const pEl = $('roomPanelParticipants');
+        pEl.innerHTML = '';
+        const parts = activeRoom.participants;
+        if (Array.isArray(parts) && parts.length) {
+          parts.forEach(p => {
+            const chip = document.createElement('span');
+            chip.className = 'participant-chip'; chip.textContent = shortKey(p);
+            pEl.appendChild(chip);
+          });
+        } else { pEl.textContent = '—'; }
+
+        const checkins    = activeRoom.checkins;
+        const lastCheckin = Array.isArray(checkins) && checkins.length ? checkins[checkins.length - 1] : null;
+        $('roomPanelLastCheckin').textContent = lastCheckin ? `${shortKey(lastCheckin.who)}: "${lastCheckin.status}"` : '—';
+
+      }
+
+      // ── Stats ─────────────────────────────────────────────────────────────
+      function showStats(stats) {
+        if (!stats) return;
+        currentStats = stats;
+        const card = $('statsCard'); card.style.display = 'block';
+        $('statPlanned').textContent      = formatMs(stats.plannedDurationMs  || 0);
+        $('statActual').textContent       = formatMs(stats.actualDurationMs   || 0);
+        $('statParticipants').textContent = stats.participantCount ?? '—';
+        $('statCheckins').textContent     = stats.checkinCount      ?? '—';
+        const pct = stats.plannedDurationMs > 0
+          ? Math.min(Math.round((stats.actualDurationMs / stats.plannedDurationMs) * 100), 100)
+          : 0;
+        $('statsBarPct').textContent     = `${pct}%`;
+        $('statsBarFill').style.width    = `${pct}%`;
+        $('statsBarFill').classList.toggle('over', (stats.actualDurationMs || 0) > (stats.plannedDurationMs || 1));
+      }
+
+      // ── Session history ───────────────────────────────────────────────────
+      function addToHistory() {
+        if (!activeRoom) return;
+        sessionHistory.unshift({
+          room: activeRoom.room, goal: activeRoom.goal,
+          endedAt: new Date().toISOString(), endedReason: activeRoom.endedReason || 'manual',
+          stats: currentStats,
+        });
+        const card = $('historyCard'); card.style.display = 'block';
+        const list = $('historyList');
+        list.innerHTML = sessionHistory.map(s =>
+          `<div class="history-item">
+            <div class="history-room">${s.room}</div>
+            <div class="history-meta">${s.goal ? `"${s.goal}" · ` : ''}${s.stats ? formatMs(s.stats.actualDurationMs) + ' actual · ' + (s.stats.participantCount || 0) + ' peers' : ''}</div>
+            <div class="history-time">${s.endedAt.slice(11, 19)} UTC · ${s.endedReason}</div>
+          </div>`
+        ).join('');
+      }
+
+      // ── Message handler ───────────────────────────────────────────────────
+      function handleMessage(side, msg) {
+        // Resolve pending adaptive-flow request
+        if (msg.id != null && pendingRequests.has(msg.id)) {
+          const req = pendingRequests.get(msg.id);
+          pendingRequests.delete(msg.id);
+          clearTimeout(req.timer);
+          req.resolve(msg);
+          // fall through — still update UI
+        }
+
+        // Collect events for export
+        collectedEvents.push({ at: Date.now(), side, type: msg.type, eventType: msg.eventType, data: msg });
+
+        const type = msg.type;
+
+        // Push event from FocusRoom (local emit or P2P-propagated remote)
+        if (type === 'focus_event') {
+          const et = msg.eventType || '?';
+          const p  = msg.payload   || {};
+          log(side, '←', `focus_event:${et}`, Object.keys(p).length ? p : undefined);
+          if      (et === 'session_start')                       { updateRoomPanel({ room: p.room, host: p.host, goal: p.goal, endsAt: p.endsAt, startedAt: p.startedAt, status: 'active' }); playSessionStart(); }
+          else if (et === 'session_join')                        { const prev = activeRoom?.participants || []; if (p.who && !prev.includes(p.who)) updateRoomPanel({ participants: [...prev, p.who] }); }
+          else if (et === 'session_extend')                      { updateRoomPanel({ endsAt: p.endsAt }); }
+          else if (et === 'session_checkin')                     { playCheckin(); }
+          else if (et === 'session_expired' || et === 'session_end') {
+            updateRoomPanel({ status: 'ended', endedAt: p.at, endedReason: et === 'session_expired' ? 'timer' : 'manual' });
+            markStep('sessionEnded', true); stopCountdown();
+            if (p.stats) showStats(p.stats);
+            addToHistory(); playSessionEnd();
+            const pfBtn = $('btnProofFlow');
+            pfBtn.classList.remove('running'); pfBtn.textContent = '▶ Run Proof Flow'; pfBtn.disabled = false;
+          }
           return;
         }
-        if (state[side].ws) state[side].ws.close();
-        const ws = new WebSocket(url);
-        state[side].ws = ws;
-        state[side].authed = false;
-        setStatus(side);
-        log(side, `connecting ${url}`);
 
-        ws.onopen = () => log(side, "socket open");
+        switch (type) {
+          case 'focus_started':
+            markStep('hostStarted', true);
+            if (msg.room) updateRoomPanel(msg.room);
+            log(side, '←', 'focus_started', msg.room);
+            playSessionStart();
+            break;
+          case 'focus_joined':
+            if (side === 'joiner') markStep('joinerJoined', true);
+            if (msg.room) updateRoomPanel(msg.room);
+            log(side, '←', 'focus_joined', msg.room);
+            break;
+          case 'focus_checked_in':
+            if (side === 'joiner') markStep('joinerCheckedIn', true);
+            if (msg.room) updateRoomPanel(msg.room);
+            log(side, '←', 'focus_checked_in', msg.room);
+            playCheckin();
+            break;
+          case 'focus_extended':
+            if (msg.room) updateRoomPanel(msg.room);
+            log(side, '←', 'focus_extended', msg.room);
+            break;
+          case 'focus_ended':
+            markStep('sessionEnded', true); stopCountdown();
+            if (msg.room) updateRoomPanel({ ...msg.room, status: 'ended', endedReason: 'manual' });
+            if (msg.stats)            showStats(msg.stats);
+            else if (msg.room?.stats) showStats(msg.room.stats);
+            log(side, '←', 'focus_ended', { room: msg.room?.room, stats: msg.stats || msg.room?.stats });
+            addToHistory(); playSessionEnd();
+            { const pfBtn = $('btnProofFlow'); pfBtn.classList.remove('running'); pfBtn.textContent = '▶ Run Proof Flow'; pfBtn.disabled = false; }
+            break;
+          case 'focus_status':
+            if (msg.room) {
+              if (Array.isArray(msg.room)) log(side, '←', `focus_status (${msg.room.length} rooms)`, msg.room);
+              else { updateRoomPanel(msg.room); log(side, '←', 'focus_status', msg.room); }
+            }
+            break;
+          case 'focus_rooms':
+            log(side, '←', `focus_rooms (${(msg.rooms || []).length})`, msg.rooms);
+            break;
+          case 'focus_streaks':
+            log(side, '←', 'focus_streaks', msg.streaks);
+            break;
+          case 'pong':
+            state[side].lastPongAt = Date.now();
+            updateConnectionStatus(side);
+            // Don't log heartbeat pongs — keep log clean
+            break;
+          case 'error':
+            log(side, '←', `error: ${msg.error}`);
+            break;
+          default:
+            log(side, '←', type, msg);
+        }
+      }
+
+      // ── Connect / disconnect ──────────────────────────────────────────────
+      function connect(side) {
+        const st    = state[side];
+        st.manualDisconnect = false;
+        const url   = side === 'host' ? $('hostUrl').value.trim()   : $('joinUrl').value.trim();
+        const token = side === 'host' ? $('hostToken').value.trim() : $('joinToken').value.trim();
+        if (!url || !token) { sysLog(`${side}: missing url or token`); return; }
+        if (st.ws) st.ws.close();
+
+        const ws = new WebSocket(url);
+        st.ws = ws; st.authed = false; st.info = null;
+        updateIdentity(side, null); updateConnectionStatus(side); updateToggleButton(side); updateReadiness();
+        sysLog(`${side}: connecting to ${url}…`);
+
+        ws.onopen  = () => sysLog(`${side}: socket open`);
+        ws.onerror = () => sysLog(`${side}: socket error`);
         ws.onclose = () => {
-          state[side].ws = null;
-          state[side].authed = false;
-          setStatus(side);
-          log(side, "socket closed");
+          st.ws = null; st.authed = false;
+          // Reject pending requests for this side
+          for (const [id, req] of pendingRequests.entries()) {
+            if (req.side === side) { clearTimeout(req.timer); req.reject(new Error('disconnected')); pendingRequests.delete(id); }
+          }
+          updateConnectionStatus(side); updateToggleButton(side); updateReadiness();
+          markStep(side === 'host' ? 'hostConnected' : 'joinerConnected', false);
+
+          if (!st.manualDisconnect && st.reconnectAttempts < 3) {
+            st.reconnectAttempts++;
+            const delay = st.reconnectAttempts * 2000;
+            sysLog(`${side}: lost — reconnecting in ${delay / 1000}s (attempt ${st.reconnectAttempts}/3)…`);
+            setTimeout(() => { if (!st.manualDisconnect) connect(side); }, delay);
+          } else {
+            sysLog(`${side}: ${st.manualDisconnect ? 'disconnected' : 'max retries reached'}`);
+            st.reconnectAttempts = 0;
+          }
         };
-        ws.onerror = () => log(side, "socket error");
         ws.onmessage = (ev) => {
-          let msg = null;
-          try {
-            msg = JSON.parse(ev.data);
-          } catch (_e) {
-            log(side, "non-json message");
+          let msg; try { msg = JSON.parse(ev.data); } catch (_e) { sysLog(`${side}: non-JSON`); return; }
+          if (msg.type === 'hello') {
+            st.info = msg; updateIdentity(side, msg);
+            ws.send(JSON.stringify({ type: 'auth', token }));
+            sysLog(`${side}: hello → sending auth`);
             return;
           }
-          if (msg.type === "hello") {
-            ws.send(JSON.stringify({ type: "auth", token }));
-            log(side, "hello -> sent auth");
+          if (msg.type === 'auth_ok') {
+            st.authed = true; st.reconnectAttempts = 0;
+            updateConnectionStatus(side); updateToggleButton(side); updateReadiness();
+            markStep(side === 'host' ? 'hostConnected' : 'joinerConnected', true);
+            sysLog(`${side}: authenticated`);
             return;
           }
-          if (msg.type === "auth_ok") {
-            state[side].authed = true;
-            setStatus(side);
-            log(side, "authenticated");
-            return;
-          }
-          log(side, `recv ${msg.type || "message"}`, msg);
+          handleMessage(side, msg);
         };
       }
 
       function disconnect(side) {
+        state[side].manualDisconnect = true;
+        state[side].reconnectAttempts = 0;
         if (state[side].ws) state[side].ws.close();
       }
 
+      // ── Adaptive send (returns Promise) ───────────────────────────────────
       function send(side, type, payload = {}) {
         const st = state[side];
         if (!st.ws || !st.authed) {
-          log(side, `cannot send ${type}; not connected`);
-          return;
+          sysLog(`${side}: cannot send ${type} — not ready`);
+          return Promise.reject(new Error('not ready'));
         }
-        const msg = { id: st.nextId++, type, ...payload };
-        st.ws.send(JSON.stringify(msg));
-        log(side, `sent ${type}`, msg);
+        return new Promise((resolve, reject) => {
+          const id  = st.nextId++;
+          const msg = { id, type, ...payload };
+          const timer = setTimeout(() => {
+            pendingRequests.delete(id);
+            reject(new Error(`timeout: ${type}`));
+          }, 8000);
+          pendingRequests.set(id, { side, resolve, reject, timer });
+          st.ws.send(JSON.stringify(msg));
+          const keys = Object.keys(payload);
+          log(side, '→', type, keys.length ? payload : undefined);
+        });
       }
 
-      function roomPayload() {
-        return {
-          room: $("roomName").value.trim(),
-          goal: $("goal").value.trim(),
-          minutes: Number.parseInt($("minutes").value.trim(), 10) || 25,
-          status: $("statusText").value.trim(),
-        };
-      }
+      // ── Room field helpers ────────────────────────────────────────────────
+      const room    = () => $('roomName').value.trim();
+      const goal    = () => $('goal').value.trim();
+      const mins    = () => Number.parseInt($('minutes').value.trim(), 10) || 25;
+      const note    = () => $('statusText').value.trim();
+      const summary = () => $('summaryText').value.trim();
 
+      // ── Adaptive proof flow ───────────────────────────────────────────────
       async function runProofFlow() {
-        const p = roomPayload();
-        send("joiner", "focus_join", { room: p.room });
-        await new Promise((r) => setTimeout(r, 400));
-        send("host", "focus_start", { room: p.room, minutes: p.minutes, goal: p.goal });
-        await new Promise((r) => setTimeout(r, 400));
-        send("joiner", "focus_checkin", { room: p.room, status: p.status });
-        await new Promise((r) => setTimeout(r, 400));
-        send("host", "focus_status", { room: p.room });
-        await new Promise((r) => setTimeout(r, 400));
-        send("host", "focus_rooms", {});
+        const btn = $('btnProofFlow');
+        btn.disabled = true; btn.textContent = 'Running Proof Flow'; btn.classList.add('running');
+        try {
+          const r = room();
+          await send('joiner', 'focus_join',    { room: r });
+          await send('host',   'focus_start',   { room: r, minutes: mins(), goal: goal() });
+          await send('joiner', 'focus_checkin', { room: r, status: note() });
+          await send('host',   'focus_status',  { room: r });
+          await send('host',   'focus_rooms',   {});
+          await send('host',   'focus_end',     { room: r, summary: summary() || 'proof flow complete' });
+          await send('host',   'focus_streaks', {});
+          btn.classList.remove('running');
+          btn.textContent = '✓ Done';
+          btn.disabled = false;
+          setTimeout(() => { btn.textContent = '▶ Run Proof Flow'; }, 1800);
+          sysLog('Proof flow complete.');
+        } catch (err) {
+          sysLog(`Proof flow error: ${err.message}`);
+          btn.classList.remove('running'); btn.textContent = '▶ Run Proof Flow'; btn.disabled = false;
+        }
       }
 
-      $("hostConnect").onclick = () => connect("host");
-      $("hostDisconnect").onclick = () => disconnect("host");
-      $("joinConnect").onclick = () => connect("joiner");
-      $("joinDisconnect").onclick = () => disconnect("joiner");
+      // ── Keyboard shortcuts ────────────────────────────────────────────────
+      document.addEventListener('keydown', (e) => {
+        const mod = e.ctrlKey || e.metaKey;
+        if (!mod) return;
+        switch (e.key) {
+          case 'p': e.preventDefault(); runProofFlow(); break;
+          case 'r': e.preventDefault(); $('btnReset').click(); break;
+          case 'd': e.preventDefault(); exportProof(); break;
+          case 's': e.preventDefault(); send('host', 'focus_status', { room: room() }).catch(() => {}); break;
+        }
+      });
 
-      $("btnJoin").onclick = () => send("joiner", "focus_join", { room: roomPayload().room });
-      $("btnStart").onclick = () => {
-        const p = roomPayload();
-        send("host", "focus_start", { room: p.room, minutes: p.minutes, goal: p.goal });
-      };
-      $("btnCheckin").onclick = () => {
-        const p = roomPayload();
-        send("joiner", "focus_checkin", { room: p.room, status: p.status });
-      };
-      $("btnStatus").onclick = () => send("host", "focus_status", { room: roomPayload().room });
-      $("btnRooms").onclick = () => send("host", "focus_rooms", {});
-      $("btnExtend").onclick = () => send("host", "focus_extend", { room: roomPayload().room, minutes: 5 });
-      $("btnEnd").onclick = () =>
-        send("host", "focus_end", { room: roomPayload().room, summary: "proof flow complete" });
-      $("btnProofFlow").onclick = () => runProofFlow();
+      // ── Button wiring ─────────────────────────────────────────────────────
+      function updateToggleButton(side) {
+        const btn       = $(side === 'host' ? 'hostToggle' : 'joinToggle');
+        const connected = !!(state[side].ws);
+        btn.textContent = connected ? 'Disconnect' : 'Connect';
+        btn.className   = connected ? 'ghost' : (side === 'host' ? 'host' : 'joiner');
+        btn.style.width = '100%';
+      }
+      $('hostToggle').onclick = () => state['host'].ws  ? disconnect('host')   : connect('host');
+      $('joinToggle').onclick = () => state['joiner'].ws ? disconnect('joiner') : connect('joiner');
+
+      $('btnJoin').onclick      = () => send('joiner', 'focus_join',    { room: room() }).catch(() => {});
+      $('btnStart').onclick     = () => send('host',   'focus_start',   { room: room(), minutes: mins(), goal: goal() }).catch(() => {});
+      $('btnCheckin').onclick   = () => send('joiner', 'focus_checkin', { room: room(), status: note() }).catch(() => {});
+      $('btnStatus').onclick    = () => send('host',   'focus_status',  { room: room() }).catch(() => {});
+      $('btnExtend').onclick    = () => send('host',   'focus_extend',  { room: room(), minutes: 5 }).catch(() => {});
+      $('btnEnd').onclick       = () => send('host',   'focus_end',     { room: room(), summary: summary() }).catch(err => sysLog(`end session error: ${err.message}`));
+      $('btnRooms').onclick     = () => send('host',   'focus_rooms',   {}).catch(() => {});
+      $('btnStreaks').onclick    = () => send('host',   'focus_streaks', {}).catch(() => {});
+      $('btnProofFlow').onclick = () => runProofFlow();
+
+      // ── Init ──────────────────────────────────────────────────────────────
+      startHeartbeat();
     </script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-26T10:50:43.786Z",
+  "generatedAt": "2026-02-26T13:36:54.927Z",
   "sequence": [
     {
       "step": "focus_start",
@@ -9,9 +9,9 @@
           "room": "ship-room",
           "host": "a1b2c3d4peerhost",
           "goal": "ship focus-room v2",
-          "startedAt": 1772103043781,
-          "endsAt": 1772104543781,
-          "lastEventAt": 1772103043781,
+          "startedAt": 1772113014927,
+          "endsAt": 1772114514927,
+          "lastEventAt": 1772113014927,
           "status": "active",
           "endedAt": null,
           "endedReason": null,
@@ -31,9 +31,9 @@
           "room": "ship-room",
           "host": "a1b2c3d4peerhost",
           "goal": "ship focus-room v2",
-          "startedAt": 1772103043781,
-          "endsAt": 1772104543781,
-          "lastEventAt": 1772103043783,
+          "startedAt": 1772113014927,
+          "endsAt": 1772114514927,
+          "lastEventAt": 1772113014932,
           "status": "active",
           "endedAt": null,
           "endedReason": null,
@@ -53,9 +53,9 @@
           "room": "ship-room",
           "host": "a1b2c3d4peerhost",
           "goal": "ship focus-room v2",
-          "startedAt": 1772103043781,
-          "endsAt": 1772104543781,
-          "lastEventAt": 1772103043783,
+          "startedAt": 1772113014927,
+          "endsAt": 1772114514927,
+          "lastEventAt": 1772113014932,
           "status": "active",
           "endedAt": null,
           "endedReason": null,
@@ -65,7 +65,7 @@
           "checkins": [
             {
               "who": "a1b2c3d4peerhost",
-              "at": 1772103043783,
+              "at": 1772113014932,
               "status": "timer + sc-bridge wired"
             }
           ],
@@ -81,9 +81,9 @@
           "room": "ship-room",
           "host": "a1b2c3d4peerhost",
           "goal": "ship focus-room v2",
-          "startedAt": 1772103043781,
-          "endsAt": 1772104843781,
-          "lastEventAt": 1772103043784,
+          "startedAt": 1772113014927,
+          "endsAt": 1772114814927,
+          "lastEventAt": 1772113014933,
           "status": "active",
           "endedAt": null,
           "endedReason": null,
@@ -93,7 +93,7 @@
           "checkins": [
             {
               "who": "a1b2c3d4peerhost",
-              "at": 1772103043783,
+              "at": 1772113014932,
               "status": "timer + sc-bridge wired"
             }
           ],
@@ -109,11 +109,11 @@
           "room": "ship-room",
           "host": "a1b2c3d4peerhost",
           "goal": "ship focus-room v2",
-          "startedAt": 1772103043781,
-          "endsAt": 1772104843781,
-          "lastEventAt": 1772103043785,
+          "startedAt": 1772113014927,
+          "endsAt": 1772114814927,
+          "lastEventAt": 1772113014933,
           "status": "ended",
-          "endedAt": 1772103043785,
+          "endedAt": 1772113014933,
           "endedReason": "manual",
           "participants": [
             "a1b2c3d4peerhost"
@@ -121,20 +121,20 @@
           "checkins": [
             {
               "who": "a1b2c3d4peerhost",
-              "at": 1772103043783,
+              "at": 1772113014932,
               "status": "timer + sc-bridge wired"
             }
           ],
           "stats": {
             "plannedDurationMs": 1800000,
-            "actualDurationMs": 4,
+            "actualDurationMs": 6,
             "participantCount": 1,
             "checkinCount": 1
           }
         },
         "stats": {
           "plannedDurationMs": 1800000,
-          "actualDurationMs": 4,
+          "actualDurationMs": 6,
           "participantCount": 1,
           "checkinCount": 1
         }
@@ -148,9 +148,9 @@
         "room": "auto-expire-room",
         "host": "a1b2c3d4peerhost",
         "goal": "prove expiry",
-        "startedAt": 1772103043785,
-        "endsAt": 1772103103785,
-        "lastEventAt": 1772103043785,
+        "startedAt": 1772113014934,
+        "endsAt": 1772113074934,
+        "lastEventAt": 1772113014934,
         "status": "active",
         "endedAt": null,
         "endedReason": null,
@@ -167,11 +167,11 @@
         "room": "auto-expire-room",
         "host": "a1b2c3d4peerhost",
         "goal": "prove expiry",
-        "startedAt": 1772103043785,
-        "endsAt": 1772103043785,
-        "lastEventAt": 1772103043786,
+        "startedAt": 1772113014934,
+        "endsAt": 1772113014934,
+        "lastEventAt": 1772113014935,
         "status": "ended",
-        "endedAt": 1772103043786,
+        "endedAt": 1772113014935,
         "endedReason": "timer",
         "participants": [
           "a1b2c3d4peerhost"
@@ -197,11 +197,11 @@
       "room": "ship-room",
       "host": "a1b2c3d4peerhost",
       "goal": "ship focus-room v2",
-      "startedAt": 1772103043781,
-      "endsAt": 1772104843781,
-      "lastEventAt": 1772103043785,
+      "startedAt": 1772113014927,
+      "endsAt": 1772114814927,
+      "lastEventAt": 1772113014933,
       "status": "ended",
-      "endedAt": 1772103043785,
+      "endedAt": 1772113014933,
       "endedReason": "manual",
       "participants": [
         "a1b2c3d4peerhost"
@@ -209,13 +209,13 @@
       "checkins": [
         {
           "who": "a1b2c3d4peerhost",
-          "at": 1772103043783,
+          "at": 1772113014932,
           "status": "timer + sc-bridge wired"
         }
       ],
       "stats": {
         "plannedDurationMs": 1800000,
-        "actualDurationMs": 4,
+        "actualDurationMs": 6,
         "participantCount": 1,
         "checkinCount": 1
       }
@@ -224,11 +224,11 @@
       "room": "auto-expire-room",
       "host": "a1b2c3d4peerhost",
       "goal": "prove expiry",
-      "startedAt": 1772103043785,
-      "endsAt": 1772103043785,
-      "lastEventAt": 1772103043786,
+      "startedAt": 1772113014934,
+      "endsAt": 1772113014934,
+      "lastEventAt": 1772113014935,
       "status": "ended",
-      "endedAt": 1772103043786,
+      "endedAt": 1772113014935,
       "endedReason": "timer",
       "participants": [
         "a1b2c3d4peerhost"
@@ -258,10 +258,10 @@
         "room": "ship-room",
         "host": "a1b2c3d4peerhost",
         "goal": "ship focus-room v2",
-        "startedAt": 1772103043781,
-        "endsAt": 1772104543781
+        "startedAt": 1772113014927,
+        "endsAt": 1772114514927
       },
-      "at": 1772103043781,
+      "at": 1772113014927,
       "by": "a1b2c3d4peerhost",
       "source": "local"
     },
@@ -271,9 +271,9 @@
       "payload": {
         "room": "ship-room",
         "who": "a1b2c3d4peerhost",
-        "at": 1772103043783
+        "at": 1772113014932
       },
-      "at": 1772103043783,
+      "at": 1772113014932,
       "by": "a1b2c3d4peerhost",
       "source": "local"
     },
@@ -284,9 +284,9 @@
         "room": "ship-room",
         "who": "a1b2c3d4peerhost",
         "status": "timer + sc-bridge wired",
-        "at": 1772103043783
+        "at": 1772113014932
       },
-      "at": 1772103043783,
+      "at": 1772113014932,
       "by": "a1b2c3d4peerhost",
       "source": "local"
     },
@@ -297,10 +297,10 @@
         "room": "ship-room",
         "who": "a1b2c3d4peerhost",
         "minutes": 5,
-        "endsAt": 1772104843781,
-        "at": 1772103043784
+        "endsAt": 1772114814927,
+        "at": 1772113014933
       },
-      "at": 1772103043784,
+      "at": 1772113014933,
       "by": "a1b2c3d4peerhost",
       "source": "local"
     },
@@ -311,15 +311,15 @@
         "room": "ship-room",
         "who": "a1b2c3d4peerhost",
         "summary": "feature complete",
-        "at": 1772103043785,
+        "at": 1772113014933,
         "stats": {
           "plannedDurationMs": 1800000,
-          "actualDurationMs": 4,
+          "actualDurationMs": 6,
           "participantCount": 1,
           "checkinCount": 1
         }
       },
-      "at": 1772103043785,
+      "at": 1772113014933,
       "by": "a1b2c3d4peerhost",
       "source": "local"
     },
@@ -330,10 +330,10 @@
         "room": "auto-expire-room",
         "host": "a1b2c3d4peerhost",
         "goal": "prove expiry",
-        "startedAt": 1772103043785,
-        "endsAt": 1772103103785
+        "startedAt": 1772113014934,
+        "endsAt": 1772113074934
       },
-      "at": 1772103043785,
+      "at": 1772113014934,
       "by": "a1b2c3d4peerhost",
       "source": "local"
     },
@@ -344,7 +344,7 @@
         "room": "auto-expire-room",
         "who": "a1b2c3d4peerhost",
         "reason": "timer",
-        "at": 1772103043786,
+        "at": 1772113014935,
         "stats": {
           "plannedDurationMs": 0,
           "actualDurationMs": 1,
@@ -352,7 +352,7 @@
           "checkinCount": 0
         }
       },
-      "at": 1772103043786,
+      "at": 1772113014935,
       "by": "a1b2c3d4peerhost",
       "source": "local"
     }
@@ -367,10 +367,10 @@
           "room": "ship-room",
           "host": "a1b2c3d4peerhost",
           "goal": "ship focus-room v2",
-          "startedAt": 1772103043781,
-          "endsAt": 1772104543781
+          "startedAt": 1772113014927,
+          "endsAt": 1772114514927
         },
-        "at": 1772103043781,
+        "at": 1772113014927,
         "by": "a1b2c3d4peerhost"
       }
     },
@@ -382,9 +382,9 @@
         "payload": {
           "room": "ship-room",
           "who": "a1b2c3d4peerhost",
-          "at": 1772103043783
+          "at": 1772113014932
         },
-        "at": 1772103043783,
+        "at": 1772113014932,
         "by": "a1b2c3d4peerhost"
       }
     },
@@ -397,9 +397,9 @@
           "room": "ship-room",
           "who": "a1b2c3d4peerhost",
           "status": "timer + sc-bridge wired",
-          "at": 1772103043783
+          "at": 1772113014932
         },
-        "at": 1772103043783,
+        "at": 1772113014932,
         "by": "a1b2c3d4peerhost"
       }
     },
@@ -412,10 +412,10 @@
           "room": "ship-room",
           "who": "a1b2c3d4peerhost",
           "minutes": 5,
-          "endsAt": 1772104843781,
-          "at": 1772103043784
+          "endsAt": 1772114814927,
+          "at": 1772113014933
         },
-        "at": 1772103043784,
+        "at": 1772113014933,
         "by": "a1b2c3d4peerhost"
       }
     },
@@ -428,15 +428,15 @@
           "room": "ship-room",
           "who": "a1b2c3d4peerhost",
           "summary": "feature complete",
-          "at": 1772103043785,
+          "at": 1772113014933,
           "stats": {
             "plannedDurationMs": 1800000,
-            "actualDurationMs": 4,
+            "actualDurationMs": 6,
             "participantCount": 1,
             "checkinCount": 1
           }
         },
-        "at": 1772103043785,
+        "at": 1772113014933,
         "by": "a1b2c3d4peerhost"
       }
     },
@@ -449,10 +449,10 @@
           "room": "auto-expire-room",
           "host": "a1b2c3d4peerhost",
           "goal": "prove expiry",
-          "startedAt": 1772103043785,
-          "endsAt": 1772103103785
+          "startedAt": 1772113014934,
+          "endsAt": 1772113074934
         },
-        "at": 1772103043785,
+        "at": 1772113014934,
         "by": "a1b2c3d4peerhost"
       }
     },
@@ -465,7 +465,7 @@
           "room": "auto-expire-room",
           "who": "a1b2c3d4peerhost",
           "reason": "timer",
-          "at": 1772103043786,
+          "at": 1772113014935,
           "stats": {
             "plannedDurationMs": 0,
             "actualDurationMs": 1,
@@ -473,7 +473,7 @@
             "checkinCount": 0
           }
         },
-        "at": 1772103043786,
+        "at": 1772113014935,
         "by": "a1b2c3d4peerhost"
       }
     }

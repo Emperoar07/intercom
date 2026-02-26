@@ -47,6 +47,15 @@ class FocusRoom {
     return `${minutes}m ${seconds}s`;
   }
 
+  _safeIso(ts) {
+    if (!Number.isFinite(ts)) return 'unknown';
+    try {
+      return new Date(ts).toISOString();
+    } catch (_e) {
+      return 'unknown';
+    }
+  }
+
   _emit(eventType, payload, meta = {}) {
     const entry = {
       app: 'focus_room',
@@ -69,7 +78,9 @@ class FocusRoom {
     } else if (eventType === 'session_checkin') {
       console.log(`[focus:${room}] checkin ${payload.who}: ${payload.status}`);
     } else if (eventType === 'session_extend') {
-      console.log(`[focus:${room}] extended by ${payload.minutes}m | new end ${new Date(payload.endsAt).toISOString()}`);
+      console.log(
+        `[focus:${room}] extended by ${payload.minutes}m | new end ${this._safeIso(payload.endsAt)}`
+      );
     } else if (eventType === 'session_expired') {
       console.log(`[focus:${room}] expired automatically`);
     } else if (eventType === 'session_end') {
@@ -191,6 +202,7 @@ class FocusRoom {
   startSession({ room, minutes = 25, goal = '' }) {
     const roomState = this._upsertRoom(room);
     if (!roomState) return { ok: false, error: 'room is required' };
+    if (roomState.status === 'active') return { ok: false, error: 'room is already active' };
     const startedAt = this._now();
     const durationMin = Number.isFinite(minutes) ? Math.max(1, minutes) : 25;
     const endsAt = startedAt + durationMin * 60_000;
@@ -275,6 +287,7 @@ class FocusRoom {
     const roomState = this._upsertRoom(room);
     if (!roomState) return { ok: false, error: 'room is required' };
     if (roomState.status !== 'active') return { ok: false, error: 'room is not active' };
+    if (roomState.host !== this._selfKey()) return { ok: false, error: 'only host can end session' };
     const at = this._now();
     const stats = this._computeStats(roomState, at);
     this._applySessionEnd(roomState, { stats }, at, 'manual');
@@ -332,15 +345,27 @@ class FocusRoom {
     if (!roomState) return false;
     const actor = String(message.by || payload?.from || 'unknown').toLowerCase();
     const at = Number.isFinite(message.at) ? message.at : this._now();
-    roomState.lastEventAt = at;
+
+    if (Number.isFinite(roomState.lastEventAt) && at < roomState.lastEventAt) {
+      // Ignore stale/out-of-order events to avoid replay-driven state rollback.
+      return false;
+    }
 
     if (eventType === 'session_start') {
-      this._applySessionStart(roomState, data, at);
+      const host = String(data.host || actor).toLowerCase();
+      if (!host || host === 'unknown') return false;
+      if (roomState.status === 'active' && roomState.host && roomState.host !== host) {
+        return false;
+      }
+      this._applySessionStart(roomState, { ...data, host }, at);
     } else if (eventType === 'session_join') {
       roomState.participants.add(String(data.who || actor).toLowerCase());
+      roomState.lastEventAt = at;
     } else if (eventType === 'session_checkin') {
-      const note = String(data.status || '').slice(0, 240);
+      const note = String(data.status || '').trim().slice(0, 240);
+      if (!note) return false;
       const who = String(data.who || actor).toLowerCase();
+      if (!who || who === 'unknown') return false;
       roomState.participants.add(who);
       roomState.checkins.push({
         who,
@@ -348,14 +373,24 @@ class FocusRoom {
         status: note,
       });
       if (roomState.checkins.length > 50) roomState.checkins.shift();
+      roomState.lastEventAt = at;
     } else if (eventType === 'session_extend') {
-      const nextEndsAt = Number.isFinite(data.endsAt) ? data.endsAt : roomState.endsAt;
-      roomState.endsAt = nextEndsAt;
+      const who = String(data.who || actor).toLowerCase();
+      if (roomState.host && who !== roomState.host) return false;
+      if (!Number.isFinite(data.endsAt)) return false;
+      roomState.endsAt = data.endsAt;
+      roomState.lastEventAt = at;
       this._scheduleExpiry(roomState);
     } else if (eventType === 'session_expired') {
+      const who = String(data.who || actor).toLowerCase();
+      if (roomState.host && who !== roomState.host) return false;
       this._applySessionEnd(roomState, data, at, 'timer');
     } else if (eventType === 'session_end') {
+      const who = String(data.who || actor).toLowerCase();
+      if (roomState.host && who !== roomState.host) return false;
       this._applySessionEnd(roomState, data, at, 'manual');
+    } else {
+      return false;
     }
 
     this._emit(eventType, data, { at, by: actor, source: 'remote' });

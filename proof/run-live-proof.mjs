@@ -1,9 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const require = createRequire(import.meta.url);
 
 const LIVE_JSON = path.join(__dirname, 'focus-room-live-proof.json');
 const LIVE_MD = path.join(__dirname, 'focus-room-live-smoke.md');
@@ -29,12 +31,20 @@ function nowIso() {
   return new Date().toISOString();
 }
 
-function createBridgeClient(name, url, token) {
-  if (typeof WebSocket === 'undefined') {
-    throw new Error('This script requires Node with global WebSocket support.');
+function getWebSocketCtor() {
+  if (typeof WebSocket !== 'undefined') return WebSocket;
+  try {
+    const wsPkg = require('ws');
+    return wsPkg.WebSocket || wsPkg.default || wsPkg;
+  } catch (_e) {
+    throw new Error('WebSocket is unavailable. Use Node 22+ or install the "ws" package.');
   }
+}
 
-  const socket = new WebSocket(url);
+function createBridgeClient(name, url, token) {
+  const WebSocketCtor = getWebSocketCtor();
+
+  const socket = new WebSocketCtor(url);
   const transcript = [];
   const asyncEvents = [];
   const pending = new Map();

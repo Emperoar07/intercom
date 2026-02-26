@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-02-26T11:47:46.200Z",
-  "startedAt": "2026-02-26T11:47:42.472Z",
-  "room": "proof-live-mm3efll4",
+  "generatedAt": "2026-02-26T13:36:07.300Z",
+  "startedAt": "2026-02-26T13:36:04.208Z",
+  "room": "proof-live-mm3iaycw",
   "endpoints": {
     "host": "ws://127.0.0.1:49222",
     "joiner": "ws://127.0.0.1:49223"
@@ -9,17 +9,17 @@
   "steps": [
     {
       "step": "joiner.focus_join",
-      "at": "2026-02-26T11:47:42.681Z",
+      "at": "2026-02-26T13:36:04.398Z",
       "response": {
         "id": 1,
         "type": "focus_joined",
         "room": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": null,
           "goal": "",
           "startedAt": null,
           "endsAt": null,
-          "lastEventAt": 1772106462689,
+          "lastEventAt": 1772112964401,
           "status": "idle",
           "endedAt": null,
           "endedReason": null,
@@ -33,17 +33,17 @@
     },
     {
       "step": "host.focus_start",
-      "at": "2026-02-26T11:47:43.249Z",
+      "at": "2026-02-26T13:36:04.921Z",
       "response": {
         "id": 1,
         "type": "focus_started",
         "room": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772107963256,
-          "lastEventAt": 1772106463256,
+          "startedAt": 1772112964923,
+          "endsAt": 1772114464923,
+          "lastEventAt": 1772112964923,
           "status": "active",
           "endedAt": null,
           "endedReason": null,
@@ -57,17 +57,17 @@
     },
     {
       "step": "joiner.focus_checkin",
-      "at": "2026-02-26T11:47:44.097Z",
+      "at": "2026-02-26T13:36:05.382Z",
       "response": {
         "id": 2,
         "type": "focus_checked_in",
         "room": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772107963256,
-          "lastEventAt": 1772106464103,
+          "startedAt": 1772112964923,
+          "endsAt": 1772114464923,
+          "lastEventAt": 1772112965384,
           "status": "active",
           "endedAt": null,
           "endedReason": null,
@@ -78,7 +78,7 @@
           "checkins": [
             {
               "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-              "at": 1772106464103,
+              "at": 1772112965384,
               "status": "connected and checking in"
             }
           ],
@@ -88,17 +88,17 @@
     },
     {
       "step": "host.focus_extend",
-      "at": "2026-02-26T11:47:44.531Z",
+      "at": "2026-02-26T13:36:05.816Z",
       "response": {
         "id": 2,
         "type": "focus_extended",
         "room": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772108263256,
-          "lastEventAt": 1772106464538,
+          "startedAt": 1772112964923,
+          "endsAt": 1772114764923,
+          "lastEventAt": 1772112965818,
           "status": "active",
           "endedAt": null,
           "endedReason": null,
@@ -109,7 +109,7 @@
           "checkins": [
             {
               "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-              "at": 1772106464103,
+              "at": 1772112965384,
               "status": "connected and checking in"
             }
           ],
@@ -119,17 +119,17 @@
     },
     {
       "step": "host.focus_status",
-      "at": "2026-02-26T11:47:44.981Z",
+      "at": "2026-02-26T13:36:06.181Z",
       "response": {
         "id": 3,
         "type": "focus_status",
         "room": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772108263256,
-          "lastEventAt": 1772106464538,
+          "startedAt": 1772112964923,
+          "endsAt": 1772114764923,
+          "lastEventAt": 1772112965818,
           "status": "active",
           "endedAt": null,
           "endedReason": null,
@@ -140,7 +140,7 @@
           "checkins": [
             {
               "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-              "at": 1772106464103,
+              "at": 1772112965384,
               "status": "connected and checking in"
             }
           ],
@@ -150,7 +150,7 @@
     },
     {
       "step": "host.focus_rooms",
-      "at": "2026-02-26T11:47:45.334Z",
+      "at": "2026-02-26T13:36:06.538Z",
       "response": {
         "id": 4,
         "type": "focus_rooms",
@@ -158,35 +158,49 @@
           {
             "room": "proof-room",
             "status": "active",
-            "participants": 1,
+            "participants": 2,
             "goal": "capture browser proof",
-            "endsAt": 1772107518146
+            "endsAt": 1772114212087
           },
           {
             "room": "proof-live-mm3efll4",
-            "status": "active",
+            "status": "ended",
             "participants": 2,
             "goal": "live ws proof run",
             "endsAt": 1772108263256
+          },
+          {
+            "room": "proof-room200",
+            "status": "ended",
+            "participants": 2,
+            "goal": "capture browser proof",
+            "endsAt": 1772111070183
+          },
+          {
+            "room": "proof-live-mm3iaycw",
+            "status": "active",
+            "participants": 2,
+            "goal": "live ws proof run",
+            "endsAt": 1772114764923
           }
         ]
       }
     },
     {
       "step": "host.focus_end",
-      "at": "2026-02-26T11:47:45.697Z",
+      "at": "2026-02-26T13:36:06.895Z",
       "response": {
         "id": 5,
         "type": "focus_ended",
         "room": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772108263256,
-          "lastEventAt": 1772106465704,
+          "startedAt": 1772112964923,
+          "endsAt": 1772114764923,
+          "lastEventAt": 1772112966897,
           "status": "ended",
-          "endedAt": 1772106465704,
+          "endedAt": 1772112966897,
           "endedReason": "manual",
           "participants": [
             "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
@@ -195,20 +209,20 @@
           "checkins": [
             {
               "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-              "at": 1772106464103,
+              "at": 1772112965384,
               "status": "connected and checking in"
             }
           ],
           "stats": {
             "plannedDurationMs": 1800000,
-            "actualDurationMs": 2448,
+            "actualDurationMs": 1974,
             "participantCount": 2,
             "checkinCount": 1
           }
         },
         "stats": {
           "plannedDurationMs": 1800000,
-          "actualDurationMs": 2448,
+          "actualDurationMs": 1974,
           "participantCount": 2,
           "checkinCount": 1
         }
@@ -216,18 +230,18 @@
     },
     {
       "step": "host.focus_streaks",
-      "at": "2026-02-26T11:47:46.197Z",
+      "at": "2026-02-26T13:36:07.298Z",
       "response": {
         "id": 6,
         "type": "focus_streaks",
         "streaks": [
           {
             "peer": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
-            "sessions": 1
+            "sessions": 7
           },
           {
             "peer": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-            "sessions": 1
+            "sessions": 7
           }
         ]
       }
@@ -240,13 +254,13 @@
         "app": "focus_room",
         "eventType": "session_start",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772107963256
+          "startedAt": 1772112964923,
+          "endsAt": 1772114464923
         },
-        "at": 1772106463256,
+        "at": 1772112964923,
         "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "source": "local"
       },
@@ -255,35 +269,35 @@
         "app": "focus_room",
         "eventType": "session_checkin",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
           "status": "connected and checking in",
-          "at": 1772106464103
+          "at": 1772112965384
         },
-        "at": 1772106464103,
+        "at": 1772112965384,
         "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
         "source": "remote"
       },
       {
         "type": "sidechannel_message",
-        "channel": "proof-live-mm3efll4",
-        "id": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de:1772106464104:n38a68l7",
+        "channel": "proof-live-mm3iaycw",
+        "id": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de:1772112965385:lpv1cusq",
         "from": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
         "origin": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-        "sig": "e768037b67151eb4069686e6f12ef65361cd422701005eff059f49e23c127d462c85a0040b737ae2dd37c1db33fb931cff9398aa4ab1129c803920c1a913f307",
+        "sig": "bd2a3fd592421fadc57e6e0c442a59db41ad30011a872014f4884c79acd1d6408a4c08d45ef3892fbb3584efef997c0a52ba7f7af5ec92c928419246830bf200",
         "relayedBy": null,
         "ttl": 3,
-        "ts": 1772106464104,
+        "ts": 1772112965385,
         "message": {
           "app": "focus_room",
           "eventType": "session_checkin",
           "payload": {
-            "room": "proof-live-mm3efll4",
+            "room": "proof-live-mm3iaycw",
             "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
             "status": "connected and checking in",
-            "at": 1772106464103
+            "at": 1772112965384
           },
-          "at": 1772106464103,
+          "at": 1772112965384,
           "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
         }
       },
@@ -292,13 +306,13 @@
         "app": "focus_room",
         "eventType": "session_extend",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "minutes": 5,
-          "endsAt": 1772108263256,
-          "at": 1772106464538
+          "endsAt": 1772114764923,
+          "at": 1772112965818
         },
-        "at": 1772106464538,
+        "at": 1772112965818,
         "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "source": "local"
       },
@@ -307,18 +321,18 @@
         "app": "focus_room",
         "eventType": "session_end",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "summary": "live proof flow completed",
-          "at": 1772106465704,
+          "at": 1772112966897,
           "stats": {
             "plannedDurationMs": 1800000,
-            "actualDurationMs": 2448,
+            "actualDurationMs": 1974,
             "participantCount": 2,
             "checkinCount": 1
           }
         },
-        "at": 1772106465704,
+        "at": 1772112966897,
         "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "source": "local"
       }
@@ -329,11 +343,11 @@
         "app": "focus_room",
         "eventType": "session_join",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-          "at": 1772106462689
+          "at": 1772112964401
         },
-        "at": 1772106462689,
+        "at": 1772112964401,
         "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
         "source": "local"
       },
@@ -342,37 +356,37 @@
         "app": "focus_room",
         "eventType": "session_start",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772107963256
+          "startedAt": 1772112964923,
+          "endsAt": 1772114464923
         },
-        "at": 1772106463256,
+        "at": 1772112964923,
         "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "source": "remote"
       },
       {
         "type": "sidechannel_message",
-        "channel": "proof-live-mm3efll4",
-        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772106463259:iqkslav6",
+        "channel": "proof-live-mm3iaycw",
+        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772112964929:d41se8i2",
         "from": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "origin": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
-        "sig": "0596d6347f18ce31b1d218973228ddc60699437d6e68ad66e397144ed31a9c245f924818c74785666b4a0c5a5bbab5c45ffbf1a4a4303980181af5408330050d",
+        "sig": "96b69bab8a432bbe914ccc31ef921a68f8414c72b86ab209ffe0b8a016baf848aea5ad9f0431437bcef339156b63dad0212a681c93377a3fbb54e89fef8fa102",
         "relayedBy": null,
         "ttl": 3,
-        "ts": 1772106463259,
+        "ts": 1772112964929,
         "message": {
           "app": "focus_room",
           "eventType": "session_start",
           "payload": {
-            "room": "proof-live-mm3efll4",
+            "room": "proof-live-mm3iaycw",
             "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
             "goal": "live ws proof run",
-            "startedAt": 1772106463256,
-            "endsAt": 1772107963256
+            "startedAt": 1772112964923,
+            "endsAt": 1772114464923
           },
-          "at": 1772106463256,
+          "at": 1772112964923,
           "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
         }
       },
@@ -381,12 +395,12 @@
         "app": "focus_room",
         "eventType": "session_checkin",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
           "status": "connected and checking in",
-          "at": 1772106464103
+          "at": 1772112965384
         },
-        "at": 1772106464103,
+        "at": 1772112965384,
         "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
         "source": "local"
       },
@@ -395,37 +409,37 @@
         "app": "focus_room",
         "eventType": "session_extend",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "minutes": 5,
-          "endsAt": 1772108263256,
-          "at": 1772106464538
+          "endsAt": 1772114764923,
+          "at": 1772112965818
         },
-        "at": 1772106464538,
+        "at": 1772112965818,
         "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "source": "remote"
       },
       {
         "type": "sidechannel_message",
-        "channel": "proof-live-mm3efll4",
-        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772106464562:snyzvx14",
+        "channel": "proof-live-mm3iaycw",
+        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772112965824:34lb1bg9",
         "from": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "origin": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
-        "sig": "55e6939990250f601093579c9b092303ea1b01dceb87be02364fc80b05bd06a14243555964c4596d6587c328822b562c11f86568f8ef676606866bcdbb983000",
+        "sig": "4f1eb6f738ce4b466129615a1e5a4bb226e65513d22700ad28d208a317d88e1e9d7d2a36bc049841071a4aa3e6b5c72f667ac37988c2996ee32ceffc35769905",
         "relayedBy": null,
         "ttl": 3,
-        "ts": 1772106464562,
+        "ts": 1772112965824,
         "message": {
           "app": "focus_room",
           "eventType": "session_extend",
           "payload": {
-            "room": "proof-live-mm3efll4",
+            "room": "proof-live-mm3iaycw",
             "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
             "minutes": 5,
-            "endsAt": 1772108263256,
-            "at": 1772106464538
+            "endsAt": 1772114764923,
+            "at": 1772112965818
           },
-          "at": 1772106464538,
+          "at": 1772112965818,
           "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
         }
       },
@@ -434,47 +448,47 @@
         "app": "focus_room",
         "eventType": "session_end",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "summary": "live proof flow completed",
-          "at": 1772106465704,
+          "at": 1772112966897,
           "stats": {
             "plannedDurationMs": 1800000,
-            "actualDurationMs": 2448,
+            "actualDurationMs": 1974,
             "participantCount": 2,
             "checkinCount": 1
           }
         },
-        "at": 1772106465704,
+        "at": 1772112966897,
         "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "source": "remote"
       },
       {
         "type": "sidechannel_message",
-        "channel": "proof-live-mm3efll4",
-        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772106465705:hfo12pas",
+        "channel": "proof-live-mm3iaycw",
+        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772112966899:ps8hm9sq",
         "from": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "origin": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
-        "sig": "f2b88b2ff0511f2acb51266d8eee8447d6cecc00bf74f1708fa0237ac3d9c39137390db001dd73848823b54f82a09fc194b962d53bfc1d5b0f1c15b65905dc02",
+        "sig": "ee7b86c321818495a035722090bbb334545f11eb140101a28cfce478741c0cb8836e6f20dd0f248c676655e59155221bac647f661f6867d6948de5718261550a",
         "relayedBy": null,
         "ttl": 3,
-        "ts": 1772106465705,
+        "ts": 1772112966899,
         "message": {
           "app": "focus_room",
           "eventType": "session_end",
           "payload": {
-            "room": "proof-live-mm3efll4",
+            "room": "proof-live-mm3iaycw",
             "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
             "summary": "live proof flow completed",
-            "at": 1772106465704,
+            "at": 1772112966897,
             "stats": {
               "plannedDurationMs": 1800000,
-              "actualDurationMs": 2448,
+              "actualDurationMs": 1974,
               "participantCount": 2,
               "checkinCount": 1
             }
           },
-          "at": 1772106465704,
+          "at": 1772112966897,
           "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
         }
       }
@@ -482,19 +496,13 @@
   },
   "transcript": [
     {
-      "at": "2026-02-26T11:47:42.673Z",
-      "side": "joiner",
-      "dir": "status",
-      "message": "socket_open"
-    },
-    {
-      "at": "2026-02-26T11:47:42.675Z",
+      "at": "2026-02-26T13:36:04.390Z",
       "side": "host",
       "dir": "status",
       "message": "socket_open"
     },
     {
-      "at": "2026-02-26T11:47:42.676Z",
+      "at": "2026-02-26T13:36:04.392Z",
       "side": "host",
       "dir": "recv",
       "message": {
@@ -517,7 +525,7 @@
       }
     },
     {
-      "at": "2026-02-26T11:47:42.677Z",
+      "at": "2026-02-26T13:36:04.394Z",
       "side": "host",
       "dir": "send",
       "message": {
@@ -526,7 +534,21 @@
       }
     },
     {
-      "at": "2026-02-26T11:47:42.677Z",
+      "at": "2026-02-26T13:36:04.395Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "type": "auth_ok"
+      }
+    },
+    {
+      "at": "2026-02-26T13:36:04.397Z",
+      "side": "joiner",
+      "dir": "status",
+      "message": "socket_open"
+    },
+    {
+      "at": "2026-02-26T13:36:04.397Z",
       "side": "joiner",
       "dir": "recv",
       "message": {
@@ -549,7 +571,7 @@
       }
     },
     {
-      "at": "2026-02-26T11:47:42.678Z",
+      "at": "2026-02-26T13:36:04.397Z",
       "side": "joiner",
       "dir": "send",
       "message": {
@@ -558,7 +580,7 @@
       }
     },
     {
-      "at": "2026-02-26T11:47:42.680Z",
+      "at": "2026-02-26T13:36:04.398Z",
       "side": "joiner",
       "dir": "recv",
       "message": {
@@ -566,25 +588,17 @@
       }
     },
     {
-      "at": "2026-02-26T11:47:42.681Z",
-      "side": "host",
-      "dir": "recv",
-      "message": {
-        "type": "auth_ok"
-      }
-    },
-    {
-      "at": "2026-02-26T11:47:42.681Z",
+      "at": "2026-02-26T13:36:04.399Z",
       "side": "joiner",
       "dir": "send",
       "message": {
         "id": 1,
         "type": "focus_join",
-        "room": "proof-live-mm3efll4"
+        "room": "proof-live-mm3iaycw"
       }
     },
     {
-      "at": "2026-02-26T11:47:42.894Z",
+      "at": "2026-02-26T13:36:04.566Z",
       "side": "joiner",
       "dir": "recv",
       "message": {
@@ -592,29 +606,29 @@
         "app": "focus_room",
         "eventType": "session_join",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-          "at": 1772106462689
+          "at": 1772112964401
         },
-        "at": 1772106462689,
+        "at": 1772112964401,
         "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
         "source": "local"
       }
     },
     {
-      "at": "2026-02-26T11:47:42.894Z",
+      "at": "2026-02-26T13:36:04.566Z",
       "side": "joiner",
       "dir": "recv",
       "message": {
         "id": 1,
         "type": "focus_joined",
         "room": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": null,
           "goal": "",
           "startedAt": null,
           "endsAt": null,
-          "lastEventAt": 1772106462689,
+          "lastEventAt": 1772112964401,
           "status": "idle",
           "endedAt": null,
           "endedReason": null,
@@ -627,19 +641,19 @@
       }
     },
     {
-      "at": "2026-02-26T11:47:43.250Z",
+      "at": "2026-02-26T13:36:04.921Z",
       "side": "host",
       "dir": "send",
       "message": {
         "id": 1,
         "type": "focus_start",
-        "room": "proof-live-mm3efll4",
+        "room": "proof-live-mm3iaycw",
         "minutes": 25,
         "goal": "live ws proof run"
       }
     },
     {
-      "at": "2026-02-26T11:47:43.744Z",
+      "at": "2026-02-26T13:36:05.024Z",
       "side": "host",
       "dir": "recv",
       "message": {
@@ -647,31 +661,31 @@
         "app": "focus_room",
         "eventType": "session_start",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772107963256
+          "startedAt": 1772112964923,
+          "endsAt": 1772114464923
         },
-        "at": 1772106463256,
+        "at": 1772112964923,
         "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "source": "local"
       }
     },
     {
-      "at": "2026-02-26T11:47:43.744Z",
+      "at": "2026-02-26T13:36:05.024Z",
       "side": "host",
       "dir": "recv",
       "message": {
         "id": 1,
         "type": "focus_started",
         "room": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772107963256,
-          "lastEventAt": 1772106463256,
+          "startedAt": 1772112964923,
+          "endsAt": 1772114464923,
+          "lastEventAt": 1772112964923,
           "status": "active",
           "endedAt": null,
           "endedReason": null,
@@ -684,7 +698,7 @@
       }
     },
     {
-      "at": "2026-02-26T11:47:43.750Z",
+      "at": "2026-02-26T13:36:05.034Z",
       "side": "joiner",
       "dir": "recv",
       "message": {
@@ -692,59 +706,59 @@
         "app": "focus_room",
         "eventType": "session_start",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772107963256
+          "startedAt": 1772112964923,
+          "endsAt": 1772114464923
         },
-        "at": 1772106463256,
+        "at": 1772112964923,
         "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "source": "remote"
       }
     },
     {
-      "at": "2026-02-26T11:47:43.751Z",
+      "at": "2026-02-26T13:36:05.034Z",
       "side": "joiner",
       "dir": "recv",
       "message": {
         "type": "sidechannel_message",
-        "channel": "proof-live-mm3efll4",
-        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772106463259:iqkslav6",
+        "channel": "proof-live-mm3iaycw",
+        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772112964929:d41se8i2",
         "from": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "origin": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
-        "sig": "0596d6347f18ce31b1d218973228ddc60699437d6e68ad66e397144ed31a9c245f924818c74785666b4a0c5a5bbab5c45ffbf1a4a4303980181af5408330050d",
+        "sig": "96b69bab8a432bbe914ccc31ef921a68f8414c72b86ab209ffe0b8a016baf848aea5ad9f0431437bcef339156b63dad0212a681c93377a3fbb54e89fef8fa102",
         "relayedBy": null,
         "ttl": 3,
-        "ts": 1772106463259,
+        "ts": 1772112964929,
         "message": {
           "app": "focus_room",
           "eventType": "session_start",
           "payload": {
-            "room": "proof-live-mm3efll4",
+            "room": "proof-live-mm3iaycw",
             "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
             "goal": "live ws proof run",
-            "startedAt": 1772106463256,
-            "endsAt": 1772107963256
+            "startedAt": 1772112964923,
+            "endsAt": 1772114464923
           },
-          "at": 1772106463256,
+          "at": 1772112964923,
           "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
         }
       }
     },
     {
-      "at": "2026-02-26T11:47:44.097Z",
+      "at": "2026-02-26T13:36:05.382Z",
       "side": "joiner",
       "dir": "send",
       "message": {
         "id": 2,
         "type": "focus_checkin",
-        "room": "proof-live-mm3efll4",
+        "room": "proof-live-mm3iaycw",
         "status": "connected and checking in"
       }
     },
     {
-      "at": "2026-02-26T11:47:44.170Z",
+      "at": "2026-02-26T13:36:05.459Z",
       "side": "joiner",
       "dir": "recv",
       "message": {
@@ -752,30 +766,30 @@
         "app": "focus_room",
         "eventType": "session_checkin",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
           "status": "connected and checking in",
-          "at": 1772106464103
+          "at": 1772112965384
         },
-        "at": 1772106464103,
+        "at": 1772112965384,
         "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
         "source": "local"
       }
     },
     {
-      "at": "2026-02-26T11:47:44.170Z",
+      "at": "2026-02-26T13:36:05.460Z",
       "side": "joiner",
       "dir": "recv",
       "message": {
         "id": 2,
         "type": "focus_checked_in",
         "room": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772107963256,
-          "lastEventAt": 1772106464103,
+          "startedAt": 1772112964923,
+          "endsAt": 1772114464923,
+          "lastEventAt": 1772112965384,
           "status": "active",
           "endedAt": null,
           "endedReason": null,
@@ -786,7 +800,7 @@
           "checkins": [
             {
               "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-              "at": 1772106464103,
+              "at": 1772112965384,
               "status": "connected and checking in"
             }
           ],
@@ -795,7 +809,7 @@
       }
     },
     {
-      "at": "2026-02-26T11:47:44.177Z",
+      "at": "2026-02-26T13:36:05.463Z",
       "side": "host",
       "dir": "recv",
       "message": {
@@ -803,57 +817,57 @@
         "app": "focus_room",
         "eventType": "session_checkin",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
           "status": "connected and checking in",
-          "at": 1772106464103
+          "at": 1772112965384
         },
-        "at": 1772106464103,
+        "at": 1772112965384,
         "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
         "source": "remote"
       }
     },
     {
-      "at": "2026-02-26T11:47:44.177Z",
+      "at": "2026-02-26T13:36:05.463Z",
       "side": "host",
       "dir": "recv",
       "message": {
         "type": "sidechannel_message",
-        "channel": "proof-live-mm3efll4",
-        "id": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de:1772106464104:n38a68l7",
+        "channel": "proof-live-mm3iaycw",
+        "id": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de:1772112965385:lpv1cusq",
         "from": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
         "origin": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-        "sig": "e768037b67151eb4069686e6f12ef65361cd422701005eff059f49e23c127d462c85a0040b737ae2dd37c1db33fb931cff9398aa4ab1129c803920c1a913f307",
+        "sig": "bd2a3fd592421fadc57e6e0c442a59db41ad30011a872014f4884c79acd1d6408a4c08d45ef3892fbb3584efef997c0a52ba7f7af5ec92c928419246830bf200",
         "relayedBy": null,
         "ttl": 3,
-        "ts": 1772106464104,
+        "ts": 1772112965385,
         "message": {
           "app": "focus_room",
           "eventType": "session_checkin",
           "payload": {
-            "room": "proof-live-mm3efll4",
+            "room": "proof-live-mm3iaycw",
             "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
             "status": "connected and checking in",
-            "at": 1772106464103
+            "at": 1772112965384
           },
-          "at": 1772106464103,
+          "at": 1772112965384,
           "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
         }
       }
     },
     {
-      "at": "2026-02-26T11:47:44.532Z",
+      "at": "2026-02-26T13:36:05.817Z",
       "side": "host",
       "dir": "send",
       "message": {
         "id": 2,
         "type": "focus_extend",
-        "room": "proof-live-mm3efll4",
+        "room": "proof-live-mm3iaycw",
         "minutes": 5
       }
     },
     {
-      "at": "2026-02-26T11:47:44.626Z",
+      "at": "2026-02-26T13:36:05.827Z",
       "side": "host",
       "dir": "recv",
       "message": {
@@ -861,31 +875,31 @@
         "app": "focus_room",
         "eventType": "session_extend",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "minutes": 5,
-          "endsAt": 1772108263256,
-          "at": 1772106464538
+          "endsAt": 1772114764923,
+          "at": 1772112965818
         },
-        "at": 1772106464538,
+        "at": 1772112965818,
         "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "source": "local"
       }
     },
     {
-      "at": "2026-02-26T11:47:44.626Z",
+      "at": "2026-02-26T13:36:05.827Z",
       "side": "host",
       "dir": "recv",
       "message": {
         "id": 2,
         "type": "focus_extended",
         "room": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772108263256,
-          "lastEventAt": 1772106464538,
+          "startedAt": 1772112964923,
+          "endsAt": 1772114764923,
+          "lastEventAt": 1772112965818,
           "status": "active",
           "endedAt": null,
           "endedReason": null,
@@ -896,7 +910,7 @@
           "checkins": [
             {
               "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-              "at": 1772106464103,
+              "at": 1772112965384,
               "status": "connected and checking in"
             }
           ],
@@ -905,7 +919,7 @@
       }
     },
     {
-      "at": "2026-02-26T11:47:44.632Z",
+      "at": "2026-02-26T13:36:05.829Z",
       "side": "joiner",
       "dir": "recv",
       "message": {
@@ -913,70 +927,70 @@
         "app": "focus_room",
         "eventType": "session_extend",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "minutes": 5,
-          "endsAt": 1772108263256,
-          "at": 1772106464538
+          "endsAt": 1772114764923,
+          "at": 1772112965818
         },
-        "at": 1772106464538,
+        "at": 1772112965818,
         "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "source": "remote"
       }
     },
     {
-      "at": "2026-02-26T11:47:44.632Z",
+      "at": "2026-02-26T13:36:05.829Z",
       "side": "joiner",
       "dir": "recv",
       "message": {
         "type": "sidechannel_message",
-        "channel": "proof-live-mm3efll4",
-        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772106464562:snyzvx14",
+        "channel": "proof-live-mm3iaycw",
+        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772112965824:34lb1bg9",
         "from": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "origin": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
-        "sig": "55e6939990250f601093579c9b092303ea1b01dceb87be02364fc80b05bd06a14243555964c4596d6587c328822b562c11f86568f8ef676606866bcdbb983000",
+        "sig": "4f1eb6f738ce4b466129615a1e5a4bb226e65513d22700ad28d208a317d88e1e9d7d2a36bc049841071a4aa3e6b5c72f667ac37988c2996ee32ceffc35769905",
         "relayedBy": null,
         "ttl": 3,
-        "ts": 1772106464562,
+        "ts": 1772112965824,
         "message": {
           "app": "focus_room",
           "eventType": "session_extend",
           "payload": {
-            "room": "proof-live-mm3efll4",
+            "room": "proof-live-mm3iaycw",
             "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
             "minutes": 5,
-            "endsAt": 1772108263256,
-            "at": 1772106464538
+            "endsAt": 1772114764923,
+            "at": 1772112965818
           },
-          "at": 1772106464538,
+          "at": 1772112965818,
           "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
         }
       }
     },
     {
-      "at": "2026-02-26T11:47:44.982Z",
+      "at": "2026-02-26T13:36:06.181Z",
       "side": "host",
       "dir": "send",
       "message": {
         "id": 3,
         "type": "focus_status",
-        "room": "proof-live-mm3efll4"
+        "room": "proof-live-mm3iaycw"
       }
     },
     {
-      "at": "2026-02-26T11:47:44.983Z",
+      "at": "2026-02-26T13:36:06.182Z",
       "side": "host",
       "dir": "recv",
       "message": {
         "id": 3,
         "type": "focus_status",
         "room": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772108263256,
-          "lastEventAt": 1772106464538,
+          "startedAt": 1772112964923,
+          "endsAt": 1772114764923,
+          "lastEventAt": 1772112965818,
           "status": "active",
           "endedAt": null,
           "endedReason": null,
@@ -987,7 +1001,7 @@
           "checkins": [
             {
               "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-              "at": 1772106464103,
+              "at": 1772112965384,
               "status": "connected and checking in"
             }
           ],
@@ -996,7 +1010,7 @@
       }
     },
     {
-      "at": "2026-02-26T11:47:45.335Z",
+      "at": "2026-02-26T13:36:06.539Z",
       "side": "host",
       "dir": "send",
       "message": {
@@ -1005,7 +1019,7 @@
       }
     },
     {
-      "at": "2026-02-26T11:47:45.336Z",
+      "at": "2026-02-26T13:36:06.540Z",
       "side": "host",
       "dir": "recv",
       "message": {
@@ -1015,33 +1029,47 @@
           {
             "room": "proof-room",
             "status": "active",
-            "participants": 1,
+            "participants": 2,
             "goal": "capture browser proof",
-            "endsAt": 1772107518146
+            "endsAt": 1772114212087
           },
           {
             "room": "proof-live-mm3efll4",
-            "status": "active",
+            "status": "ended",
             "participants": 2,
             "goal": "live ws proof run",
             "endsAt": 1772108263256
+          },
+          {
+            "room": "proof-room200",
+            "status": "ended",
+            "participants": 2,
+            "goal": "capture browser proof",
+            "endsAt": 1772111070183
+          },
+          {
+            "room": "proof-live-mm3iaycw",
+            "status": "active",
+            "participants": 2,
+            "goal": "live ws proof run",
+            "endsAt": 1772114764923
           }
         ]
       }
     },
     {
-      "at": "2026-02-26T11:47:45.698Z",
+      "at": "2026-02-26T13:36:06.896Z",
       "side": "host",
       "dir": "send",
       "message": {
         "id": 5,
         "type": "focus_end",
-        "room": "proof-live-mm3efll4",
+        "room": "proof-live-mm3iaycw",
         "summary": "live proof flow completed"
       }
     },
     {
-      "at": "2026-02-26T11:47:45.838Z",
+      "at": "2026-02-26T13:36:06.942Z",
       "side": "host",
       "dir": "recv",
       "message": {
@@ -1049,38 +1077,38 @@
         "app": "focus_room",
         "eventType": "session_end",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "summary": "live proof flow completed",
-          "at": 1772106465704,
+          "at": 1772112966897,
           "stats": {
             "plannedDurationMs": 1800000,
-            "actualDurationMs": 2448,
+            "actualDurationMs": 1974,
             "participantCount": 2,
             "checkinCount": 1
           }
         },
-        "at": 1772106465704,
+        "at": 1772112966897,
         "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "source": "local"
       }
     },
     {
-      "at": "2026-02-26T11:47:45.838Z",
+      "at": "2026-02-26T13:36:06.942Z",
       "side": "host",
       "dir": "recv",
       "message": {
         "id": 5,
         "type": "focus_ended",
         "room": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "goal": "live ws proof run",
-          "startedAt": 1772106463256,
-          "endsAt": 1772108263256,
-          "lastEventAt": 1772106465704,
+          "startedAt": 1772112964923,
+          "endsAt": 1772114764923,
+          "lastEventAt": 1772112966897,
           "status": "ended",
-          "endedAt": 1772106465704,
+          "endedAt": 1772112966897,
           "endedReason": "manual",
           "participants": [
             "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
@@ -1089,27 +1117,27 @@
           "checkins": [
             {
               "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-              "at": 1772106464103,
+              "at": 1772112965384,
               "status": "connected and checking in"
             }
           ],
           "stats": {
             "plannedDurationMs": 1800000,
-            "actualDurationMs": 2448,
+            "actualDurationMs": 1974,
             "participantCount": 2,
             "checkinCount": 1
           }
         },
         "stats": {
           "plannedDurationMs": 1800000,
-          "actualDurationMs": 2448,
+          "actualDurationMs": 1974,
           "participantCount": 2,
           "checkinCount": 1
         }
       }
     },
     {
-      "at": "2026-02-26T11:47:45.840Z",
+      "at": "2026-02-26T13:36:06.944Z",
       "side": "joiner",
       "dir": "recv",
       "message": {
@@ -1117,58 +1145,58 @@
         "app": "focus_room",
         "eventType": "session_end",
         "payload": {
-          "room": "proof-live-mm3efll4",
+          "room": "proof-live-mm3iaycw",
           "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
           "summary": "live proof flow completed",
-          "at": 1772106465704,
+          "at": 1772112966897,
           "stats": {
             "plannedDurationMs": 1800000,
-            "actualDurationMs": 2448,
+            "actualDurationMs": 1974,
             "participantCount": 2,
             "checkinCount": 1
           }
         },
-        "at": 1772106465704,
+        "at": 1772112966897,
         "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "source": "remote"
       }
     },
     {
-      "at": "2026-02-26T11:47:45.840Z",
+      "at": "2026-02-26T13:36:06.944Z",
       "side": "joiner",
       "dir": "recv",
       "message": {
         "type": "sidechannel_message",
-        "channel": "proof-live-mm3efll4",
-        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772106465705:hfo12pas",
+        "channel": "proof-live-mm3iaycw",
+        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772112966899:ps8hm9sq",
         "from": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
         "origin": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
-        "sig": "f2b88b2ff0511f2acb51266d8eee8447d6cecc00bf74f1708fa0237ac3d9c39137390db001dd73848823b54f82a09fc194b962d53bfc1d5b0f1c15b65905dc02",
+        "sig": "ee7b86c321818495a035722090bbb334545f11eb140101a28cfce478741c0cb8836e6f20dd0f248c676655e59155221bac647f661f6867d6948de5718261550a",
         "relayedBy": null,
         "ttl": 3,
-        "ts": 1772106465705,
+        "ts": 1772112966899,
         "message": {
           "app": "focus_room",
           "eventType": "session_end",
           "payload": {
-            "room": "proof-live-mm3efll4",
+            "room": "proof-live-mm3iaycw",
             "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
             "summary": "live proof flow completed",
-            "at": 1772106465704,
+            "at": 1772112966897,
             "stats": {
               "plannedDurationMs": 1800000,
-              "actualDurationMs": 2448,
+              "actualDurationMs": 1974,
               "participantCount": 2,
               "checkinCount": 1
             }
           },
-          "at": 1772106465704,
+          "at": 1772112966897,
           "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
         }
       }
     },
     {
-      "at": "2026-02-26T11:47:46.198Z",
+      "at": "2026-02-26T13:36:07.299Z",
       "side": "host",
       "dir": "send",
       "message": {
@@ -1177,7 +1205,7 @@
       }
     },
     {
-      "at": "2026-02-26T11:47:46.200Z",
+      "at": "2026-02-26T13:36:07.300Z",
       "side": "host",
       "dir": "recv",
       "message": {
@@ -1186,11 +1214,11 @@
         "streaks": [
           {
             "peer": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
-            "sessions": 1
+            "sessions": 7
           },
           {
             "peer": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
-            "sessions": 1
+            "sessions": 7
           }
         ]
       }

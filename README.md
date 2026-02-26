@@ -77,24 +77,79 @@ Intercom is a single long-running Pear process that participates in three distin
 
 ## Vibe App: FocusRoom
 
-This fork adds **FocusRoom**, a P2P sprint-room app for agents/humans to coordinate deep-work sessions over Intercom sidechannels.
+**FocusRoom** is a P2P sprint-room app built on Intercom sidechannels. Agents and humans join a named room, set a timed goal, check in on progress during the session, and get a full stats summary at the end — all over direct peer-to-peer messaging with no central server, no database, and no accounts.
 
-Core commands:
-- `/focus_start --room "ship-room" --minutes 30 --goal "close release blocker"`
-- `/focus_join --room "ship-room"`
-- `/focus_checkin --room "ship-room" --status "finished parser + tests"`
-- `/focus_end --room "ship-room" --summary "done, opening PR"`
-- `/focus_extend --room "ship-room" --minutes 5`
-- `/focus_status --room "ship-room"`
-- `/focus_rooms`
-- `/focus_streaks`
+Each room tracks a **host**, a **goal**, a **countdown timer**, a **participant list**, **check-ins**, and a **status** (`idle → active → ended`). Everything lives in memory for the lifetime of the process.
 
-What it does:
-- Real timer scheduling with auto-expiry (`session_expired`) when `endsAt` is reached.
-- Terminal event output for start/join/check-in/extend/expire/end.
-- End-of-session stats: planned duration, actual duration, participant count, check-in count.
-- In-memory streak counter: completed sessions per peer for the current runtime.
-- Native SC-Bridge JSON actions: `focus_start`, `focus_join`, `focus_checkin`, `focus_end`, `focus_extend`, `focus_status`, `focus_rooms`, `focus_streaks`.
+### How a session works
+
+```
+                  [joiner calls focus_join]
+                           │
+                  [host calls focus_start]
+                           │
+                        active
+                    ┌──────┴──────┐
+               timer fires     focus_end called
+                    │               │
+             session_expired    session_end
+                    └──────┬──────┘
+                         ended
+                     (stats + streaks)
+```
+
+> **Important:** the joiner must call `focus_join` *before* the host calls `focus_start`. Because sidechannels are ephemeral, the joiner won't receive the `session_start` broadcast if they haven't joined the room yet.
+
+### SC-Bridge actions
+
+Send these as JSON over the WebSocket connection to the SC-Bridge (auth required).
+
+| Action | Key fields | Who calls it | What happens |
+|--------|-----------|-------------|-------------|
+| `focus_join` | `room` | Joiner | Registers as a participant. Call this before host starts. |
+| `focus_start` | `room`, `minutes`, `goal` | Host | Creates the room, sets the countdown (`endsAt = now + minutes`), broadcasts `session_start` to all peers. |
+| `focus_checkin` | `room`, `status` | Any peer | Posts a progress note. Appended to the check-in list and broadcast to peers. |
+| `focus_extend` | `room`, `minutes` | Host only | Adds time to `endsAt`, reschedules the auto-expiry timer, broadcasts `session_extend`. |
+| `focus_end` | `room`, `summary` | Host | Ends the session manually. Computes stats, broadcasts `session_end`, awards streaks. |
+| `focus_status` | `room` (optional) | Any | Returns the full room snapshot: status, participants, check-ins, timer, stats. |
+| `focus_rooms` | — | Any | Lists all known rooms with their current status, participant count, goal, and end time. |
+| `focus_streaks` | — | Any | Returns each peer's completed-session count for the current runtime. |
+
+### Push events
+
+When any action fires, FocusRoom broadcasts a `focus_event` over the sidechannel. Every connected SC-Bridge client receives it as a push notification — no polling needed.
+
+```json
+{
+  "type": "focus_event",
+  "eventType": "session_start",
+  "payload": { "room": "ship-room", "host": "a1b2…", "goal": "ship v2", "endsAt": 1234567890 },
+  "at": 1234567890,
+  "by": "a1b2…",
+  "source": "remote"
+}
+```
+
+### What gets tracked
+
+- **Real timer** — a `setTimeout` fires `session_expired` automatically when `endsAt` is reached, in case the host never calls `focus_end`.
+- **End-of-session stats** — planned duration, actual duration, participant count, check-in count.
+- **Streaks** — in-memory count of completed sessions per peer. Resets on process restart.
+
+### Proof dashboard
+
+The repo ships a browser-based proof dashboard (`proof/focus-dashboard.html`) that connects live to the host and joiner SC-Bridges and lets you control and observe a full FocusRoom session from the browser. It includes:
+
+- Single-click connect/disconnect per peer
+- Live room state panel with countdown timer and participant list
+- Proof checklist that ticks as each step completes
+- One-click **Run Proof Flow** button (animated when running) that executes the full sequence — join → start → check-in → status → rooms → end → streaks — awaiting each response before firing the next
+- End-of-session stats with planned vs actual bar chart
+- Session history for the current runtime
+- Auto-reconnect on connection loss (3 attempts, 2s backoff)
+- 30s heartbeat with live indicator
+- Export session as a timestamped proof JSON file
+- Dark mode, sound notifications, keyboard shortcuts (`Ctrl+P`, `Ctrl+R`, `Ctrl+D`)
 
 ## Trac Address
 
