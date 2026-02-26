@@ -192,3 +192,29 @@ Other accepted proof formats you can submit:
 - Short screen recording (`.mp4`): connect, run flow, show `focus_status` and `focus_rooms`.
 - Terminal logs: `proof/host-local.log` and `proof/joiner-local.log` showing lifecycle events.
 - Live transcript bundle: `proof/focus-room-live-smoke.md` + `proof/focus-room-live-proof.json`.
+
+## Submission Checklist
+
+1. Export dashboard JSON proof
+- Start dashboard: `npm run ui:start` and open `http://127.0.0.1:3000`
+- Run proof flow in the browser
+- Click `Export`
+- Move downloaded JSON into this repo as `proof/focus-dashboard-export.json`
+- Commit and push
+
+2. Record and submit video proof
+- Record screen (OBS / Windows Game Bar)
+- Show both bridges connected
+- Run proof flow
+- Wait for timer expiry (`session_expired`)
+- Show final status + streaks
+- Save as `proof/focus-room-run.mp4`
+- Commit and push
+
+3. Include this minimum proof bundle in your fork
+- `proof/focus-room-run.mp4`
+- `proof/focus-dashboard-export.json`
+- `proof/focus-room-live-proof.json`
+- `proof/focus-room-live-smoke.md`
+- `proof/host-local.log`
+- `proof/joiner-local.log`
