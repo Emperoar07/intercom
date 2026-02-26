@@ -75,3 +75,25 @@ Intercom is a single long-running Pear process that participates in three distin
 
 ---
 If you plan to build your own app, study the existing contract/protocol and remove example logic as needed (see `SKILL.md`).
+
+## Vibe App: FocusRoom
+
+This fork adds **FocusRoom**, a P2P sprint-room app for agents/humans to coordinate deep-work sessions over Intercom sidechannels.
+
+Core commands:
+- `/focus_start --room "ship-room" --minutes 30 --goal "close release blocker"`
+- `/focus_join --room "ship-room"`
+- `/focus_checkin --room "ship-room" --status "finished parser + tests"`
+- `/focus_end --room "ship-room" --summary "done, opening PR"`
+- `/focus_status --room "ship-room"`
+- `/focus_rooms`
+
+## Trac Address (Payout)
+
+`TODO_ADD_TRAC_ADDRESS_HERE`
+
+## Proof of Functionality
+
+Add your screenshots/videos under `proof/` and keep filenames referenced here.
+- `proof/focus-room-run.png` (or `.mp4`)
+- `proof/focus-room-smoke.md` (command transcript template)

@@ -224,6 +224,12 @@ class SampleProtocol extends Protocol{
         console.log('- /sc_invite --channel "<name>" --pubkey "<peer-pubkey-hex>" [--ttl <sec>] [--welcome <json|b64|@file>] | create a signed invite.');
         console.log('- /sc_welcome --channel "<name>" --text "<message>" | create a signed welcome.');
         console.log('- /sc_stats | show sidechannel channels + connection count.');
+        console.log('- /focus_start --room "<name>" [--minutes <n>] [--goal "<text>"] | start a P2P focus session.');
+        console.log('- /focus_join --room "<name>" | join a focus room.');
+        console.log('- /focus_checkin --room "<name>" --status "<text>" | post progress to room peers.');
+        console.log('- /focus_end --room "<name>" [--summary "<text>"] | close an active session.');
+        console.log('- /focus_status [--room "<name>"] | show one room or all local room snapshots.');
+        console.log('- /focus_rooms | list known focus rooms.');
         // further protocol specific options go here
     }
 
@@ -587,6 +593,110 @@ class SampleProtocol extends Protocol{
             const channels = Array.from(this.peer.sidechannel.channels.keys());
             const connectionCount = this.peer.sidechannel.connections.size;
             console.log({ channels, connectionCount });
+            return;
+        }
+        if (this.input.startsWith("/focus_start")) {
+            if (!this.peer.focusRoom) {
+                console.log('FocusRoom app not initialized.');
+                return;
+            }
+            const args = this.parseArgs(input);
+            const room = args.room || args.channel || args.name;
+            const minutesRaw = args.minutes || args.min || args.duration;
+            const goal = args.goal || args.text || '';
+            const minutes = Number.parseInt(String(minutesRaw ?? '25'), 10);
+            const result = this.peer.focusRoom.startSession({
+                room: String(room || '').trim(),
+                minutes: Number.isFinite(minutes) ? minutes : 25,
+                goal: String(goal || ''),
+            });
+            if (!result.ok) {
+                console.log(`focus_start failed: ${result.error}`);
+                return;
+            }
+            console.log(result.room);
+            return;
+        }
+        if (this.input.startsWith("/focus_join")) {
+            if (!this.peer.focusRoom) {
+                console.log('FocusRoom app not initialized.');
+                return;
+            }
+            const args = this.parseArgs(input);
+            const room = args.room || args.channel || args.name;
+            const result = this.peer.focusRoom.joinSession({ room: String(room || '').trim() });
+            if (!result.ok) {
+                console.log(`focus_join failed: ${result.error}`);
+                return;
+            }
+            console.log(result.room);
+            return;
+        }
+        if (this.input.startsWith("/focus_checkin")) {
+            if (!this.peer.focusRoom) {
+                console.log('FocusRoom app not initialized.');
+                return;
+            }
+            const args = this.parseArgs(input);
+            const room = args.room || args.channel || args.name;
+            const status = args.status || args.message || args.text || '';
+            const result = this.peer.focusRoom.checkIn({
+                room: String(room || '').trim(),
+                status: String(status || ''),
+            });
+            if (!result.ok) {
+                console.log(`focus_checkin failed: ${result.error}`);
+                return;
+            }
+            console.log(result.room);
+            return;
+        }
+        if (this.input.startsWith("/focus_end")) {
+            if (!this.peer.focusRoom) {
+                console.log('FocusRoom app not initialized.');
+                return;
+            }
+            const args = this.parseArgs(input);
+            const room = args.room || args.channel || args.name;
+            const summary = args.summary || args.status || args.text || '';
+            const result = this.peer.focusRoom.endSession({
+                room: String(room || '').trim(),
+                summary: String(summary || ''),
+            });
+            if (!result.ok) {
+                console.log(`focus_end failed: ${result.error}`);
+                return;
+            }
+            console.log(result.room);
+            return;
+        }
+        if (this.input.startsWith("/focus_status")) {
+            if (!this.peer.focusRoom) {
+                console.log('FocusRoom app not initialized.');
+                return;
+            }
+            const args = this.parseArgs(input);
+            const room = args.room || args.channel || args.name;
+            if (room) {
+                const snapshot = this.peer.focusRoom.getRoom(String(room).trim());
+                console.log(snapshot || null);
+            } else {
+                console.log(this.peer.focusRoom.listRooms());
+            }
+            return;
+        }
+        if (this.input.startsWith("/focus_rooms")) {
+            if (!this.peer.focusRoom) {
+                console.log('FocusRoom app not initialized.');
+                return;
+            }
+            const rooms = this.peer.focusRoom.listRooms().map((entry) => ({
+                room: entry.room,
+                status: entry.status,
+                participants: entry.participants.length,
+                goal: entry.goal,
+            }));
+            console.log(rooms);
             return;
         }
         if (this.input.startsWith("/print")) {

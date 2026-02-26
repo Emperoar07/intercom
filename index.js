@@ -14,6 +14,7 @@ import SampleContract from './contract/contract.js';
 import { Timer } from './features/timer/index.js';
 import Sidechannel from './features/sidechannel/index.js';
 import ScBridge from './features/sc-bridge/index.js';
+import FocusRoom from './features/focus-room/index.js';
 
 const { env, storeLabel, flags } = getPearRuntime();
 
@@ -481,6 +482,8 @@ if (scBridgeEnabled) {
   });
 }
 
+const focusRoom = new FocusRoom(peer, { entryChannel: sidechannelEntry });
+
 const sidechannel = new Sidechannel(peer, {
   channels: [sidechannelEntry, ...sidechannelExtras],
   debug: sidechannelDebug,
@@ -502,13 +505,20 @@ const sidechannel = new Sidechannel(peer, {
   ownerWriteChannels: sidechannelOwnerWriteChannels || undefined,
   ownerKeys: sidechannelOwnerMap.size > 0 ? sidechannelOwnerMap : undefined,
   welcomeByChannel: sidechannelWelcomeMap.size > 0 ? sidechannelWelcomeMap : undefined,
-  onMessage: scBridgeEnabled
-    ? (channel, payload, connection) => scBridge.handleSidechannelMessage(channel, payload, connection)
-    : sidechannelQuiet
-      ? () => {}
-      : null,
+  onMessage: (channel, payload, connection) => {
+    focusRoom.handleIncoming(channel, payload);
+    if (scBridgeEnabled) {
+      scBridge.handleSidechannelMessage(channel, payload, connection);
+      return;
+    }
+    if (sidechannelQuiet) return;
+    const from = payload?.from ?? 'unknown';
+    const msg = payload?.message ?? payload;
+    console.log(`[sidechannel:${channel}] ${from}:`, msg);
+  },
 });
 peer.sidechannel = sidechannel;
+peer.focusRoom = focusRoom;
 
 if (scBridge) {
   scBridge.attachSidechannel(sidechannel);

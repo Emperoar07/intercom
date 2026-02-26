@@ -729,3 +729,16 @@ Use these repos for deeper troubleshooting or protocol understanding:
 - `main_settlement_bus` (commit `5088921`): https://github.com/Trac-Systems/main_settlement_bus
 - `trac-crypto-api` (commit `b3c781d`): https://github.com/Trac-Systems/trac-crypto-api
 - `trac-wallet` (npm `1.0.1`): https://www.npmjs.com/package/trac-wallet
+
+## Fork Extension: FocusRoom App
+- This fork ships a FocusRoom app on top of Intercom sidechannels for structured deep-work coordination.
+- FocusRoom message format is sidechannel JSON with `app: "focus_room"` and event types: `session_start`, `session_join`, `session_checkin`, `session_end`.
+- FocusRoom commands:
+  - `/focus_start --room "<name>" [--minutes <n>] [--goal "<text>"]`
+  - `/focus_join --room "<name>"`
+  - `/focus_checkin --room "<name>" --status "<text>"`
+  - `/focus_end --room "<name>" [--summary "<text>"]`
+  - `/focus_status [--room "<name>"]`
+  - `/focus_rooms`
+- Agent behavior: prefer SC-Bridge JSON for sidechannel transport; if CLI mirroring is enabled, the commands above can be executed through `{ "type":"cli", "command":"..." }`.
+- Proof artifacts should be committed under `proof/` (screenshots or video plus command transcript).
