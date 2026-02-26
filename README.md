@@ -106,11 +106,18 @@ Proof artifacts live under `proof/`:
 - `proof/focus-room-run.png` (or `.mp4`)
 - `proof/focus-room-smoke.md` (filled smoke transcript)
 - `proof/focus-room-proof.json` (captured local simulation output)
+- `proof/focus-room-live-smoke.md` (live bridge smoke transcript)
+- `proof/focus-room-live-proof.json` (live host/joiner WS transcript)
 
 Regenerate proof artifacts in one command:
 - PowerShell: `./proof/run-proof.ps1`
 - Bash: `./proof/run-proof.sh`
 - npm: `npm run proof:run`
+
+Regenerate live WS proof (requires local host + joiner bridges running):
+- PowerShell: `./proof/run-live-proof.ps1`
+- Bash: `./proof/run-live-proof.sh`
+- npm: `npm run proof:live`
 
 Local hosting (two peers on your machine):
 - Start: `./proof/start-local-hosting.ps1`
@@ -123,3 +130,9 @@ Browser proof dashboard:
 - Start UI server: `npm run ui:start`
 - Open: `http://127.0.0.1:3000`
 - Dashboard file: `proof/focus-dashboard.html`
+
+Other accepted proof formats you can submit:
+- Screenshot set: connected bridges + command buttons + response log visible.
+- Short screen recording (`.mp4`): connect, run flow, show `focus_status` and `focus_rooms`.
+- Terminal logs: `proof/host-local.log` and `proof/joiner-local.log` showing lifecycle events.
+- Live transcript bundle: `proof/focus-room-live-smoke.md` + `proof/focus-room-live-proof.json`.

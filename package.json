@@ -9,6 +9,7 @@
   },
   "scripts": {
     "proof:run": "node ./proof/generate-focus-proof.mjs",
+    "proof:live": "node ./proof/run-live-proof.mjs",
     "ui:start": "node ./proof/serve-dashboard.mjs"
   },
   "dependencies": {

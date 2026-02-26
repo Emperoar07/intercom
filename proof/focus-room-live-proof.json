@@ -1,0 +1,1199 @@
+{
+  "generatedAt": "2026-02-26T11:47:46.200Z",
+  "startedAt": "2026-02-26T11:47:42.472Z",
+  "room": "proof-live-mm3efll4",
+  "endpoints": {
+    "host": "ws://127.0.0.1:49222",
+    "joiner": "ws://127.0.0.1:49223"
+  },
+  "steps": [
+    {
+      "step": "joiner.focus_join",
+      "at": "2026-02-26T11:47:42.681Z",
+      "response": {
+        "id": 1,
+        "type": "focus_joined",
+        "room": {
+          "room": "proof-live-mm3efll4",
+          "host": null,
+          "goal": "",
+          "startedAt": null,
+          "endsAt": null,
+          "lastEventAt": 1772106462689,
+          "status": "idle",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+          ],
+          "checkins": [],
+          "stats": null
+        }
+      }
+    },
+    {
+      "step": "host.focus_start",
+      "at": "2026-02-26T11:47:43.249Z",
+      "response": {
+        "id": 1,
+        "type": "focus_started",
+        "room": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772107963256,
+          "lastEventAt": 1772106463256,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
+          ],
+          "checkins": [],
+          "stats": null
+        }
+      }
+    },
+    {
+      "step": "joiner.focus_checkin",
+      "at": "2026-02-26T11:47:44.097Z",
+      "response": {
+        "id": 2,
+        "type": "focus_checked_in",
+        "room": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772107963256,
+          "lastEventAt": 1772106464103,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+            "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
+          ],
+          "checkins": [
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772106464103,
+              "status": "connected and checking in"
+            }
+          ],
+          "stats": null
+        }
+      }
+    },
+    {
+      "step": "host.focus_extend",
+      "at": "2026-02-26T11:47:44.531Z",
+      "response": {
+        "id": 2,
+        "type": "focus_extended",
+        "room": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772108263256,
+          "lastEventAt": 1772106464538,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+          ],
+          "checkins": [
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772106464103,
+              "status": "connected and checking in"
+            }
+          ],
+          "stats": null
+        }
+      }
+    },
+    {
+      "step": "host.focus_status",
+      "at": "2026-02-26T11:47:44.981Z",
+      "response": {
+        "id": 3,
+        "type": "focus_status",
+        "room": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772108263256,
+          "lastEventAt": 1772106464538,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+          ],
+          "checkins": [
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772106464103,
+              "status": "connected and checking in"
+            }
+          ],
+          "stats": null
+        }
+      }
+    },
+    {
+      "step": "host.focus_rooms",
+      "at": "2026-02-26T11:47:45.334Z",
+      "response": {
+        "id": 4,
+        "type": "focus_rooms",
+        "rooms": [
+          {
+            "room": "proof-room",
+            "status": "active",
+            "participants": 1,
+            "goal": "capture browser proof",
+            "endsAt": 1772107518146
+          },
+          {
+            "room": "proof-live-mm3efll4",
+            "status": "active",
+            "participants": 2,
+            "goal": "live ws proof run",
+            "endsAt": 1772108263256
+          }
+        ]
+      }
+    },
+    {
+      "step": "host.focus_end",
+      "at": "2026-02-26T11:47:45.697Z",
+      "response": {
+        "id": 5,
+        "type": "focus_ended",
+        "room": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772108263256,
+          "lastEventAt": 1772106465704,
+          "status": "ended",
+          "endedAt": 1772106465704,
+          "endedReason": "manual",
+          "participants": [
+            "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+          ],
+          "checkins": [
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772106464103,
+              "status": "connected and checking in"
+            }
+          ],
+          "stats": {
+            "plannedDurationMs": 1800000,
+            "actualDurationMs": 2448,
+            "participantCount": 2,
+            "checkinCount": 1
+          }
+        },
+        "stats": {
+          "plannedDurationMs": 1800000,
+          "actualDurationMs": 2448,
+          "participantCount": 2,
+          "checkinCount": 1
+        }
+      }
+    },
+    {
+      "step": "host.focus_streaks",
+      "at": "2026-02-26T11:47:46.197Z",
+      "response": {
+        "id": 6,
+        "type": "focus_streaks",
+        "streaks": [
+          {
+            "peer": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "sessions": 1
+          },
+          {
+            "peer": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+            "sessions": 1
+          }
+        ]
+      }
+    }
+  ],
+  "asyncEvents": {
+    "host": [
+      {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_start",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772107963256
+        },
+        "at": 1772106463256,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "local"
+      },
+      {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_checkin",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+          "status": "connected and checking in",
+          "at": 1772106464103
+        },
+        "at": 1772106464103,
+        "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "source": "remote"
+      },
+      {
+        "type": "sidechannel_message",
+        "channel": "proof-live-mm3efll4",
+        "id": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de:1772106464104:n38a68l7",
+        "from": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "origin": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "sig": "e768037b67151eb4069686e6f12ef65361cd422701005eff059f49e23c127d462c85a0040b737ae2dd37c1db33fb931cff9398aa4ab1129c803920c1a913f307",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772106464104,
+        "message": {
+          "app": "focus_room",
+          "eventType": "session_checkin",
+          "payload": {
+            "room": "proof-live-mm3efll4",
+            "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+            "status": "connected and checking in",
+            "at": 1772106464103
+          },
+          "at": 1772106464103,
+          "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+        }
+      },
+      {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_extend",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "minutes": 5,
+          "endsAt": 1772108263256,
+          "at": 1772106464538
+        },
+        "at": 1772106464538,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "local"
+      },
+      {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_end",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "summary": "live proof flow completed",
+          "at": 1772106465704,
+          "stats": {
+            "plannedDurationMs": 1800000,
+            "actualDurationMs": 2448,
+            "participantCount": 2,
+            "checkinCount": 1
+          }
+        },
+        "at": 1772106465704,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "local"
+      }
+    ],
+    "joiner": [
+      {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_join",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+          "at": 1772106462689
+        },
+        "at": 1772106462689,
+        "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "source": "local"
+      },
+      {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_start",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772107963256
+        },
+        "at": 1772106463256,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "remote"
+      },
+      {
+        "type": "sidechannel_message",
+        "channel": "proof-live-mm3efll4",
+        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772106463259:iqkslav6",
+        "from": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "origin": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "sig": "0596d6347f18ce31b1d218973228ddc60699437d6e68ad66e397144ed31a9c245f924818c74785666b4a0c5a5bbab5c45ffbf1a4a4303980181af5408330050d",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772106463259,
+        "message": {
+          "app": "focus_room",
+          "eventType": "session_start",
+          "payload": {
+            "room": "proof-live-mm3efll4",
+            "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "goal": "live ws proof run",
+            "startedAt": 1772106463256,
+            "endsAt": 1772107963256
+          },
+          "at": 1772106463256,
+          "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
+        }
+      },
+      {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_checkin",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+          "status": "connected and checking in",
+          "at": 1772106464103
+        },
+        "at": 1772106464103,
+        "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "source": "local"
+      },
+      {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_extend",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "minutes": 5,
+          "endsAt": 1772108263256,
+          "at": 1772106464538
+        },
+        "at": 1772106464538,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "remote"
+      },
+      {
+        "type": "sidechannel_message",
+        "channel": "proof-live-mm3efll4",
+        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772106464562:snyzvx14",
+        "from": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "origin": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "sig": "55e6939990250f601093579c9b092303ea1b01dceb87be02364fc80b05bd06a14243555964c4596d6587c328822b562c11f86568f8ef676606866bcdbb983000",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772106464562,
+        "message": {
+          "app": "focus_room",
+          "eventType": "session_extend",
+          "payload": {
+            "room": "proof-live-mm3efll4",
+            "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "minutes": 5,
+            "endsAt": 1772108263256,
+            "at": 1772106464538
+          },
+          "at": 1772106464538,
+          "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
+        }
+      },
+      {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_end",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "summary": "live proof flow completed",
+          "at": 1772106465704,
+          "stats": {
+            "plannedDurationMs": 1800000,
+            "actualDurationMs": 2448,
+            "participantCount": 2,
+            "checkinCount": 1
+          }
+        },
+        "at": 1772106465704,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "remote"
+      },
+      {
+        "type": "sidechannel_message",
+        "channel": "proof-live-mm3efll4",
+        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772106465705:hfo12pas",
+        "from": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "origin": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "sig": "f2b88b2ff0511f2acb51266d8eee8447d6cecc00bf74f1708fa0237ac3d9c39137390db001dd73848823b54f82a09fc194b962d53bfc1d5b0f1c15b65905dc02",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772106465705,
+        "message": {
+          "app": "focus_room",
+          "eventType": "session_end",
+          "payload": {
+            "room": "proof-live-mm3efll4",
+            "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "summary": "live proof flow completed",
+            "at": 1772106465704,
+            "stats": {
+              "plannedDurationMs": 1800000,
+              "actualDurationMs": 2448,
+              "participantCount": 2,
+              "checkinCount": 1
+            }
+          },
+          "at": 1772106465704,
+          "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
+        }
+      }
+    ]
+  },
+  "transcript": [
+    {
+      "at": "2026-02-26T11:47:42.673Z",
+      "side": "joiner",
+      "dir": "status",
+      "message": "socket_open"
+    },
+    {
+      "at": "2026-02-26T11:47:42.675Z",
+      "side": "host",
+      "dir": "status",
+      "message": "socket_open"
+    },
+    {
+      "at": "2026-02-26T11:47:42.676Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "type": "hello",
+        "peer": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "address": "trac1mpyt7yhxl5nh4rzumn6lg2jw5u373m8pqtp805fps7pjr8yvj83qk0cklz",
+        "entryChannel": "0000intercom",
+        "filter": "",
+        "requiresAuth": true,
+        "focusBridgeActions": [
+          "focus_start",
+          "focus_join",
+          "focus_checkin",
+          "focus_end",
+          "focus_extend",
+          "focus_status",
+          "focus_rooms",
+          "focus_streaks"
+        ]
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:42.677Z",
+      "side": "host",
+      "dir": "send",
+      "message": {
+        "type": "auth",
+        "token": "localtoken123"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:42.677Z",
+      "side": "joiner",
+      "dir": "recv",
+      "message": {
+        "type": "hello",
+        "peer": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "address": "trac1f9u0nkdxxnxmtspv2fmtz0a4g7uggkpjlfmny07xx5nrne9evl0qzztk4h",
+        "entryChannel": "0000intercom",
+        "filter": "",
+        "requiresAuth": true,
+        "focusBridgeActions": [
+          "focus_start",
+          "focus_join",
+          "focus_checkin",
+          "focus_end",
+          "focus_extend",
+          "focus_status",
+          "focus_rooms",
+          "focus_streaks"
+        ]
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:42.678Z",
+      "side": "joiner",
+      "dir": "send",
+      "message": {
+        "type": "auth",
+        "token": "joinertoken123"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:42.680Z",
+      "side": "joiner",
+      "dir": "recv",
+      "message": {
+        "type": "auth_ok"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:42.681Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "type": "auth_ok"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:42.681Z",
+      "side": "joiner",
+      "dir": "send",
+      "message": {
+        "id": 1,
+        "type": "focus_join",
+        "room": "proof-live-mm3efll4"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:42.894Z",
+      "side": "joiner",
+      "dir": "recv",
+      "message": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_join",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+          "at": 1772106462689
+        },
+        "at": 1772106462689,
+        "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "source": "local"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:42.894Z",
+      "side": "joiner",
+      "dir": "recv",
+      "message": {
+        "id": 1,
+        "type": "focus_joined",
+        "room": {
+          "room": "proof-live-mm3efll4",
+          "host": null,
+          "goal": "",
+          "startedAt": null,
+          "endsAt": null,
+          "lastEventAt": 1772106462689,
+          "status": "idle",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+          ],
+          "checkins": [],
+          "stats": null
+        }
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:43.250Z",
+      "side": "host",
+      "dir": "send",
+      "message": {
+        "id": 1,
+        "type": "focus_start",
+        "room": "proof-live-mm3efll4",
+        "minutes": 25,
+        "goal": "live ws proof run"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:43.744Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_start",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772107963256
+        },
+        "at": 1772106463256,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "local"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:43.744Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "id": 1,
+        "type": "focus_started",
+        "room": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772107963256,
+          "lastEventAt": 1772106463256,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
+          ],
+          "checkins": [],
+          "stats": null
+        }
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:43.750Z",
+      "side": "joiner",
+      "dir": "recv",
+      "message": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_start",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772107963256
+        },
+        "at": 1772106463256,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "remote"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:43.751Z",
+      "side": "joiner",
+      "dir": "recv",
+      "message": {
+        "type": "sidechannel_message",
+        "channel": "proof-live-mm3efll4",
+        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772106463259:iqkslav6",
+        "from": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "origin": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "sig": "0596d6347f18ce31b1d218973228ddc60699437d6e68ad66e397144ed31a9c245f924818c74785666b4a0c5a5bbab5c45ffbf1a4a4303980181af5408330050d",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772106463259,
+        "message": {
+          "app": "focus_room",
+          "eventType": "session_start",
+          "payload": {
+            "room": "proof-live-mm3efll4",
+            "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "goal": "live ws proof run",
+            "startedAt": 1772106463256,
+            "endsAt": 1772107963256
+          },
+          "at": 1772106463256,
+          "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
+        }
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:44.097Z",
+      "side": "joiner",
+      "dir": "send",
+      "message": {
+        "id": 2,
+        "type": "focus_checkin",
+        "room": "proof-live-mm3efll4",
+        "status": "connected and checking in"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:44.170Z",
+      "side": "joiner",
+      "dir": "recv",
+      "message": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_checkin",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+          "status": "connected and checking in",
+          "at": 1772106464103
+        },
+        "at": 1772106464103,
+        "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "source": "local"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:44.170Z",
+      "side": "joiner",
+      "dir": "recv",
+      "message": {
+        "id": 2,
+        "type": "focus_checked_in",
+        "room": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772107963256,
+          "lastEventAt": 1772106464103,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+            "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
+          ],
+          "checkins": [
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772106464103,
+              "status": "connected and checking in"
+            }
+          ],
+          "stats": null
+        }
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:44.177Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_checkin",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+          "status": "connected and checking in",
+          "at": 1772106464103
+        },
+        "at": 1772106464103,
+        "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "source": "remote"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:44.177Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "type": "sidechannel_message",
+        "channel": "proof-live-mm3efll4",
+        "id": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de:1772106464104:n38a68l7",
+        "from": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "origin": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+        "sig": "e768037b67151eb4069686e6f12ef65361cd422701005eff059f49e23c127d462c85a0040b737ae2dd37c1db33fb931cff9398aa4ab1129c803920c1a913f307",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772106464104,
+        "message": {
+          "app": "focus_room",
+          "eventType": "session_checkin",
+          "payload": {
+            "room": "proof-live-mm3efll4",
+            "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+            "status": "connected and checking in",
+            "at": 1772106464103
+          },
+          "at": 1772106464103,
+          "by": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+        }
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:44.532Z",
+      "side": "host",
+      "dir": "send",
+      "message": {
+        "id": 2,
+        "type": "focus_extend",
+        "room": "proof-live-mm3efll4",
+        "minutes": 5
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:44.626Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_extend",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "minutes": 5,
+          "endsAt": 1772108263256,
+          "at": 1772106464538
+        },
+        "at": 1772106464538,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "local"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:44.626Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "id": 2,
+        "type": "focus_extended",
+        "room": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772108263256,
+          "lastEventAt": 1772106464538,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+          ],
+          "checkins": [
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772106464103,
+              "status": "connected and checking in"
+            }
+          ],
+          "stats": null
+        }
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:44.632Z",
+      "side": "joiner",
+      "dir": "recv",
+      "message": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_extend",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "minutes": 5,
+          "endsAt": 1772108263256,
+          "at": 1772106464538
+        },
+        "at": 1772106464538,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "remote"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:44.632Z",
+      "side": "joiner",
+      "dir": "recv",
+      "message": {
+        "type": "sidechannel_message",
+        "channel": "proof-live-mm3efll4",
+        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772106464562:snyzvx14",
+        "from": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "origin": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "sig": "55e6939990250f601093579c9b092303ea1b01dceb87be02364fc80b05bd06a14243555964c4596d6587c328822b562c11f86568f8ef676606866bcdbb983000",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772106464562,
+        "message": {
+          "app": "focus_room",
+          "eventType": "session_extend",
+          "payload": {
+            "room": "proof-live-mm3efll4",
+            "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "minutes": 5,
+            "endsAt": 1772108263256,
+            "at": 1772106464538
+          },
+          "at": 1772106464538,
+          "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
+        }
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:44.982Z",
+      "side": "host",
+      "dir": "send",
+      "message": {
+        "id": 3,
+        "type": "focus_status",
+        "room": "proof-live-mm3efll4"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:44.983Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "id": 3,
+        "type": "focus_status",
+        "room": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772108263256,
+          "lastEventAt": 1772106464538,
+          "status": "active",
+          "endedAt": null,
+          "endedReason": null,
+          "participants": [
+            "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+          ],
+          "checkins": [
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772106464103,
+              "status": "connected and checking in"
+            }
+          ],
+          "stats": null
+        }
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:45.335Z",
+      "side": "host",
+      "dir": "send",
+      "message": {
+        "id": 4,
+        "type": "focus_rooms"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:45.336Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "id": 4,
+        "type": "focus_rooms",
+        "rooms": [
+          {
+            "room": "proof-room",
+            "status": "active",
+            "participants": 1,
+            "goal": "capture browser proof",
+            "endsAt": 1772107518146
+          },
+          {
+            "room": "proof-live-mm3efll4",
+            "status": "active",
+            "participants": 2,
+            "goal": "live ws proof run",
+            "endsAt": 1772108263256
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:45.698Z",
+      "side": "host",
+      "dir": "send",
+      "message": {
+        "id": 5,
+        "type": "focus_end",
+        "room": "proof-live-mm3efll4",
+        "summary": "live proof flow completed"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:45.838Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_end",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "summary": "live proof flow completed",
+          "at": 1772106465704,
+          "stats": {
+            "plannedDurationMs": 1800000,
+            "actualDurationMs": 2448,
+            "participantCount": 2,
+            "checkinCount": 1
+          }
+        },
+        "at": 1772106465704,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "local"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:45.838Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "id": 5,
+        "type": "focus_ended",
+        "room": {
+          "room": "proof-live-mm3efll4",
+          "host": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "goal": "live ws proof run",
+          "startedAt": 1772106463256,
+          "endsAt": 1772108263256,
+          "lastEventAt": 1772106465704,
+          "status": "ended",
+          "endedAt": 1772106465704,
+          "endedReason": "manual",
+          "participants": [
+            "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de"
+          ],
+          "checkins": [
+            {
+              "who": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+              "at": 1772106464103,
+              "status": "connected and checking in"
+            }
+          ],
+          "stats": {
+            "plannedDurationMs": 1800000,
+            "actualDurationMs": 2448,
+            "participantCount": 2,
+            "checkinCount": 1
+          }
+        },
+        "stats": {
+          "plannedDurationMs": 1800000,
+          "actualDurationMs": 2448,
+          "participantCount": 2,
+          "checkinCount": 1
+        }
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:45.840Z",
+      "side": "joiner",
+      "dir": "recv",
+      "message": {
+        "type": "focus_event",
+        "app": "focus_room",
+        "eventType": "session_end",
+        "payload": {
+          "room": "proof-live-mm3efll4",
+          "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+          "summary": "live proof flow completed",
+          "at": 1772106465704,
+          "stats": {
+            "plannedDurationMs": 1800000,
+            "actualDurationMs": 2448,
+            "participantCount": 2,
+            "checkinCount": 1
+          }
+        },
+        "at": 1772106465704,
+        "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "source": "remote"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:45.840Z",
+      "side": "joiner",
+      "dir": "recv",
+      "message": {
+        "type": "sidechannel_message",
+        "channel": "proof-live-mm3efll4",
+        "id": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2:1772106465705:hfo12pas",
+        "from": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "origin": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+        "sig": "f2b88b2ff0511f2acb51266d8eee8447d6cecc00bf74f1708fa0237ac3d9c39137390db001dd73848823b54f82a09fc194b962d53bfc1d5b0f1c15b65905dc02",
+        "relayedBy": null,
+        "ttl": 3,
+        "ts": 1772106465705,
+        "message": {
+          "app": "focus_room",
+          "eventType": "session_end",
+          "payload": {
+            "room": "proof-live-mm3efll4",
+            "who": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "summary": "live proof flow completed",
+            "at": 1772106465704,
+            "stats": {
+              "plannedDurationMs": 1800000,
+              "actualDurationMs": 2448,
+              "participantCount": 2,
+              "checkinCount": 1
+            }
+          },
+          "at": 1772106465704,
+          "by": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2"
+        }
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:46.198Z",
+      "side": "host",
+      "dir": "send",
+      "message": {
+        "id": 6,
+        "type": "focus_streaks"
+      }
+    },
+    {
+      "at": "2026-02-26T11:47:46.200Z",
+      "side": "host",
+      "dir": "recv",
+      "message": {
+        "id": 6,
+        "type": "focus_streaks",
+        "streaks": [
+          {
+            "peer": "d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2",
+            "sessions": 1
+          },
+          {
+            "peer": "4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de",
+            "sessions": 1
+          }
+        ]
+      }
+    }
+  ]
+}
