@@ -8,7 +8,8 @@
     "type": "terminal"
   },
   "scripts": {
-    "proof:run": "node ./proof/generate-focus-proof.mjs"
+    "proof:run": "node ./proof/generate-focus-proof.mjs",
+    "ui:start": "node ./proof/serve-dashboard.mjs"
   },
   "dependencies": {
     "b4a": "^1.6.7",

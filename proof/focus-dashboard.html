@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FocusRoom Proof Dashboard</title>
+    <style>
+      :root {
+        --bg-1: #f6f7f2;
+        --bg-2: #e8ece3;
+        --ink: #16201d;
+        --card: #ffffff;
+        --line: #cfd7cd;
+        --host: #0f766e;
+        --joiner: #b45309;
+        --accent: #1f2937;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 85% 15%, #d8efe8 0%, transparent 40%),
+          radial-gradient(circle at 8% 80%, #f4dfc8 0%, transparent 35%),
+          linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      }
+      .shell {
+        max-width: 1100px;
+        margin: 24px auto;
+        padding: 16px;
+      }
+      .hero {
+        background: rgba(255, 255, 255, 0.75);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 16px;
+        backdrop-filter: blur(2px);
+      }
+      h1 {
+        margin: 0;
+        font-size: 1.8rem;
+        letter-spacing: 0.01em;
+      }
+      .sub {
+        margin: 6px 0 0;
+        color: #3b4a46;
+      }
+      .grid {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 12px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 12px;
+      }
+      .card h2 {
+        margin: 0 0 10px;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+      .dot.host {
+        background: var(--host);
+      }
+      .dot.joiner {
+        background: var(--joiner);
+      }
+      label {
+        display: block;
+        margin: 8px 0 4px;
+        font-size: 0.85rem;
+        color: #33423e;
+      }
+      input {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 9px 10px;
+        font: inherit;
+        background: #fff;
+      }
+      .row {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .row > * {
+        flex: 1;
+      }
+      button {
+        border: 0;
+        border-radius: 10px;
+        padding: 9px 10px;
+        font: inherit;
+        font-weight: 600;
+        color: #fff;
+        background: var(--accent);
+        cursor: pointer;
+      }
+      button.host {
+        background: var(--host);
+      }
+      button.joiner {
+        background: var(--joiner);
+      }
+      button.ghost {
+        background: #33423e;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .status {
+        margin-top: 8px;
+        font-size: 0.85rem;
+      }
+      .controls {
+        margin-top: 14px;
+      }
+      .controls h3 {
+        margin: 0 0 8px;
+        font-size: 0.95rem;
+      }
+      .log {
+        margin-top: 12px;
+        height: 280px;
+        overflow: auto;
+        background: #0e1715;
+        color: #d7f2e9;
+        border-radius: 12px;
+        padding: 10px;
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+      .log .host {
+        color: #8de4d8;
+      }
+      .log .joiner {
+        color: #ffd39b;
+      }
+      .note {
+        margin-top: 10px;
+        font-size: 0.82rem;
+        color: #33423e;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <h1>FocusRoom Proof Dashboard</h1>
+        <p class="sub">Browser UI for capturing screenshots/videos while controlling local host + joiner bridges.</p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2><span class="dot host"></span>Host Bridge</h2>
+          <label for="hostUrl">URL</label>
+          <input id="hostUrl" value="ws://127.0.0.1:49222" />
+          <label for="hostToken">Token</label>
+          <input id="hostToken" value="localtoken123" />
+          <div class="row">
+            <button class="host" id="hostConnect">Connect</button>
+            <button class="ghost" id="hostDisconnect">Disconnect</button>
+          </div>
+          <div class="status" id="hostStatus">Status: disconnected</div>
+        </article>
+
+        <article class="card">
+          <h2><span class="dot joiner"></span>Joiner Bridge</h2>
+          <label for="joinUrl">URL</label>
+          <input id="joinUrl" value="ws://127.0.0.1:49223" />
+          <label for="joinToken">Token</label>
+          <input id="joinToken" value="joinertoken123" />
+          <div class="row">
+            <button class="joiner" id="joinConnect">Connect</button>
+            <button class="ghost" id="joinDisconnect">Disconnect</button>
+          </div>
+          <div class="status" id="joinStatus">Status: disconnected</div>
+        </article>
+      </section>
+
+      <section class="card controls">
+        <h3>Room Controls</h3>
+        <div class="grid">
+          <div>
+            <label for="roomName">Room</label>
+            <input id="roomName" value="proof-room" />
+          </div>
+          <div>
+            <label for="goal">Goal</label>
+            <input id="goal" value="capture browser proof" />
+          </div>
+          <div>
+            <label for="minutes">Minutes</label>
+            <input id="minutes" value="25" />
+          </div>
+          <div>
+            <label for="statusText">Check-in</label>
+            <input id="statusText" value="working and syncing" />
+          </div>
+        </div>
+        <div class="row">
+          <button class="joiner" id="btnJoin">Joiner: focus_join</button>
+          <button class="host" id="btnStart">Host: focus_start</button>
+          <button class="joiner" id="btnCheckin">Joiner: focus_checkin</button>
+          <button class="host" id="btnStatus">Host: focus_status</button>
+        </div>
+        <div class="row">
+          <button class="host" id="btnExtend">Host: focus_extend +5</button>
+          <button class="host" id="btnEnd">Host: focus_end</button>
+          <button class="ghost" id="btnRooms">Host: focus_rooms</button>
+          <button class="ghost" id="btnProofFlow">Run Proof Flow</button>
+        </div>
+        <p class="note">Proof flow sequence: joiner joins room -> host starts room -> joiner check-in -> host status/rooms.</p>
+      </section>
+
+      <section class="card">
+        <h3 style="margin: 0 0 8px">Event / Response Log</h3>
+        <div id="log" class="log"></div>
+      </section>
+    </main>
+
+    <script>
+      const state = {
+        host: { ws: null, authed: false, nextId: 1 },
+        joiner: { ws: null, authed: false, nextId: 1 },
+      };
+
+      const $ = (id) => document.getElementById(id);
+      const logEl = $("log");
+      const hostStatus = $("hostStatus");
+      const joinStatus = $("joinStatus");
+
+      function log(side, text, payload) {
+        const stamp = new Date().toLocaleTimeString();
+        const line = document.createElement("div");
+        line.className = side;
+        line.textContent = `[${stamp}] [${side}] ${text}`;
+        logEl.appendChild(line);
+        if (payload !== undefined) {
+          const pre = document.createElement("div");
+          pre.className = side;
+          pre.textContent = JSON.stringify(payload, null, 2);
+          logEl.appendChild(pre);
+        }
+        logEl.scrollTop = logEl.scrollHeight;
+      }
+
+      function setStatus(side) {
+        const st = state[side];
+        const txt = `Status: ${st.ws ? (st.authed ? "connected+authed" : "connected") : "disconnected"}`;
+        if (side === "host") hostStatus.textContent = txt;
+        else joinStatus.textContent = txt;
+      }
+
+      function connect(side) {
+        const url = side === "host" ? $("hostUrl").value.trim() : $("joinUrl").value.trim();
+        const token = side === "host" ? $("hostToken").value.trim() : $("joinToken").value.trim();
+        if (!url || !token) {
+          log(side, "missing url/token");
+          return;
+        }
+        if (state[side].ws) state[side].ws.close();
+        const ws = new WebSocket(url);
+        state[side].ws = ws;
+        state[side].authed = false;
+        setStatus(side);
+        log(side, `connecting ${url}`);
+
+        ws.onopen = () => log(side, "socket open");
+        ws.onclose = () => {
+          state[side].ws = null;
+          state[side].authed = false;
+          setStatus(side);
+          log(side, "socket closed");
+        };
+        ws.onerror = () => log(side, "socket error");
+        ws.onmessage = (ev) => {
+          let msg = null;
+          try {
+            msg = JSON.parse(ev.data);
+          } catch (_e) {
+            log(side, "non-json message");
+            return;
+          }
+          if (msg.type === "hello") {
+            ws.send(JSON.stringify({ type: "auth", token }));
+            log(side, "hello -> sent auth");
+            return;
+          }
+          if (msg.type === "auth_ok") {
+            state[side].authed = true;
+            setStatus(side);
+            log(side, "authenticated");
+            return;
+          }
+          log(side, `recv ${msg.type || "message"}`, msg);
+        };
+      }
+
+      function disconnect(side) {
+        if (state[side].ws) state[side].ws.close();
+      }
+
+      function send(side, type, payload = {}) {
+        const st = state[side];
+        if (!st.ws || !st.authed) {
+          log(side, `cannot send ${type}; not connected`);
+          return;
+        }
+        const msg = { id: st.nextId++, type, ...payload };
+        st.ws.send(JSON.stringify(msg));
+        log(side, `sent ${type}`, msg);
+      }
+
+      function roomPayload() {
+        return {
+          room: $("roomName").value.trim(),
+          goal: $("goal").value.trim(),
+          minutes: Number.parseInt($("minutes").value.trim(), 10) || 25,
+          status: $("statusText").value.trim(),
+        };
+      }
+
+      async function runProofFlow() {
+        const p = roomPayload();
+        send("joiner", "focus_join", { room: p.room });
+        await new Promise((r) => setTimeout(r, 400));
+        send("host", "focus_start", { room: p.room, minutes: p.minutes, goal: p.goal });
+        await new Promise((r) => setTimeout(r, 400));
+        send("joiner", "focus_checkin", { room: p.room, status: p.status });
+        await new Promise((r) => setTimeout(r, 400));
+        send("host", "focus_status", { room: p.room });
+        await new Promise((r) => setTimeout(r, 400));
+        send("host", "focus_rooms", {});
+      }
+
+      $("hostConnect").onclick = () => connect("host");
+      $("hostDisconnect").onclick = () => disconnect("host");
+      $("joinConnect").onclick = () => connect("joiner");
+      $("joinDisconnect").onclick = () => disconnect("joiner");
+
+      $("btnJoin").onclick = () => send("joiner", "focus_join", { room: roomPayload().room });
+      $("btnStart").onclick = () => {
+        const p = roomPayload();
+        send("host", "focus_start", { room: p.room, minutes: p.minutes, goal: p.goal });
+      };
+      $("btnCheckin").onclick = () => {
+        const p = roomPayload();
+        send("joiner", "focus_checkin", { room: p.room, status: p.status });
+      };
+      $("btnStatus").onclick = () => send("host", "focus_status", { room: roomPayload().room });
+      $("btnRooms").onclick = () => send("host", "focus_rooms", {});
+      $("btnExtend").onclick = () => send("host", "focus_extend", { room: roomPayload().room, minutes: 5 });
+      $("btnEnd").onclick = () =>
+        send("host", "focus_end", { room: roomPayload().room, summary: "proof flow complete" });
+      $("btnProofFlow").onclick = () => runProofFlow();
+    </script>
+  </body>
+</html>

@@ -118,3 +118,8 @@ Local hosting (two peers on your machine):
 - Host bridge: `ws://127.0.0.1:49222` (token `localtoken123`)
 - Joiner bridge: `ws://127.0.0.1:49223` (token `joinertoken123`)
 - Note: for room sync, joiner should call `focus_join` for a room before host calls `focus_start`.
+
+Browser proof dashboard:
+- Start UI server: `npm run ui:start`
+- Open: `http://127.0.0.1:3000`
+- Dashboard file: `proof/focus-dashboard.html`
