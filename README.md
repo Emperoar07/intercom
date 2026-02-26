@@ -88,7 +88,7 @@ Core commands:
 - `/focus_status --room "ship-room"`
 - `/focus_rooms`
 
-## Trac Address (Payout)
+## Trac Address
 
 `trac1e2fgpaupppezt7vg8l7pcdj38uuty5xg80dk6m2pg5zquegujx0q4nlr27`
 
