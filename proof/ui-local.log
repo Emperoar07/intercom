@@ -1,0 +1,5 @@
+
+> contract-test-latest@0.0.1 ui:start
+> node ./proof/serve-dashboard.mjs
+
+Focus dashboard running at http://127.0.0.1:3000

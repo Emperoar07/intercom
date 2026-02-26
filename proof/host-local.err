@@ -1,0 +1,4 @@
+[ WARNING ] To complete Pear installation, prepend the following to the system Path environment variable:
+C:\Users\bolaj\AppData\Roaming\pear\bin
+Until then, this executable spawns the `pear` binary.
+Fix automatically with: pear run pear://runtime

@@ -1,0 +1,194 @@
+=============== STARTING MSB ===============
+State initialization...
+Network initialization...
+
+#####################################################################################
+# MSB Address:    trac17v62ed0qjca3swmdcjjrwkezzqkgppzcumqk5k4nvzqyvgg7l3jsq64jj5  #
+# MSB Writer:     fa2f7e13d061e2046d504e8c0d790504f34ccdab353da72deac245b7441985fa #
+#####################################################################################
+Channel: 0000trac0network0msb0mainnet0000
+isIndexer: false
+isWriter: false
+MSB Unsigned Length: 22224
+MSB Signed Length: 22224
+Balance: 0
+=============== STARTING PEER ===============
+
+######################################################################################
+# Peer Address:     d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 #
+# Peer Writer:      a1f5af5b15ba3183e73d078e3c40149f8185adf11d2f251536ab44bac480fe18 #
+######################################################################################
+
+isIndexer: true
+isWriter: true
+
+
+====================INTERCOM ====================
+MSB network bootstrap: acbc3a4344d3a804101d40e53db1dda82b767646425af73599d4cd6577d69685
+MSB channel: 0000trac0network0msb0mainnet0000
+MSB store: stores\local-host-msb
+Peer store: stores\local-host
+MSB DHT bootstrap nodes: 116.202.214.149:10001, 157.180.12.214:10001, node1.hyperdht.org:49737, node2.hyperdht.org:49737, node3.hyperdht.org:49737
+Peer DHT bootstrap nodes: 116.202.214.149:10001, 157.180.12.214:10001, node1.hyperdht.org:49737, node2.hyperdht.org:49737, node3.hyperdht.org:49737
+Peer subnet bootstrap: a1f5af5b15ba3183e73d078e3c40149f8185adf11d2f251536ab44bac480fe18
+Peer subnet channel: focus-vibe-local
+Peer pubkey (hex): d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2
+Peer trac address (bech32m): trac1mpyt7yhxl5nh4rzumn6lg2jw5u373m8pqtp805fps7pjr8yvj83qk0cklz
+Peer writer key (hex): a1f5af5b15ba3183e73d078e3c40149f8185adf11d2f251536ab44bac480fe18
+Sidechannel entry: 0000intercom
+Sidechannel extras: focus-room-alpha
+SC-Bridge: ws://127.0.0.1:49222
+================================================================
+
+Sidechannel: ready
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-live-mm3efll4] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="live ws proof run"
+[focus:proof-live-mm3efll4] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: connected and checking in
+[focus:proof-live-mm3efll4] extended by 5m | new end 2026-02-26T12:17:43.256Z
+[focus:proof-live-mm3efll4] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 2s | participants=2 | checkins=1
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 53s | participants=2 | checkins=6
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room200] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room200] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room200] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room200] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 6m 56s | participants=2 | checkins=15
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room200] expired automatically
+[focus:proof-room200] expired automatically
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 2m 53s | participants=2 | checkins=22
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 48s | participants=2 | checkins=23
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-live-mm3iaycw] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="live ws proof run"
+[focus:proof-live-mm3iaycw] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: connected and checking in
+[focus:proof-live-mm3iaycw] extended by 5m | new end 2026-02-26T14:06:04.923Z
+[focus:proof-live-mm3iaycw] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 1s | participants=2 | checkins=1
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 1s | participants=2 | checkins=26
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 0s | participants=2 | checkins=26
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 0s | participants=2 | checkins=28
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 0s | participants=2 | checkins=29
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 0s | participants=2 | checkins=30
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 0s | participants=2 | checkins=31
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 0s | participants=2 | checkins=31
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 0s | participants=2 | checkins=33
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 0s | participants=2 | checkins=34
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 0s | participants=2 | checkins=35
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 0s | participants=2 | checkins=36
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 0s | participants=2 | checkins=36
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
+[focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
+[focus:proof-room] ended by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 | actual 0m 0s | participants=2 | checkins=38
