@@ -7,6 +7,9 @@
     "name": "contract-test-latest",
     "type": "terminal"
   },
+  "scripts": {
+    "proof:run": "node ./proof/generate-focus-proof.mjs"
+  },
   "dependencies": {
     "b4a": "^1.6.7",
     "bare-ws": "2.0.3",

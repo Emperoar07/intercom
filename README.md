@@ -106,3 +106,8 @@ Proof artifacts live under `proof/`:
 - `proof/focus-room-run.png` (or `.mp4`)
 - `proof/focus-room-smoke.md` (filled smoke transcript)
 - `proof/focus-room-proof.json` (captured local simulation output)
+
+Regenerate proof artifacts in one command:
+- PowerShell: `./proof/run-proof.ps1`
+- Bash: `./proof/run-proof.sh`
+- npm: `npm run proof:run`
