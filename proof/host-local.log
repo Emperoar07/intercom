@@ -41,8 +41,7 @@ SC-Bridge: ws://127.0.0.1:49222
 ================================================================
 
 Sidechannel: ready
-[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 2m 0s | goal="capture browser proof"
+[focus:proof-room] started by d848bf12e6fd277a8c5cdcf5f42a4ea723e8ece102c277d1218783219c8c91e2 for 25m 0s | goal="capture browser proof"
 [focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
 [focus:proof-room] join 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de
 [focus:proof-room] checkin 4978f9d9a634cdb5c02c5276b13fb547b8845832fa77323fc6352639e4b967de: working and syncing
-[focus:proof-room] expired automatically
